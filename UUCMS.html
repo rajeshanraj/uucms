@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UUCMS Technical Grievance & Status Portal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .gradient-header {
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="gradient-header text-white shadow-lg py-6 px-4">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <div>
+        <h1 class="text-2xl md:text-3xl font-bold tracking-tight">UUCMS Technical Resolution Desk</h1>
+        <p class="text-blue-100 text-sm mt-1">Dedicated Support Portal for Students, Candidates, Colleges & Universities</p>
+      </div>
+      <div class="bg-amber-400/20 px-4 py-2 rounded-lg border border-amber-300/40 text-xs text-amber-200">
+        <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-400 mr-2 animate-pulse"></span>
+        Grievance & Live Status Tracker Active
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="flex-grow max-w-4xl mx-auto w-full px-4 py-8 space-y-8">
+
+    <!-- TRACK STATUS CARD -->
+    <div class="bg-white rounded-2xl shadow-md border-2 border-blue-200 p-6 md:p-8">
+      <div class="flex items-center gap-3 mb-2">
+        <div class="p-2 bg-blue-100 text-blue-700 rounded-lg">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        </div>
+        <div>
+          <h2 class="text-xl font-bold text-slate-900">Track Grievance Status</h2>
+          <p class="text-xs text-slate-500">Check current resolution progress and remarks added by technical support staff.</p>
+        </div>
+      </div>
+
+      <form onsubmit="checkTicketStatus(event)" class="mt-4 flex flex-col sm:flex-row gap-3">
+        <input 
+          type="text" 
+          id="searchQuery" 
+          required 
+          placeholder="Enter Ticket ID (e.g. UUCMS-123456) or Registered Mobile Number" 
+          class="flex-1 border border-slate-300 rounded-lg p-3 bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none text-sm"
+        />
+        <button 
+          type="submit" 
+          id="checkBtn" 
+          class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg text-sm shadow transition flex items-center justify-center gap-2"
+        >
+          <span>Check Status</span>
+        </button>
+      </form>
+
+      <!-- Status Result Box -->
+      <div id="statusResultBox" class="mt-4 hidden p-4 rounded-xl border"></div>
+    </div>
+
+    <!-- Mandatory Data Privacy & Deletion Notice Banner -->
+    <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-lg shadow-sm">
+      <div class="flex items-start">
+        <svg class="h-6 w-6 text-amber-500 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        <div>
+          <h2 class="text-sm font-bold text-amber-900 uppercase tracking-wider">Data Privacy & Auto-Purge Notice</h2>
+          <p class="text-sm text-amber-800 mt-1">
+            <strong>Important:</strong> After the result and resolution of the reported technical issue, 
+            <span class="underline font-semibold">all submitted data, login credentials, and logs will be permanently deleted</span> from our records.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grievance Submission Form -->
+    <div class="bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden">
+      <div class="p-6 md:p-8">
+        <h2 class="text-xl font-bold text-slate-900 mb-6 pb-2 border-b">File a New Technical Grievance</h2>
+
+        <form id="issueForm" onsubmit="handleInitialSubmit(event)" class="space-y-6">
+
+          <!-- Section 1: Respondent Category -->
+          <div>
+            <h3 class="text-md font-semibold text-slate-800 mb-3">1. Respondent Category</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1">User Classification *</label>
+                <select id="userCategory" onchange="updateProcessingFee()" required class="w-full border border-slate-300 rounded-lg p-2.5 bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                  <option value="" disabled selected>-- Select Role --</option>
+                  <option value="Student / Candidate">Student / Candidate</option>
+                  <option value="College Staff">College Staff</option>
+                  <option value="College Administrator">College Administrator</option>
+                  <option value="University Staff">University Staff</option>
+                  <option value="University Administrator">University Administrator</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1">Institution / College Name *</label>
+                <input type="text" id="institutionName" required placeholder="Enter College / University Name" class="w-full border border-slate-300 rounded-lg p-2.5 bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 2: Technical Grievance Details -->
+          <div>
+            <h3 class="text-md font-semibold text-slate-800 mb-3">2. Technical Grievance Details</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1">Issue Category *</label>
+                <select id="issueCategory" required class="w-full border border-slate-300 rounded-lg p-2.5 bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                  <option value="" disabled selected>-- Select Technical Issue --</option>
+                  <option value="APAAR / Upper ID Fetching Issue">APAAR / Upper ID Fetching Issue</option>
+                  <option value="Mandatory Password Changing Issue">Mandatory Password Changing Issue</option>
+                  <option value="Password Reset Error">Password Reset Error</option>
+                  <option value="OTP Verification Failure">OTP Verification Failure</option>
+                  <option value="Admission / Registration Error">Admission / Registration Error</option>
+                  <option value="Internal Assessment Discrepancy">Internal Assessment Discrepancy</option>
+                  <option value="Other Portal Bug">Other Technical Issue</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1">Issue Description *</label>
+                <textarea id="issueDescription" rows="2" required placeholder="Describe the error message or issue faced..." class="w-full border border-slate-300 rounded-lg p-2.5 bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 3: Credentials for Resolution -->
+          <div>
+            <h3 class="text-md font-semibold text-slate-800 mb-1">3. Portal Resolution Credentials</h3>
+            <p class="text-xs text-slate-500 mb-3">Login details are strictly utilized by technical support staff to verify and fix authentication barriers.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1">Login ID / Register No. *</label>
+                <input type="text" id="loginId" required placeholder="e.g. U03XX21S0000" class="w-full border border-slate-300 rounded-lg p-2.5 bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1">Password *</label>
+                <input type="password" id="portalPassword" required placeholder="Enter Current Password" class="w-full border border-slate-300 rounded-lg p-2.5 bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1">Recent OTP (if applicable)</label>
+                <input type="text" id="otpValue" placeholder="Enter last received OTP or leave blank" class="w-full border border-slate-300 rounded-lg p-2.5 bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1">Contact Phone Number *</label>
+                <input type="tel" id="contactNumber" pattern="[0-9]{10}" required placeholder="10-digit mobile number" class="w-full border border-slate-300 rounded-lg p-2.5 bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+              </div>
+
+              <div class="md:col-span-2">
+                <label class="block text-sm font-medium text-slate-700 mb-1">Email Address (For Acknowledgement) *</label>
+                <input type="email" id="contactEmail" required placeholder="name@domain.com" class="w-full border border-slate-300 rounded-lg p-2.5 bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 4: Resolution Processing Fee (Fixed by Administrator) -->
+          <div>
+            <h3 class="text-md font-semibold text-slate-800 mb-3">4. Resolution Processing Fee</h3>
+            <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div>
+                <span class="text-xs font-semibold text-blue-900 uppercase tracking-wide">Category Applicable Fee</span>
+                <p class="text-xs text-blue-700 mt-0.5">Fixed according to applicant designation and department overhead.</p>
+              </div>
+              <div class="flex items-baseline gap-1 bg-white px-4 py-2 rounded-lg border border-blue-200 shadow-sm self-start sm:self-auto">
+                <span class="text-sm font-bold text-slate-500">₹</span>
+                <span id="displayAmount" class="text-2xl font-extrabold text-blue-700">0.00</span>
+                <span class="text-xs font-medium text-slate-500 ml-1">INR</span>
+              </div>
+            </div>
+            <!-- Hidden input stores calculated value for backend payload -->
+            <input type="hidden" id="fixedAmount" value="0.00" />
+          </div>
+
+          <button type="submit" id="submitBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3.5 px-6 rounded-lg transition duration-200 shadow-md flex items-center justify-center gap-2">
+            <span>Submit Grievance</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- Submission Success Modal -->
+  <div id="successModal" class="fixed inset-0 bg-black/60 hidden backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 text-center shadow-2xl space-y-4">
+      <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+      </div>
+      <h3 class="text-xl font-bold text-slate-900">Grievance Submitted Successfully</h3>
+      <p class="text-sm text-slate-600">Your issue details have been forwarded to the technical support team.</p>
+
+      <div class="bg-slate-50 p-3 rounded-lg border text-left text-xs space-y-1 text-slate-700">
+        <div><strong>Ticket ID:</strong> <span id="resTicketId" class="font-mono text-blue-600 font-bold"></span></div>
+        <div><strong>Recorded Amount:</strong> <span id="resAmount" class="font-mono font-semibold text-emerald-700"></span></div>
+        <div><strong>Initial Status:</strong> <span class="text-amber-600 font-semibold">In Progress</span></div>
+        <div class="text-slate-500 pt-1 border-t mt-1">Save your Ticket ID to track updates in the tracking section above.</div>
+      </div>
+
+      <button onclick="resetAndClose()" class="w-full bg-blue-600 text-white py-2.5 rounded-lg hover:bg-blue-700 font-medium">Done</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500">
+    <p>UUCMS Technical Grievance Portal &copy; 2026. All credentials will be deleted once technical issues are resolved.</p>
+  </footer>
+
+  <script>
+    const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbz4yowS5r7KcuCv3rCAqSQr6Wz6E83AJwXQ2VpLG8LEmuH_aGJUSFyymU-893xcBrKR/exec";
+
+    // ADMIN CONFIGURATION: EXACT FEE RATES
+    const FEE_RATES = {
+      "Student / Candidate": 50.00,
+      "College Staff": 100.00,
+      "College Administrator": 150.00,
+      "University Staff": 200.00,
+      "University Administrator": 200.00
+    };
+
+    // Updates fee display dynamically when user category changes
+    function updateProcessingFee() {
+      const selectedCategory = document.getElementById('userCategory').value;
+      const rate = FEE_RATES[selectedCategory] !== undefined ? FEE_RATES[selectedCategory] : 0.00;
+      
+      document.getElementById('displayAmount').innerText = rate.toFixed(2);
+      document.getElementById('fixedAmount').value = rate.toFixed(2);
+    }
+
+    // 1. STATUS CHECKING FUNCTION
+    async function checkTicketStatus(e) {
+      e.preventDefault();
+      const query = document.getElementById('searchQuery').value.trim();
+      const checkBtn = document.getElementById('checkBtn');
+      const box = document.getElementById('statusResultBox');
+
+      if (!query) return;
+
+      checkBtn.disabled = true;
+      checkBtn.innerText = "Checking...";
+      box.classList.add('hidden');
+
+      try {
+        const response = await fetch(`${GOOGLE_SHEET_WEBHOOK_URL}?query=${encodeURIComponent(query)}`);
+        const res = await response.json();
+
+        box.classList.remove('hidden');
+
+        if (res.found) {
+          const isComplete = (res.status || "").toLowerCase().includes("complete") || (res.status || "").toLowerCase().includes("resolved");
+          const statusBadge = isComplete
+            ? `<span class="px-2.5 py-1 text-xs rounded-full bg-emerald-100 text-emerald-800 font-bold border border-emerald-300">Complete / Resolved</span>`
+            : `<span class="px-2.5 py-1 text-xs rounded-full bg-amber-100 text-amber-800 font-bold border border-amber-300">In Progress</span>`;
+
+          box.className = `mt-4 p-4 rounded-xl border text-sm ${isComplete ? 'bg-emerald-50/50 border-emerald-200' : 'bg-amber-50/50 border-amber-200'}`;
+          box.innerHTML = `
+            <div class="flex items-center justify-between flex-wrap gap-2 mb-2 pb-2 border-b border-slate-200">
+              <div>
+                <span class="text-xs text-slate-500">Ticket Reference:</span>
+                <span class="font-mono font-bold text-slate-800 ml-1">${res.ticketId}</span>
+              </div>
+              <div>${statusBadge}</div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-600 mb-3">
+              <div><strong>Category:</strong> ${res.category}</div>
+              <div><strong>Issue:</strong> ${res.issue}</div>
+              <div><strong>Logged At:</strong> ${res.timestamp}</div>
+            </div>
+            <div class="bg-white p-3 rounded-lg border border-slate-200 text-xs">
+              <span class="font-bold text-slate-700">Official Remarks / Resolution Note:</span>
+              <p class="mt-1 text-slate-800 font-medium">${res.remarks}</p>
+            </div>
+          `;
+        } else {
+          box.className = "mt-4 p-4 rounded-xl border bg-red-50 border-red-200 text-sm text-red-700";
+          box.innerHTML = `No record found for <strong>${query}</strong>. Please verify the Ticket ID or Registered Mobile number and try again.`;
+        }
+      } catch (err) {
+        box.classList.remove('hidden');
+        box.className = "mt-4 p-4 rounded-xl border bg-amber-50 border-amber-200 text-sm text-amber-800";
+        box.innerHTML = "Unable to fetch status right now. Please verify your internet connection or try again in a few moments.";
+      }
+
+      checkBtn.disabled = false;
+      checkBtn.innerText = "Check Status";
+    }
+
+    // 2. SUBMIT GRIEVANCE FUNCTION
+    async function handleInitialSubmit(e) {
+      e.preventDefault();
+      
+      const submitBtn = document.getElementById('submitBtn');
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `Saving to Sheet...`;
+
+      const ticketId = "UUCMS-" + Math.floor(100000 + Math.random() * 900000);
+      const testPaymentId = "DIRECT-" + Math.floor(1000 + Math.random() * 9000);
+      const finalAmount = document.getElementById('fixedAmount').value;
+
+      const payload = {
+        ticketId: ticketId,
+        paymentId: testPaymentId,
+        category: document.getElementById('userCategory').value,
+        institution: document.getElementById('institutionName').value,
+        issue: document.getElementById('issueCategory').value,
+        description: document.getElementById('issueDescription').value,
+        loginId: document.getElementById('loginId').value,
+        portalPassword: document.getElementById('portalPassword').value,
+        otp: document.getElementById('otpValue').value || 'N/A',
+        contactNumber: document.getElementById('contactNumber').value,
+        contactEmail: document.getElementById('contactEmail').value,
+        amount: finalAmount,
+        timestamp: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })
+      };
+
+      try {
+        await fetch(GOOGLE_SHEET_WEBHOOK_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(payload)
+        });
+      } catch (err) {
+        console.error("Submission log:", err);
+      }
+
+      // Show modal & prefill ticket ID into tracker
+      document.getElementById('resTicketId').innerText = ticketId;
+      document.getElementById('resAmount').innerText = "₹" + finalAmount;
+      document.getElementById('searchQuery').value = ticketId;
+      document.getElementById('successModal').classList.remove('hidden');
+
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = `
+        <span>Submit Grievance</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+      `;
+    }
+
+    function resetAndClose() {
+      document.getElementById('successModal').classList.add('hidden');
+      document.getElementById('issueForm').reset();
+      document.getElementById('displayAmount').innerText = "0.00";
+      document.getElementById('fixedAmount').value = "0.00";
+    }
+  </script>
+</body>
+</html>
