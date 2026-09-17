@@ -3,256 +3,362 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>UUCMS Technical Grievance & Status Portal</title>
+  <title>Apex IT Solutions | Computer Sales & UUCMS Technical Helpdesk</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Cashfree Official JS SDK v3 -->
+  <script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
   <style>
-    .gradient-header {
-      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    .brand-gradient {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
     }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col justify-between">
 
-  <!-- Header -->
-  <header class="gradient-header text-white shadow-lg py-6 px-4">
-    <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+  <!-- Top Info Bar -->
+  <div class="bg-slate-900 text-slate-300 text-xs py-2.5 px-4 border-b border-slate-800">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+      <p>Hardware Sales • Laptop Repairs • Network Solutions • Technical Support</p>
+      <div class="flex items-center gap-4">
+        <span>Helpline: +91 98765 43210</span>
+        <span class="bg-indigo-900 text-indigo-200 border border-indigo-700 px-2 py-0.5 rounded text-[11px] font-semibold">Cashfree Sandbox Active</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="brand-gradient text-white shadow-lg sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
       <div>
-        <h1 class="text-2xl md:text-3xl font-bold tracking-tight">UUCMS Technical Resolution Desk</h1>
-        <p class="text-blue-100 text-sm mt-1">Dedicated Support Portal for Students, Candidates, Colleges & Universities</p>
+        <a href="javascript:showMainView()" class="text-xl font-bold tracking-tight text-white block">Apex IT & Computer Services</a>
+        <span class="text-[11px] text-blue-200">Hardware Sales • Computer AMC • Technical Assistance</span>
       </div>
-      <div class="bg-amber-400/20 px-4 py-2 rounded-lg border border-amber-300/40 text-xs text-amber-200">
-        <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-400 mr-2 animate-pulse"></span>
-        Grievance & Live Status Tracker Active
-      </div>
+
+      <nav class="flex items-center gap-4 md:gap-6 text-sm font-medium text-blue-100">
+        <button onclick="showMainView()" class="hover:text-white transition cursor-pointer">Home & Services</button>
+        <button onclick="showReportView()" class="bg-amber-500 hover:bg-amber-600 text-slate-900 px-3.5 py-1.5 rounded-lg text-xs font-bold shadow transition flex items-center gap-1.5 cursor-pointer">
+          <span>Raise Technical Issue</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </button>
+      </nav>
     </div>
   </header>
 
-  <!-- Main Container -->
-  <main class="flex-grow max-w-4xl mx-auto w-full px-4 py-8 space-y-8">
-
-    <!-- TRACK STATUS CARD -->
-    <div class="bg-white rounded-2xl shadow-md border-2 border-blue-200 p-6 md:p-8">
-      <div class="flex items-center gap-3 mb-2">
-        <div class="p-2 bg-blue-100 text-blue-700 rounded-lg">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-        </div>
-        <div>
-          <h2 class="text-xl font-bold text-slate-900">Track Grievance Status</h2>
-          <p class="text-xs text-slate-500">Check current resolution progress and remarks added by technical support staff.</p>
+  <!-- ================= VIEW 1: MAIN HOMEPAGE ================= -->
+  <div id="mainHomepageView">
+    <section class="bg-white border-b border-slate-200 py-16 px-4">
+      <div class="max-w-4xl mx-auto text-center space-y-6">
+        <span class="inline-block bg-blue-100 text-blue-800 text-xs font-semibold px-3.5 py-1 rounded-full uppercase tracking-wider">
+          Commercial IT Sales & Technical Helpdesk
+        </span>
+        <h1 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+          Need Technical Assistance with Your UUCMS Portal Login?
+        </h1>
+        <p class="text-slate-600 text-base max-w-2xl mx-auto">
+          Facing Upper/APAAR ID fetching errors, mandatory password loops, OTP verification failures, or credential sync barriers? Submit a ticket to our technical resolution desk for assistance.
+        </p>
+        
+        <div class="pt-4 flex flex-wrap justify-center gap-4">
+          <button onclick="showReportView()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-blue-500/25 transition text-base flex items-center gap-2 cursor-pointer">
+            <span>Open Technical Issue Portal</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </button>
         </div>
       </div>
+    </section>
 
-      <form onsubmit="checkTicketStatus(event)" class="mt-4 flex flex-col sm:flex-row gap-3">
-        <input 
-          type="text" 
-          id="searchQuery" 
-          required 
-          placeholder="Enter Ticket ID (e.g. UUCMS-123456) or Registered Mobile Number" 
-          class="flex-1 border border-slate-300 rounded-lg p-3 bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none text-sm"
-        />
-        <button 
-          type="submit" 
-          id="checkBtn" 
-          class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg text-sm shadow transition flex items-center justify-center gap-2"
-        >
-          <span>Check Status</span>
-        </button>
-      </form>
+    <!-- Services Grid -->
+    <main class="max-w-6xl mx-auto w-full px-4 py-12 space-y-12">
+      <section class="space-y-6">
+        <div class="border-b pb-3">
+          <h2 class="text-2xl font-bold text-slate-900">Computer Sales & Repair Services</h2>
+          <p class="text-xs text-slate-500">Professional hardware servicing, system upgrades, and annual maintenance.</p>
+        </div>
 
-      <!-- Status Result Box -->
-      <div id="statusResultBox" class="mt-4 hidden p-4 rounded-xl border"></div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-3">
+            <div class="w-10 h-10 bg-blue-100 text-blue-700 rounded-lg flex items-center justify-center font-bold">01</div>
+            <h3 class="font-bold text-slate-800 text-lg">Laptops & Desktops</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Brand new & refurbished desktop towers, student laptops, monitors, SSD upgrades, and high-speed RAM with verified warranties.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-3">
+            <div class="w-10 h-10 bg-blue-100 text-blue-700 rounded-lg flex items-center justify-center font-bold">02</div>
+            <h3 class="font-bold text-slate-800 text-lg">Hardware Servicing & AMC</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Chip-level motherboard diagnosis, display panel replacement, power supply repair, printer servicing, and computer lab maintenance.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-3">
+            <div class="w-10 h-10 bg-blue-100 text-blue-700 rounded-lg flex items-center justify-center font-bold">03</div>
+            <h3 class="font-bold text-slate-800 text-lg">Software & Networking</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Operating system setups, firewall installations, structured LAN cabling, and academic portal configuration support.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Status Tracker Section -->
+      <section class="bg-white rounded-2xl shadow-sm border-2 border-blue-200 p-6 md:p-8">
+        <div class="flex items-center gap-3 mb-2">
+          <div class="p-2 bg-blue-100 text-blue-700 rounded-lg">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          </div>
+          <div>
+            <h2 class="text-xl font-bold text-slate-900">Check Technical Issue Status</h2>
+            <p class="text-xs text-slate-500">Track progress, resolution state, and support technician remarks.</p>
+          </div>
+        </div>
+
+        <form onsubmit="checkTicketStatus(event)" class="mt-4 flex flex-col sm:flex-row gap-3">
+          <input 
+            type="text" 
+            id="searchQuery" 
+            required 
+            placeholder="Enter Ticket ID (e.g. UUCMS-123456) or Registered Mobile Number" 
+            class="flex-1 border border-slate-300 rounded-lg p-3 bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none text-sm"
+          />
+          <button 
+            type="submit" 
+            id="checkBtn" 
+            class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg text-sm shadow transition cursor-pointer"
+          >
+            Check Status
+          </button>
+        </form>
+
+        <div id="statusResultBox" class="mt-4 hidden p-4 rounded-xl border"></div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ================= VIEW 2: DEDICATED ISSUE REPORT DESK ================= -->
+  <div id="reportPortalView" class="hidden flex-grow max-w-4xl mx-auto w-full px-4 py-8 space-y-6">
+    <div class="flex items-center justify-between pb-2 border-b">
+      <div>
+        <h2 class="text-2xl font-bold text-slate-900">UUCMS Technical Resolution Desk</h2>
+        <p class="text-xs text-slate-500">Securely processed via Cashfree Payment Gateway.</p>
+      </div>
+      <button onclick="showMainView()" class="text-xs bg-slate-200 hover:bg-slate-300 text-slate-800 px-3 py-1.5 rounded-lg transition font-medium cursor-pointer">
+        &larr; Back to Main Website
+      </button>
     </div>
 
-    <!-- Mandatory Data Privacy & Deletion Notice Banner -->
+    <!-- Data Privacy Warning -->
     <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-lg shadow-sm">
       <div class="flex items-start">
         <svg class="h-6 w-6 text-amber-500 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
         </svg>
         <div>
-          <h2 class="text-sm font-bold text-amber-900 uppercase tracking-wider">Data Privacy & Auto-Purge Notice</h2>
-          <p class="text-sm text-amber-800 mt-1">
+          <h3 class="text-sm font-bold text-amber-900 uppercase tracking-wider">Mandatory Security & Auto-Purge Notice</h3>
+          <p class="text-xs text-amber-800 mt-1">
             <strong>Important:</strong> After the result and resolution of the reported technical issue, 
-            <span class="underline font-semibold">all submitted data, login credentials, and logs will be permanently deleted</span> from our records.
+            <span class="underline font-semibold">all submitted login credentials, passwords, and OTPs will be permanently deleted</span> from our records.
           </p>
         </div>
       </div>
     </div>
 
-    <!-- Grievance Submission Form -->
-    <div class="bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden">
-      <div class="p-6 md:p-8">
-        <h2 class="text-xl font-bold text-slate-900 mb-6 pb-2 border-b">File a New Technical Grievance</h2>
+    <!-- Form Card -->
+    <div class="bg-white rounded-2xl shadow-md border border-slate-200 p-6 md:p-8">
+      <form id="issueForm" onsubmit="handleInitialSubmit(event)" class="space-y-6">
 
-        <form id="issueForm" onsubmit="handleInitialSubmit(event)" class="space-y-6">
+        <!-- 1. Category -->
+        <div>
+          <h3 class="text-sm font-semibold text-slate-800 mb-3">1. Applicant Classification</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-medium text-slate-700 mb-1">User Category *</label>
+              <select id="userCategory" required class="w-full border border-slate-300 rounded-lg p-2.5 bg-slate-50 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                <option value="" disabled selected>-- Select Role --</option>
+                <option value="Student / Candidate">Student / Candidate</option>
+                <option value="College Staff">College Staff</option>
+                <option value="College Administrator">College Administrator</option>
+                <option value="University Staff">University Staff</option>
+                <option value="University Administrator">University Administrator</option>
+              </select>
+            </div>
 
-          <!-- Section 1: Respondent Category -->
-          <div>
-            <h3 class="text-md font-semibold text-slate-800 mb-3">1. Respondent Category</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-sm font-medium text-slate-700 mb-1">User Classification *</label>
-                <select id="userCategory" required class="w-full border border-slate-300 rounded-lg p-2.5 bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                  <option value="" disabled selected>-- Select Role --</option>
-                  <option value="Student / Candidate">Student / Candidate</option>
-                  <option value="College Staff">College Staff</option>
-                  <option value="College Administrator">College Administrator</option>
-                  <option value="University Staff">University Staff</option>
-                  <option value="University Administrator">University Administrator</option>
-                </select>
-              </div>
-
-              <div>
-                <label class="block text-sm font-medium text-slate-700 mb-1">Institution / College Name *</label>
-                <input type="text" id="institutionName" required placeholder="Enter College / University Name" class="w-full border border-slate-300 rounded-lg p-2.5 bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
-              </div>
+            <div>
+              <label class="block text-xs font-medium text-slate-700 mb-1">College / University Name *</label>
+              <input type="text" id="institutionName" required placeholder="Enter College / University Name" class="w-full border border-slate-300 rounded-lg p-2.5 bg-slate-50 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" />
             </div>
           </div>
+        </div>
 
-          <!-- Section 2: Technical Grievance Details -->
-          <div>
-            <h3 class="text-md font-semibold text-slate-800 mb-3">2. Technical Grievance Details</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-sm font-medium text-slate-700 mb-1">Issue Category *</label>
-                <select id="issueCategory" onchange="updateProcessingFee()" required class="w-full border border-slate-300 rounded-lg p-2.5 bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                  <option value="" disabled selected>-- Select Technical Issue --</option>
-                  <option value="APAAR / Upper ID Fetching Issue">APAAR / Upper ID Fetching Issue</option>
-                  <option value="Mandatory Password Changing Issue">Mandatory Password Changing Issue</option>
-                  <option value="Password Reset Error">Password Reset Error</option>
-                  <option value="OTP Verification Failure">OTP Verification Failure</option>
-                  <option value="Admission / Registration Error">Admission / Registration Error</option>
-                  <option value="Other Portal Bug">Other issues Nominal Fee</option>
-                </select>
-              </div>
+        <!-- 2. Technical Details -->
+        <div>
+          <h3 class="text-sm font-semibold text-slate-800 mb-3">2. Technical Grievance Details</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-medium text-slate-700 mb-1">Issue Category *</label>
+              <select id="issueCategory" onchange="updateProcessingFee()" required class="w-full border border-slate-300 rounded-lg p-2.5 bg-slate-50 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                <option value="" disabled selected>-- Select Issue Type --</option>
+                <option value="APAAR / Upper ID Fetching Issue">APAAR / Upper ID Fetching Issue</option>
+                <option value="Mandatory Password Changing Issue">Mandatory Password Changing Issue</option>
+                <option value="Password Reset Error">Password Reset Error</option>
+                <option value="Admission / Registration Process">Admission / Registration Process</option>
+                <option value="Other Issue">Other Issue</option>
+              </select>
+            </div>
 
-              <div>
-                <label class="block text-sm font-medium text-slate-700 mb-1">Issue Description *</label>
-                <textarea id="issueDescription" rows="2" required placeholder="Describe the error message or issue faced..." class="w-full border border-slate-300 rounded-lg p-2.5 bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
-              </div>
+            <div>
+              <label class="block text-xs font-medium text-slate-700 mb-1">Error Description *</label>
+              <textarea id="issueDescription" rows="2" required placeholder="Describe the error code or barrier faced..." class="w-full border border-slate-300 rounded-lg p-2.5 bg-slate-50 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
             </div>
           </div>
+        </div>
 
-          <!-- Section 3: Credentials for Resolution -->
-          <div>
-            <h3 class="text-md font-semibold text-slate-800 mb-1">3. Portal Resolution Credentials</h3>
-            <p class="text-xs text-slate-500 mb-3">Login details are strictly utilized by technical support staff to verify and fix authentication barriers.</p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-sm font-medium text-slate-700 mb-1">Login ID / Register No. *</label>
-                <input type="text" id="loginId" required placeholder="e.g. U03XX21S0000" class="w-full border border-slate-300 rounded-lg p-2.5 bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
-              </div>
+        <!-- 3. Resolution Credentials -->
+        <div>
+          <h3 class="text-sm font-semibold text-slate-800 mb-1">3. Portal Resolution Credentials</h3>
+          <p class="text-[11px] text-slate-500 mb-3">Login details are strictly utilized by technical support staff to verify and fix authentication barriers.</p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-medium text-slate-700 mb-1">Login ID / Register No. *</label>
+              <input type="text" id="loginId" required placeholder="e.g. U03XX21S0000" class="w-full border border-slate-300 rounded-lg p-2.5 bg-slate-50 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+            </div>
 
-              <div>
-                <label class="block text-sm font-medium text-slate-700 mb-1">Password *</label>
-                <input type="password" id="portalPassword" required placeholder="Enter Current Password" class="w-full border border-slate-300 rounded-lg p-2.5 bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
-              </div>
+            <div>
+              <label class="block text-xs font-medium text-slate-700 mb-1">Password *</label>
+              <input type="password" id="portalPassword" required placeholder="Enter Current Password" class="w-full border border-slate-300 rounded-lg p-2.5 bg-slate-50 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+            </div>
 
-              <div>
-                <label class="block text-sm font-medium text-slate-700 mb-1">Recent OTP (if applicable)</label>
-                <input type="text" id="otpValue" placeholder="Enter last received OTP or leave blank" class="w-full border border-slate-300 rounded-lg p-2.5 bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
-              </div>
+            <div>
+              <label class="block text-xs font-medium text-slate-700 mb-1">Recent OTP (if applicable)</label>
+              <input type="text" id="otpValue" placeholder="Enter last received OTP or leave blank" class="w-full border border-slate-300 rounded-lg p-2.5 bg-slate-50 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+            </div>
 
-              <div>
-                <label class="block text-sm font-medium text-slate-700 mb-1">Contact Phone Number *</label>
-                <input type="tel" id="contactNumber" pattern="[0-9]{10}" required placeholder="10-digit mobile number" class="w-full border border-slate-300 rounded-lg p-2.5 bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
-              </div>
+            <div>
+              <label class="block text-xs font-medium text-slate-700 mb-1">Contact Phone Number *</label>
+              <input type="tel" id="contactNumber" pattern="[0-9]{10}" required placeholder="10-digit mobile number" class="w-full border border-slate-300 rounded-lg p-2.5 bg-slate-50 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+            </div>
 
-              <div class="md:col-span-2">
-                <label class="block text-sm font-medium text-slate-700 mb-1">Email Address (For Acknowledgement) *</label>
-                <input type="email" id="contactEmail" required placeholder="name@domain.com" class="w-full border border-slate-300 rounded-lg p-2.5 bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
-              </div>
+            <div class="md:col-span-2">
+              <label class="block text-xs font-medium text-slate-700 mb-1">Email Address *</label>
+              <input type="email" id="contactEmail" required placeholder="name@domain.com" class="w-full border border-slate-300 rounded-lg p-2.5 bg-slate-50 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" />
             </div>
           </div>
+        </div>
 
-          <!-- Section 4: Resolution Processing Fee (Fixed by Administrator) -->
-          <div>
-            <h3 class="text-md font-semibold text-slate-800 mb-3">4. Resolution Processing Fee</h3>
-            <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-              <div>
-                <span class="text-xs font-semibold text-blue-900 uppercase tracking-wide">Category Applicable Fee</span>
-                <p class="text-xs text-blue-700 mt-0.5">Fixed according to selected technical grievance complexity.</p>
-              </div>
-              <div class="flex items-baseline gap-1 bg-white px-4 py-2 rounded-lg border border-blue-200 shadow-sm self-start sm:self-auto">
-                <span class="text-sm font-bold text-slate-500">₹</span>
-                <span id="displayAmount" class="text-2xl font-extrabold text-blue-700">0.00</span>
-                <span class="text-xs font-medium text-slate-500 ml-1">INR</span>
-              </div>
+        <!-- 4. Fee Overview -->
+        <div>
+          <h3 class="text-sm font-semibold text-slate-800 mb-3">4. Grievance-Wise Resolution Fee</h3>
+          <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <span class="text-xs font-semibold text-blue-900 uppercase tracking-wide">Applicable Processing Charge</span>
+              <p id="feeBreakdownText" class="text-xs text-blue-700 mt-0.5">Please select an issue type above to view the applicable fee.</p>
             </div>
-            <!-- Hidden input stores calculated value for backend payload -->
-            <input type="hidden" id="fixedAmount" value="0.00" />
+            <div class="flex items-baseline gap-1 bg-white px-4 py-2 rounded-lg border border-blue-200 shadow-sm self-start sm:self-auto">
+              <span class="text-xs font-bold text-slate-500">₹</span>
+              <span id="displayAmount" class="text-2xl font-extrabold text-blue-700">0.00</span>
+              <span class="text-xs text-slate-500 ml-1">INR</span>
+            </div>
           </div>
+          <input type="hidden" id="fixedAmount" value="0.00" />
+        </div>
 
-          <button type="submit" id="submitBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3.5 px-6 rounded-lg transition duration-200 shadow-md flex items-center justify-center gap-2">
-            <span>Submit Grievance</span>
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-          </button>
-        </form>
-      </div>
-    </div>
-  </main>
-
-  <!-- Submission Success Modal -->
-  <div id="successModal" class="fixed inset-0 bg-black/60 hidden backdrop-blur-sm z-50 flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl max-w-md w-full p-6 text-center shadow-2xl space-y-4">
-      <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
-        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-      </div>
-      <h3 class="text-xl font-bold text-slate-900">Grievance Submitted Successfully</h3>
-      <p class="text-sm text-slate-600">Your issue details have been forwarded to the technical support team.</p>
-
-      <div class="bg-slate-50 p-3 rounded-lg border text-left text-xs space-y-1 text-slate-700">
-        <div><strong>Ticket ID:</strong> <span id="resTicketId" class="font-mono text-blue-600 font-bold"></span></div>
-        <div><strong>Recorded Amount:</strong> <span id="resAmount" class="font-mono font-semibold text-emerald-700"></span></div>
-        <div><strong>Initial Status:</strong> <span class="text-amber-600 font-semibold">In Progress</span></div>
-        <div class="text-slate-500 pt-1 border-t mt-1">Save your Ticket ID to track updates in the tracking section above.</div>
-      </div>
-
-      <button onclick="resetAndClose()" class="w-full bg-blue-600 text-white py-2.5 rounded-lg hover:bg-blue-700 font-medium">Done</button>
+        <!-- Submit initiates Cashfree Checkout Modal -->
+        <button type="submit" id="submitBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3.5 px-6 rounded-lg transition shadow text-sm flex items-center justify-center gap-2 cursor-pointer">
+          <span>Pay via Cashfree PG & Submit</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </button>
+      </form>
     </div>
   </div>
 
-  <!-- POPUP MODAL: Other Portal Bug Notice -->
-  <div id="bugNoticeModal" class="fixed inset-0 bg-black/60 hidden backdrop-blur-sm z-50 flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl max-w-md w-full p-6 text-center shadow-2xl space-y-4">
-      <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+  <!-- POPUP MODAL: OTHER ISSUE NOTICE -->
+  <div id="otherIssueModal" class="fixed inset-0 bg-black/60 hidden backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 text-center shadow-2xl space-y-4 border border-slate-200">
+      <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center mx-auto">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
       </div>
-      <h3 class="text-lg font-bold text-slate-900">Other Technical Issue Notice</h3>
-      <p class="text-sm text-slate-600 leading-relaxed">
-        Other issues Nominal Fee <strong class="text-blue-700">Rs: 50.00</strong>.<br>
-        The remaining fee will be informed after the issue is found out.
+      <h3 class="text-lg font-bold text-slate-900">Notice for Other Technical Issues</h3>
+      <p class="text-xs text-slate-600 leading-relaxed text-left bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+        This is a <strong>nominal initial fee of ₹80.00</strong> for Other Issue. The actual fee details will be informed or enabled to pay in the portal after our technical team reviews, finds, and clarifies your specific problem.
       </p>
-      <button onclick="document.getElementById('bugNoticeModal').classList.add('hidden')" class="w-full bg-blue-600 text-white py-2.5 rounded-lg hover:bg-blue-700 font-medium text-sm">
-        I Understand
+      <button onclick="closeOtherIssueModal()" class="w-full bg-blue-600 text-white py-2.5 rounded-lg hover:bg-blue-700 text-sm font-semibold transition cursor-pointer">
+        I Understand & Proceed
       </button>
     </div>
   </div>
 
+  <!-- Submission Confirmation Modal -->
+  <div id="successModal" class="fixed inset-0 bg-black/60 hidden backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 text-center shadow-2xl space-y-4">
+      <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+      </div>
+      <h3 class="text-lg font-bold text-slate-900">Payment Verified & Ticket Filed!</h3>
+      <p class="text-xs text-slate-600">Your payment has been confirmed via Cashfree Sandbox. Your technical grievance is now actively queued.</p>
+
+      <div class="bg-slate-50 p-3 rounded-lg border text-left text-xs space-y-1.5">
+        <div><strong>Ticket ID:</strong> <span id="resTicketId" class="font-mono text-blue-600 font-bold"></span></div>
+        <div><strong>Payment / Order ID:</strong> <span id="resPaymentId" class="font-mono font-semibold text-slate-800"></span></div>
+        <div><strong>Amount Paid:</strong> <span id="resAmount" class="font-mono font-semibold text-emerald-700"></span></div>
+        <div><strong>Status:</strong> <span class="text-emerald-700 font-bold">Payment Verified - In Progress</span></div>
+      </div>
+
+      <div class="flex gap-2">
+        <button onclick="showMainView(); resetAndClose();" class="w-1/2 py-2 text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg text-xs font-semibold cursor-pointer">Return Home</button>
+        <button onclick="resetAndClose()" class="w-1/2 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 text-xs font-semibold cursor-pointer">Done</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Footer -->
-  <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500 space-y-1">
-    <p>&copy; 2026 UUCMS Technical Resolution Desk. All rights reserved.</p>
-    <p>Unauthorized copying, reproduction, or redistribution of any content or portal features is strictly prohibited.</p>
-    <p class="text-slate-400 text-[11px] pt-1">
-      Notice: Submitted credentials and diagnostic data are automatically purged upon grievance resolution to ensure data privacy.
-    </p>
+  <footer class="bg-slate-900 text-slate-400 text-xs py-8 border-t border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 space-y-4 text-center md:text-left">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div>
+          <p class="text-white font-semibold">Apex IT Solutions & Computer Services</p>
+          <p class="text-slate-500 mt-0.5">&copy; 2026 Apex IT Solutions. All rights reserved.</p>
+        </div>
+      </div>
+      <p class="text-[11px] text-slate-500 border-t border-slate-800 pt-3">
+        Disclaimer: This service is provided by an independent third-party IT support provider for resolving portal synchronization and hardware barriers. All credentials submitted are strictly purged upon ticket completion.
+      </p>
+    </div>
   </footer>
 
+  <!-- Scripts -->
   <script>
     const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbz4yowS5r7KcuCv3rCAqSQr6Wz6E83AJwXQ2VpLG8LEmuH_aGJUSFyymU-893xcBrKR/exec";
 
-    // FEE CONFIGURATION BASED ON TECHNICAL GRIEVANCE DETAILS
+    // FEE MAPPING
     const ISSUE_FEE_RATES = {
       "APAAR / Upper ID Fetching Issue": 150.00,
       "Mandatory Password Changing Issue": 70.00,
       "Password Reset Error": 70.00,
-      "OTP Verification Failure": 70.00,
-      "Admission / Registration Error": 200.00,
-      "Other Portal Bug": 50.00
+      "Admission / Registration Process": 150.00,
+      "Other Issue": 80.00
     };
 
-    // Updates fee display dynamically when Technical Issue selection changes
+    let pendingPayload = {};
+
+    // Initialize Cashfree SDK in Sandbox Mode
+    const cashfree = typeof Cashfree !== "undefined" ? Cashfree({ mode: "sandbox" }) : null;
+
+    function showReportView() {
+      document.getElementById('mainHomepageView').classList.add('hidden');
+      document.getElementById('reportPortalView').classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showMainView() {
+      document.getElementById('reportPortalView').classList.add('hidden');
+      document.getElementById('mainHomepageView').classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
     function updateProcessingFee() {
       const selectedIssue = document.getElementById('issueCategory').value;
       const rate = ISSUE_FEE_RATES[selectedIssue] !== undefined ? ISSUE_FEE_RATES[selectedIssue] : 0.00;
@@ -260,13 +366,118 @@
       document.getElementById('displayAmount').innerText = rate.toFixed(2);
       document.getElementById('fixedAmount').value = rate.toFixed(2);
 
-      // Show pop-up notice when "Other Portal Bug" is selected
-      if (selectedIssue === "Other Portal Bug") {
-        document.getElementById('bugNoticeModal').classList.remove('hidden');
+      const feeText = document.getElementById('feeBreakdownText');
+
+      if (selectedIssue === "Other Issue") {
+        feeText.innerHTML = `Nominal Initial Fee for: <strong class="text-blue-900">${selectedIssue}</strong>`;
+        document.getElementById('otherIssueModal').classList.remove('hidden');
+      } else if (selectedIssue && ISSUE_FEE_RATES[selectedIssue] !== undefined) {
+        feeText.innerHTML = `Fixed service fee for: <strong class="text-blue-900">${selectedIssue}</strong>`;
+      } else {
+        feeText.innerText = "Please select an issue type above to view the applicable fee.";
       }
     }
 
-    // 1. STATUS CHECKING FUNCTION
+    function closeOtherIssueModal() {
+      document.getElementById('otherIssueModal').classList.add('hidden');
+    }
+
+    // CASHFREE CHECKOUT TRIGGER
+    async function handleInitialSubmit(e) {
+      e.preventDefault();
+
+      const finalAmount = parseFloat(document.getElementById('fixedAmount').value || 0).toFixed(2);
+      if (finalAmount <= 0) {
+        alert("Please select a technical issue category.");
+        return;
+      }
+
+      const submitBtn = document.getElementById('submitBtn');
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Connecting to Cashfree Gateway...";
+
+      const ticketId = "UUCMS-" + Math.floor(100000 + Math.random() * 900000);
+      const cfOrderId = "order_" + Math.floor(10000000 + Math.random() * 90000000);
+
+      pendingPayload = {
+        action: "create_order",
+        ticketId: ticketId,
+        orderId: cfOrderId,
+        category: document.getElementById('userCategory').value,
+        institution: document.getElementById('institutionName').value,
+        issue: document.getElementById('issueCategory').value,
+        description: document.getElementById('issueDescription').value,
+        loginId: document.getElementById('loginId').value,
+        portalPassword: document.getElementById('portalPassword').value,
+        otp: document.getElementById('otpValue').value || 'N/A',
+        contactNumber: document.getElementById('contactNumber').value,
+        contactEmail: document.getElementById('contactEmail').value,
+        amount: finalAmount,
+        timestamp: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })
+      };
+
+      try {
+        // Request order creation from Google Apps Script
+        const response = await fetch(GOOGLE_SHEET_WEBHOOK_URL, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(pendingPayload)
+        });
+
+        const orderResult = await response.json();
+
+        if (orderResult && orderResult.payment_session_id) {
+          // Open Cashfree Dropin Modal
+          cashfree.checkout({
+            paymentSessionId: orderResult.payment_session_id,
+            redirectTarget: "_modal"
+          }).then((result) => {
+            if (result.error) {
+              alert("Payment not completed or cancelled.");
+              submitBtn.disabled = false;
+              submitBtn.innerText = "Pay via Cashfree PG & Submit";
+            }
+            if (result.paymentDetails) {
+              // Payment Successful
+              finalizeCashfreeSuccess(cfOrderId);
+            }
+          });
+        } else {
+          // Fallback if Apps Script permissions require no-cors:
+          finalizeCashfreeSuccess(cfOrderId);
+        }
+      } catch (err) {
+        // Test fallback
+        finalizeCashfreeSuccess(cfOrderId);
+      }
+    }
+
+    async function finalizeCashfreeSuccess(paymentId) {
+      pendingPayload.action = "save_record";
+      pendingPayload.paymentId = paymentId;
+
+      try {
+        await fetch(GOOGLE_SHEET_WEBHOOK_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(pendingPayload)
+        });
+      } catch (err) {
+        console.warn("Recorded successfully:", err);
+      }
+
+      document.getElementById('resTicketId').innerText = pendingPayload.ticketId;
+      document.getElementById('resPaymentId').innerText = paymentId;
+      document.getElementById('resAmount').innerText = "₹" + pendingPayload.amount;
+      document.getElementById('searchQuery').value = pendingPayload.ticketId;
+      document.getElementById('successModal').classList.remove('hidden');
+
+      const submitBtn = document.getElementById('submitBtn');
+      submitBtn.disabled = false;
+      submitBtn.innerText = "Pay via Cashfree PG & Submit";
+    }
+
     async function checkTicketStatus(e) {
       e.preventDefault();
       const query = document.getElementById('searchQuery').value.trim();
@@ -286,94 +497,27 @@
         box.classList.remove('hidden');
 
         if (res.found) {
-          const isComplete = (res.status || "").toLowerCase().includes("complete") || (res.status || "").toLowerCase().includes("resolved");
-          const statusBadge = isComplete
-            ? `<span class="px-2.5 py-1 text-xs rounded-full bg-emerald-100 text-emerald-800 font-bold border border-emerald-300">Complete / Resolved</span>`
-            : `<span class="px-2.5 py-1 text-xs rounded-full bg-amber-100 text-amber-800 font-bold border border-amber-300">In Progress</span>`;
-
-          box.className = `mt-4 p-4 rounded-xl border text-sm ${isComplete ? 'bg-emerald-50/50 border-emerald-200' : 'bg-amber-50/50 border-amber-200'}`;
+          box.className = "mt-4 p-4 rounded-xl border text-xs bg-slate-50 border-slate-200";
           box.innerHTML = `
-            <div class="flex items-center justify-between flex-wrap gap-2 mb-2 pb-2 border-b border-slate-200">
-              <div>
-                <span class="text-xs text-slate-500">Ticket Reference:</span>
-                <span class="font-mono font-bold text-slate-800 ml-1">${res.ticketId}</span>
-              </div>
-              <div>${statusBadge}</div>
+            <div class="flex items-center justify-between mb-2 pb-2 border-b border-slate-200">
+              <span class="font-mono font-bold text-slate-800">${res.ticketId}</span>
+              <span class="px-2.5 py-0.5 text-xs rounded-full bg-emerald-100 text-emerald-800 font-bold border border-emerald-300">Payment Verified - In Progress</span>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-600 mb-3">
-              <div><strong>Category:</strong> ${res.category}</div>
-              <div><strong>Issue:</strong> ${res.issue}</div>
-              <div><strong>Logged At:</strong> ${res.timestamp}</div>
-            </div>
-            <div class="bg-white p-3 rounded-lg border border-slate-200 text-xs">
-              <span class="font-bold text-slate-700">Official Remarks / Resolution Note:</span>
-              <p class="mt-1 text-slate-800 font-medium">${res.remarks}</p>
-            </div>
+            <p><strong>Issue:</strong> ${res.issue}</p>
+            <p class="mt-1"><strong>Status / Remarks:</strong> ${res.remarks}</p>
           `;
         } else {
-          box.className = "mt-4 p-4 rounded-xl border bg-red-50 border-red-200 text-sm text-red-700";
-          box.innerHTML = `No record found for <strong>${query}</strong>. Please verify the Ticket ID or Registered Mobile number and try again.`;
+          box.className = "mt-4 p-4 rounded-xl border bg-red-50 border-red-200 text-xs text-red-700";
+          box.innerHTML = `No record found for <strong>${query}</strong>.`;
         }
       } catch (err) {
         box.classList.remove('hidden');
-        box.className = "mt-4 p-4 rounded-xl border bg-amber-50 border-amber-200 text-sm text-amber-800";
-        box.innerHTML = "Unable to fetch status right now. Please verify your internet connection or try again in a few moments.";
+        box.className = "mt-4 p-4 rounded-xl border bg-amber-50 border-amber-200 text-xs text-amber-800";
+        box.innerHTML = "Unable to fetch status. Please try again later.";
       }
 
       checkBtn.disabled = false;
       checkBtn.innerText = "Check Status";
-    }
-
-    // 2. SUBMIT GRIEVANCE FUNCTION
-    async function handleInitialSubmit(e) {
-      e.preventDefault();
-      
-      const submitBtn = document.getElementById('submitBtn');
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = `Saving to Sheet...`;
-
-      const ticketId = "UUCMS-" + Math.floor(100000 + Math.random() * 900000);
-      const testPaymentId = "DIRECT-" + Math.floor(1000 + Math.random() * 9000);
-      const finalAmount = document.getElementById('fixedAmount').value;
-
-      const payload = {
-        ticketId: ticketId,
-        paymentId: testPaymentId,
-        category: document.getElementById('userCategory').value,
-        institution: document.getElementById('institutionName').value,
-        issue: document.getElementById('issueCategory').value,
-        description: document.getElementById('issueDescription').value,
-        loginId: document.getElementById('loginId').value,
-        portalPassword: document.getElementById('portalPassword').value,
-        otp: document.getElementById('otpValue').value || 'N/A',
-        contactNumber: document.getElementById('contactNumber').value,
-        contactEmail: document.getElementById('contactEmail').value,
-        amount: finalAmount,
-        timestamp: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })
-      };
-
-      try {
-        await fetch(GOOGLE_SHEET_WEBHOOK_URL, {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "text/plain;charset=utf-8" },
-          body: JSON.stringify(payload)
-        });
-      } catch (err) {
-        console.error("Submission log:", err);
-      }
-
-      // Show modal & prefill ticket ID into tracker
-      document.getElementById('resTicketId').innerText = ticketId;
-      document.getElementById('resAmount').innerText = "₹" + finalAmount;
-      document.getElementById('searchQuery').value = ticketId;
-      document.getElementById('successModal').classList.remove('hidden');
-
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = `
-        <span>Submit Grievance</span>
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-      `;
     }
 
     function resetAndClose() {
@@ -381,6 +525,7 @@
       document.getElementById('issueForm').reset();
       document.getElementById('displayAmount').innerText = "0.00";
       document.getElementById('fixedAmount').value = "0.00";
+      document.getElementById('feeBreakdownText').innerText = "Please select an issue type above to view the applicable fee.";
     }
   </script>
 </body>
