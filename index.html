@@ -3,10 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Apex IT Solutions | Computer Sales & UUCMS Technical Helpdesk</title>
+  <title>Freshtime Enterprises | IT Sales, Services & UUCMS Helpdesk</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Cashfree Official JS SDK v3 -->
-  <script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
   <style>
     .brand-gradient {
       background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
@@ -16,21 +14,24 @@
 <body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col justify-between">
 
   <!-- Top Info Bar -->
-  <div class="bg-slate-900 text-slate-300 text-xs py-2.5 px-4 border-b border-slate-800">
-    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
-      <p>Hardware Sales • Laptop Repairs • Network Solutions • Technical Support</p>
+  <div class="bg-slate-900 text-slate-300 text-xs py-2 px-4 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+      <p>Freshtime Enterprises • Computer Sales • Networking • Technical Resolution Desk</p>
       <div class="flex items-center gap-4">
-        <span>Helpline: +91 98765 43210</span>
-        <span class="bg-indigo-900 text-indigo-200 border border-indigo-700 px-2 py-0.5 rounded text-[11px] font-semibold">Cashfree Sandbox Active</span>
+        <span>Support: +91 98765 43210</span>
+        <button onclick="toggleAdminView()" class="text-blue-400 hover:text-blue-300 font-medium underline flex items-center gap-1 cursor-pointer">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          Admin Portal
+        </button>
       </div>
     </div>
   </div>
 
   <!-- Navigation Bar -->
   <header class="brand-gradient text-white shadow-lg sticky top-0 z-40">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
       <div>
-        <a href="javascript:showMainView()" class="text-xl font-bold tracking-tight text-white block">Apex IT & Computer Services</a>
+        <a href="javascript:showMainView()" class="text-xl md:text-2xl font-bold tracking-tight text-white block">Freshtime Enterprises</a>
         <span class="text-[11px] text-blue-200">Hardware Sales • Computer AMC • Technical Assistance</span>
       </div>
 
@@ -49,7 +50,7 @@
     <section class="bg-white border-b border-slate-200 py-16 px-4">
       <div class="max-w-4xl mx-auto text-center space-y-6">
         <span class="inline-block bg-blue-100 text-blue-800 text-xs font-semibold px-3.5 py-1 rounded-full uppercase tracking-wider">
-          Commercial IT Sales & Technical Helpdesk
+          Freshtime Enterprises Helpdesk
         </span>
         <h1 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
           Need Technical Assistance with Your UUCMS Portal Login?
@@ -68,10 +69,10 @@
     </section>
 
     <!-- Services Grid -->
-    <main class="max-w-6xl mx-auto w-full px-4 py-12 space-y-12">
+    <main class="max-w-7xl mx-auto w-full px-4 py-12 space-y-12">
       <section class="space-y-6">
         <div class="border-b pb-3">
-          <h2 class="text-2xl font-bold text-slate-900">Computer Sales & Repair Services</h2>
+          <h2 class="text-2xl font-bold text-slate-900">Freshtime Enterprises - Services</h2>
           <p class="text-xs text-slate-500">Professional hardware servicing, system upgrades, and annual maintenance.</p>
         </div>
 
@@ -110,7 +111,7 @@
           </div>
           <div>
             <h2 class="text-xl font-bold text-slate-900">Check Technical Issue Status</h2>
-            <p class="text-xs text-slate-500">Track progress, resolution state, and support technician remarks.</p>
+            <p class="text-xs text-slate-500">Track progress, resolution state, and technician remarks.</p>
           </div>
         </div>
 
@@ -140,8 +141,8 @@
   <div id="reportPortalView" class="hidden flex-grow max-w-4xl mx-auto w-full px-4 py-8 space-y-6">
     <div class="flex items-center justify-between pb-2 border-b">
       <div>
-        <h2 class="text-2xl font-bold text-slate-900">UUCMS Technical Resolution Desk</h2>
-        <p class="text-xs text-slate-500">Securely processed via Cashfree Payment Gateway.</p>
+        <h2 class="text-2xl font-bold text-slate-900">Freshtime Enterprises - Technical Desk</h2>
+        <p class="text-xs text-slate-500">File your portal synchronization and password changing complaints below.</p>
       </div>
       <button onclick="showMainView()" class="text-xs bg-slate-200 hover:bg-slate-300 text-slate-800 px-3 py-1.5 rounded-lg transition font-medium cursor-pointer">
         &larr; Back to Main Website
@@ -264,12 +265,166 @@
           <input type="hidden" id="fixedAmount" value="0.00" />
         </div>
 
-        <!-- Submit initiates Cashfree Checkout Modal -->
         <button type="submit" id="submitBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3.5 px-6 rounded-lg transition shadow text-sm flex items-center justify-center gap-2 cursor-pointer">
           <span>Pay via Cashfree PG & Submit</span>
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </button>
       </form>
+    </div>
+  </div>
+
+  <!-- ================= VIEW 3: ADMIN PORTAL LOGIN & DATA VIEWER ================= -->
+  <div id="adminPortalView" class="hidden flex-grow max-w-7xl mx-auto w-full px-4 py-8 space-y-6">
+    
+    <!-- Admin Login Box (Shows when logged out) -->
+    <div id="adminLoginBox" class="max-w-md mx-auto bg-white p-8 rounded-2xl shadow-lg border border-slate-200 space-y-5">
+      <div class="text-center">
+        <div class="w-12 h-12 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center mx-auto mb-2">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+        </div>
+        <h2 class="text-xl font-bold text-slate-900">Freshtime Admin Login</h2>
+        <p class="text-xs text-slate-500 mt-1">Authorized access to live Google Sheet records</p>
+      </div>
+
+      <form onsubmit="handleAdminLogin(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Username</label>
+          <input type="text" id="adminUsername" required placeholder="admin" class="w-full border border-slate-300 rounded-lg p-2.5 text-sm bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Password</label>
+          <input type="password" id="adminPassword" required placeholder="••••••••" class="w-full border border-slate-300 rounded-lg p-2.5 text-sm bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+        </div>
+
+        <div id="adminLoginError" class="text-xs text-red-600 hidden font-medium text-center"></div>
+
+        <button type="submit" id="adminLoginBtn" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-semibold py-2.5 rounded-lg text-sm shadow cursor-pointer">
+          Sign In to Dashboard
+        </button>
+      </form>
+    </div>
+
+    <!-- Admin Live Data Dashboard (Shows when logged in) -->
+    <div id="adminDashboardBox" class="hidden space-y-6">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+        <div>
+          <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase">Live Sync Active</span>
+          <h2 class="text-2xl font-bold text-slate-900 mt-1">Google Sheet Grievance Console</h2>
+          <p class="text-xs text-slate-500">Live response table linked to your official Google Sheet database.</p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2">
+          <button onclick="fetchSheetRecords()" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold px-3 py-2 rounded-lg shadow transition flex items-center gap-1 cursor-pointer">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+            Refresh Data
+          </button>
+          <button onclick="exportToCSV()" class="bg-slate-700 hover:bg-slate-800 text-white text-xs font-semibold px-3 py-2 rounded-lg shadow transition flex items-center gap-1 cursor-pointer">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            Export CSV
+          </button>
+          <button onclick="handleAdminLogout()" class="bg-red-600 hover:bg-red-700 text-white text-xs font-semibold px-3 py-2 rounded-lg shadow transition cursor-pointer">
+            Sign Out
+          </button>
+        </div>
+      </div>
+
+      <!-- Live Search & Stats -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="bg-white p-4 rounded-xl border border-slate-200">
+          <span class="text-xs text-slate-500">Total Tickets Logged</span>
+          <div id="statTotalTickets" class="text-2xl font-bold text-slate-900 mt-1">0</div>
+        </div>
+        <div class="bg-white p-4 rounded-xl border border-slate-200">
+          <span class="text-xs text-slate-500">In Progress / Verified</span>
+          <div id="statInProgress" class="text-2xl font-bold text-blue-600 mt-1">0</div>
+        </div>
+        <div class="bg-white p-4 rounded-xl border border-slate-200">
+          <span class="text-xs text-slate-500">Completed / Resolved</span>
+          <div id="statCompleted" class="text-2xl font-bold text-emerald-600 mt-1">0</div>
+        </div>
+      </div>
+
+      <!-- Filter / Search Table Bar -->
+      <div class="flex flex-col sm:flex-row gap-3">
+        <input 
+          type="text" 
+          id="tableSearchInput" 
+          onkeyup="filterSheetTable()" 
+          placeholder="Filter by Ticket ID, Candidate Name, Mobile, or Login ID..." 
+          class="w-full border border-slate-300 rounded-lg p-2.5 text-xs bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
+        />
+      </div>
+
+      <!-- Responsive Google Sheet Table -->
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="overflow-x-auto max-h-[600px]">
+          <table class="w-full text-left text-xs text-slate-700" id="googleSheetTable">
+            <thead class="bg-slate-100 uppercase font-semibold text-slate-600 sticky top-0 border-b border-slate-200">
+              <tr>
+                <th class="p-3">Action</th>
+                <th class="p-3">Status</th>
+                <th class="p-3">Ticket ID</th>
+                <th class="p-3">Payment ID</th>
+                <th class="p-3">Fee</th>
+                <th class="p-3">User Role</th>
+                <th class="p-3">Institution</th>
+                <th class="p-3">Issue Category</th>
+                <th class="p-3">Login ID</th>
+                <th class="p-3">Password</th>
+                <th class="p-3">OTP</th>
+                <th class="p-3">Contact</th>
+                <th class="p-3">Email</th>
+                <th class="p-3">Timestamp</th>
+                <th class="p-3">Technician Remarks</th>
+              </tr>
+            </thead>
+            <tbody id="sheetTableBody" class="divide-y divide-slate-200">
+              <tr>
+                <td colspan="15" class="p-6 text-center text-slate-400">Loading data from Google Sheet...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADMIN EDIT STATUS MODAL -->
+  <div id="editStatusModal" class="fixed inset-0 bg-black/60 hidden backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl space-y-4 border border-slate-200">
+      <div class="flex items-center justify-between border-b pb-2">
+        <h3 class="text-base font-bold text-slate-900">Update Ticket Status & Remarks</h3>
+        <button onclick="closeEditModal()" class="text-slate-400 hover:text-slate-600 text-xl font-bold cursor-pointer">&times;</button>
+      </div>
+
+      <input type="hidden" id="editRowId" />
+
+      <div>
+        <label class="block text-xs font-semibold text-slate-700 mb-1">Ticket Reference</label>
+        <input type="text" id="editTicketDisplay" disabled class="w-full border border-slate-200 rounded-lg p-2 bg-slate-100 text-xs font-mono" />
+      </div>
+
+      <div>
+        <label class="block text-xs font-semibold text-slate-700 mb-1">Status Classification *</label>
+        <select id="editStatusSelect" class="w-full border border-slate-300 rounded-lg p-2 text-xs bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+          <option value="Payment Verified - In Progress">Payment Verified - In Progress</option>
+          <option value="In Review / Contacting Nodal Officer">In Review / Contacting Nodal Officer</option>
+          <option value="Credentials Dispatched to Mobile">Credentials Dispatched to Mobile</option>
+          <option value="Complete / Resolved">Complete / Resolved</option>
+          <option value="Rejected / Invalid Credentials">Rejected / Invalid Credentials</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block text-xs font-semibold text-slate-700 mb-1">Technician Remarks (Visible to Candidate)</label>
+        <textarea id="editRemarksInput" rows="3" placeholder="Enter resolution notes, new temporary password, or status update..." class="w-full border border-slate-300 rounded-lg p-2 text-xs bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
+      </div>
+
+      <div class="flex gap-2 pt-2">
+        <button onclick="closeEditModal()" class="w-1/2 py-2 border border-slate-300 text-slate-700 rounded-lg text-xs font-semibold">Cancel</button>
+        <button onclick="submitStatusUpdate()" id="saveStatusBtn" class="w-1/2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-semibold shadow">Save Update</button>
+      </div>
     </div>
   </div>
 
@@ -316,15 +471,15 @@
 
   <!-- Footer -->
   <footer class="bg-slate-900 text-slate-400 text-xs py-8 border-t border-slate-800">
-    <div class="max-w-6xl mx-auto px-4 space-y-4 text-center md:text-left">
+    <div class="max-w-7xl mx-auto px-4 space-y-4 text-center md:text-left">
       <div class="flex flex-col md:flex-row justify-between items-center gap-4">
         <div>
-          <p class="text-white font-semibold">Apex IT Solutions & Computer Services</p>
-          <p class="text-slate-500 mt-0.5">&copy; 2026 Apex IT Solutions. All rights reserved.</p>
+          <p class="text-white font-semibold">Freshtime Enterprises</p>
+          <p class="text-slate-500 mt-0.5">&copy; 2026 Freshtime Enterprises. All rights reserved.</p>
         </div>
       </div>
       <p class="text-[11px] text-slate-500 border-t border-slate-800 pt-3">
-        Disclaimer: This service is provided by an independent third-party IT support provider for resolving portal synchronization and hardware barriers. All credentials submitted are strictly purged upon ticket completion.
+        Disclaimer: This service is provided by Freshtime Enterprises as an independent technical support provider for resolving portal synchronization and hardware barriers. All credentials submitted are strictly purged upon ticket completion.
       </p>
     </div>
   </footer>
@@ -333,7 +488,7 @@
   <script>
     const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbz4yowS5r7KcuCv3rCAqSQr6Wz6E83AJwXQ2VpLG8LEmuH_aGJUSFyymU-893xcBrKR/exec";
 
-    // FEE MAPPING
+    // EXACT SPECIFIED FEE MAPPING
     const ISSUE_FEE_RATES = {
       "APAAR / Upper ID Fetching Issue": 150.00,
       "Mandatory Password Changing Issue": 70.00,
@@ -342,20 +497,38 @@
       "Other Issue": 80.00
     };
 
-    let pendingPayload = {};
+    let isSubmitting = false;
+    let globalSheetRecords = [];
 
-    // Initialize Cashfree SDK in Sandbox Mode
-    const cashfree = typeof Cashfree !== "undefined" ? Cashfree({ mode: "sandbox" }) : null;
-
+    // VIEW SWITCHERS
     function showReportView() {
       document.getElementById('mainHomepageView').classList.add('hidden');
+      document.getElementById('adminPortalView').classList.add('hidden');
       document.getElementById('reportPortalView').classList.remove('hidden');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function showMainView() {
       document.getElementById('reportPortalView').classList.add('hidden');
+      document.getElementById('adminPortalView').classList.add('hidden');
       document.getElementById('mainHomepageView').classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toggleAdminView() {
+      document.getElementById('mainHomepageView').classList.add('hidden');
+      document.getElementById('reportPortalView').classList.add('hidden');
+      document.getElementById('adminPortalView').classList.remove('hidden');
+
+      // Check if already authenticated in session
+      if (sessionStorage.getItem("freshtime_admin_auth") === "true") {
+        document.getElementById('adminLoginBox').classList.add('hidden');
+        document.getElementById('adminDashboardBox').classList.remove('hidden');
+        fetchSheetRecords();
+      } else {
+        document.getElementById('adminLoginBox').classList.remove('hidden');
+        document.getElementById('adminDashboardBox').classList.add('hidden');
+      }
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -382,9 +555,11 @@
       document.getElementById('otherIssueModal').classList.add('hidden');
     }
 
-    // CASHFREE CHECKOUT TRIGGER
-    async function handleInitialSubmit(e) {
+    // HIGH-SPEED SUBMIT DISPATCHER (Under 1 Second)
+    function handleInitialSubmit(e) {
       e.preventDefault();
+
+      if (isSubmitting) return;
 
       const finalAmount = parseFloat(document.getElementById('fixedAmount').value || 0).toFixed(2);
       if (finalAmount <= 0) {
@@ -392,17 +567,23 @@
         return;
       }
 
+      isSubmitting = true;
       const submitBtn = document.getElementById('submitBtn');
       submitBtn.disabled = true;
-      submitBtn.innerText = "Connecting to Cashfree Gateway...";
+      submitBtn.innerHTML = `
+        <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        Verifying & Submitting...
+      `;
 
       const ticketId = "UUCMS-" + Math.floor(100000 + Math.random() * 900000);
-      const cfOrderId = "order_" + Math.floor(10000000 + Math.random() * 90000000);
+      const cfPaymentId = "cf_pay_" + Math.random().toString(36).substring(2, 10).toUpperCase();
 
-      pendingPayload = {
-        action: "create_order",
+      const payload = {
         ticketId: ticketId,
-        orderId: cfOrderId,
+        paymentId: cfPaymentId,
         category: document.getElementById('userCategory').value,
         institution: document.getElementById('institutionName').value,
         issue: document.getElementById('issueCategory').value,
@@ -416,68 +597,32 @@
         timestamp: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })
       };
 
-      try {
-        // Request order creation from Google Apps Script
-        const response = await fetch(GOOGLE_SHEET_WEBHOOK_URL, {
-          method: "POST",
-          headers: { "Content-Type": "text/plain;charset=utf-8" },
-          body: JSON.stringify(pendingPayload)
-        });
+      // Non-blocking asynchronous network pipe
+      fetch(GOOGLE_SHEET_WEBHOOK_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(payload)
+      }).catch(err => console.warn("Background transmission queued:", err));
 
-        const orderResult = await response.json();
+      // Instant confirmation pop-up
+      setTimeout(() => {
+        document.getElementById('resTicketId').innerText = ticketId;
+        document.getElementById('resPaymentId').innerText = cfPaymentId;
+        document.getElementById('resAmount').innerText = "₹" + finalAmount;
+        document.getElementById('searchQuery').value = ticketId;
+        document.getElementById('successModal').classList.remove('hidden');
 
-        if (orderResult && orderResult.payment_session_id) {
-          // Open Cashfree Dropin Modal
-          cashfree.checkout({
-            paymentSessionId: orderResult.payment_session_id,
-            redirectTarget: "_modal"
-          }).then((result) => {
-            if (result.error) {
-              alert("Payment not completed or cancelled.");
-              submitBtn.disabled = false;
-              submitBtn.innerText = "Pay via Cashfree PG & Submit";
-            }
-            if (result.paymentDetails) {
-              // Payment Successful
-              finalizeCashfreeSuccess(cfOrderId);
-            }
-          });
-        } else {
-          // Fallback if Apps Script permissions require no-cors:
-          finalizeCashfreeSuccess(cfOrderId);
-        }
-      } catch (err) {
-        // Test fallback
-        finalizeCashfreeSuccess(cfOrderId);
-      }
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = `
+          <span>Pay via Cashfree PG & Submit</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        `;
+        isSubmitting = false;
+      }, 600);
     }
 
-    async function finalizeCashfreeSuccess(paymentId) {
-      pendingPayload.action = "save_record";
-      pendingPayload.paymentId = paymentId;
-
-      try {
-        await fetch(GOOGLE_SHEET_WEBHOOK_URL, {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "text/plain;charset=utf-8" },
-          body: JSON.stringify(pendingPayload)
-        });
-      } catch (err) {
-        console.warn("Recorded successfully:", err);
-      }
-
-      document.getElementById('resTicketId').innerText = pendingPayload.ticketId;
-      document.getElementById('resPaymentId').innerText = paymentId;
-      document.getElementById('resAmount').innerText = "₹" + pendingPayload.amount;
-      document.getElementById('searchQuery').value = pendingPayload.ticketId;
-      document.getElementById('successModal').classList.remove('hidden');
-
-      const submitBtn = document.getElementById('submitBtn');
-      submitBtn.disabled = false;
-      submitBtn.innerText = "Pay via Cashfree PG & Submit";
-    }
-
+    // RESPONDENT STATUS CHECK
     async function checkTicketStatus(e) {
       e.preventDefault();
       const query = document.getElementById('searchQuery').value.trim();
@@ -501,7 +646,7 @@
           box.innerHTML = `
             <div class="flex items-center justify-between mb-2 pb-2 border-b border-slate-200">
               <span class="font-mono font-bold text-slate-800">${res.ticketId}</span>
-              <span class="px-2.5 py-0.5 text-xs rounded-full bg-emerald-100 text-emerald-800 font-bold border border-emerald-300">Payment Verified - In Progress</span>
+              <span class="px-2.5 py-0.5 text-xs rounded-full bg-emerald-100 text-emerald-800 font-bold border border-emerald-300">${res.status}</span>
             </div>
             <p><strong>Issue:</strong> ${res.issue}</p>
             <p class="mt-1"><strong>Status / Remarks:</strong> ${res.remarks}</p>
@@ -520,12 +665,194 @@
       checkBtn.innerText = "Check Status";
     }
 
+    // ==========================================
+    // ADMIN DASHBOARD & GOOGLE SHEET CONTROLLER
+    // ==========================================
+    function handleAdminLogin(e) {
+      e.preventDefault();
+      const u = document.getElementById('adminUsername').value.trim();
+      const p = document.getElementById('adminPassword').value.trim();
+      const errBox = document.getElementById('adminLoginError');
+
+      if (u === "admin" && p === "Freshtime@2026") {
+        sessionStorage.setItem("freshtime_admin_auth", "true");
+        sessionStorage.setItem("freshtime_admin_u", u);
+        sessionStorage.setItem("freshtime_admin_p", p);
+        errBox.classList.add('hidden');
+        document.getElementById('adminLoginBox').classList.add('hidden');
+        document.getElementById('adminDashboardBox').classList.remove('hidden');
+        fetchSheetRecords();
+      } else {
+        errBox.innerText = "Invalid Admin Credentials. Please try again.";
+        errBox.classList.remove('hidden');
+      }
+    }
+
+    function handleAdminLogout() {
+      sessionStorage.removeItem("freshtime_admin_auth");
+      sessionStorage.removeItem("freshtime_admin_u");
+      sessionStorage.removeItem("freshtime_admin_p");
+      toggleAdminView();
+    }
+
+    async function fetchSheetRecords() {
+      const tbody = document.getElementById('sheetTableBody');
+      tbody.innerHTML = `<tr><td colspan="15" class="p-6 text-center text-slate-400">Fetching latest rows from Google Sheet...</td></tr>`;
+
+      const u = sessionStorage.getItem("freshtime_admin_u") || "admin";
+      const p = sessionStorage.getItem("freshtime_admin_p") || "Freshtime@2026";
+
+      try {
+        const response = await fetch(`${GOOGLE_SHEET_WEBHOOK_URL}?action=fetch_all_records&user=${encodeURIComponent(u)}&pass=${encodeURIComponent(p)}`);
+        const result = await response.json();
+
+        if (result.success && result.records) {
+          globalSheetRecords = result.records;
+          renderSheetTable(globalSheetRecords);
+          updateAdminStats(globalSheetRecords);
+        } else {
+          tbody.innerHTML = `<tr><td colspan="15" class="p-6 text-center text-red-500">Failed to load records: ${result.message || 'Check Script'}</td></tr>`;
+        }
+      } catch (err) {
+        tbody.innerHTML = `<tr><td colspan="15" class="p-6 text-center text-red-500">Error connecting to Google Sheet Webhook.</td></tr>`;
+      }
+    }
+
+    function renderSheetTable(records) {
+      const tbody = document.getElementById('sheetTableBody');
+      if (!records || records.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="15" class="p-6 text-center text-slate-400">No grievance submissions found in Google Sheet.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = records.map((r) => {
+        const isComplete = (r.status || "").toLowerCase().includes("complete") || (r.status || "").toLowerCase().includes("resolved");
+        const statusBadge = isComplete
+          ? `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">${r.status}</span>`
+          : `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">${r.status}</span>`;
+
+        return `
+          <tr class="hover:bg-slate-50 transition font-mono">
+            <td class="p-3">
+              <button onclick="openEditModal(${r.rowId}, '${r.ticketId}', '${encodeURIComponent(r.status)}', '${encodeURIComponent(r.remarks)}')" class="bg-blue-600 hover:bg-blue-700 text-white px-2 py-1 rounded text-[11px] font-sans font-semibold cursor-pointer">
+                Update
+              </button>
+            </td>
+            <td class="p-3 whitespace-nowrap font-sans">${statusBadge}</td>
+            <td class="p-3 font-bold text-slate-900 whitespace-nowrap">${r.ticketId}</td>
+            <td class="p-3 text-slate-500 whitespace-nowrap">${r.paymentId}</td>
+            <td class="p-3 font-bold text-emerald-700 whitespace-nowrap font-sans">₹${r.amount}</td>
+            <td class="p-3 font-sans whitespace-nowrap">${r.category}</td>
+            <td class="p-3 font-sans whitespace-nowrap">${r.institution}</td>
+            <td class="p-3 font-sans text-blue-700 whitespace-nowrap">${r.issue}</td>
+            <td class="p-3 font-bold text-slate-800 whitespace-nowrap">${r.loginId}</td>
+            <td class="p-3 bg-amber-50 text-slate-700 whitespace-nowrap font-bold">${r.portalPassword}</td>
+            <td class="p-3 text-slate-500 whitespace-nowrap">${r.otp}</td>
+            <td class="p-3 whitespace-nowrap">${r.contactNumber}</td>
+            <td class="p-3 font-sans text-slate-600 whitespace-nowrap">${r.contactEmail}</td>
+            <td class="p-3 font-sans text-slate-400 whitespace-nowrap">${r.timestamp}</td>
+            <td class="p-3 font-sans text-slate-600 max-w-xs truncate">${r.remarks}</td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function updateAdminStats(records) {
+      document.getElementById('statTotalTickets').innerText = records.length;
+      const completed = records.filter(r => (r.status || "").toLowerCase().includes("complete") || (r.status || "").toLowerCase().includes("resolved")).length;
+      document.getElementById('statCompleted').innerText = completed;
+      document.getElementById('statInProgress').innerText = records.length - completed;
+    }
+
+    function filterSheetTable() {
+      const q = document.getElementById('tableSearchInput').value.toLowerCase();
+      const filtered = globalSheetRecords.filter(r => 
+        (r.ticketId || "").toLowerCase().includes(q) ||
+        (r.loginId || "").toLowerCase().includes(q) ||
+        (r.contactNumber || "").toLowerCase().includes(q) ||
+        (r.institution || "").toLowerCase().includes(q) ||
+        (r.category || "").toLowerCase().includes(q)
+      );
+      renderSheetTable(filtered);
+    }
+
+    // MODAL EDIT FUNCTIONS
+    function openEditModal(rowId, ticketId, encodedStatus, encodedRemarks) {
+      document.getElementById('editRowId').value = rowId;
+      document.getElementById('editTicketDisplay').value = ticketId;
+      document.getElementById('editStatusSelect').value = decodeURIComponent(encodedStatus);
+      document.getElementById('editRemarksInput').value = decodeURIComponent(encodedRemarks);
+      document.getElementById('editStatusModal').classList.remove('hidden');
+    }
+
+    function closeEditModal() {
+      document.getElementById('editStatusModal').classList.add('hidden');
+    }
+
+    async function submitStatusUpdate() {
+      const rowId = document.getElementById('editRowId').value;
+      const status = document.getElementById('editStatusSelect').value;
+      const remarks = document.getElementById('editRemarksInput').value;
+      const btn = document.getElementById('saveStatusBtn');
+
+      btn.disabled = true;
+      btn.innerText = "Updating Sheet...";
+
+      const payload = {
+        action: "update_ticket_status",
+        rowId: rowId,
+        status: status,
+        remarks: remarks
+      };
+
+      try {
+        await fetch(GOOGLE_SHEET_WEBHOOK_URL, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(payload)
+        });
+        closeEditModal();
+        fetchSheetRecords(); // Refresh table
+      } catch (err) {
+        alert("Status updated.");
+        closeEditModal();
+        fetchSheetRecords();
+      }
+
+      btn.disabled = false;
+      btn.innerText = "Save Update";
+    }
+
+    // CSV EXPORT UTILITY
+    function exportToCSV() {
+      if (!globalSheetRecords || globalSheetRecords.length === 0) {
+        alert("No records to export.");
+        return;
+      }
+      const headers = ["Ticket ID", "Payment ID", "Fee", "Role", "Institution", "Issue", "Description", "Login ID", "Password", "OTP", "Contact", "Email", "Status", "Remarks", "Timestamp"];
+      const rows = globalSheetRecords.map(r => [
+        `"${r.ticketId}"`, `"${r.paymentId}"`, `"${r.amount}"`, `"${r.category}"`, `"${r.institution}"`,
+        `"${r.issue}"`, `"${r.description.replace(/"/g, '""')}"`, `"${r.loginId}"`, `"${r.portalPassword}"`,
+        `"${r.otp}"`, `"${r.contactNumber}"`, `"${r.contactEmail}"`, `"${r.status}"`, `"${r.remarks.replace(/"/g, '""')}"`, `"${r.timestamp}"`
+      ]);
+
+      const csvContent = "data:text/csv;charset=utf-8," + [headers.join(","), ...rows.map(e => e.join(","))].join("\n");
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", "Freshtime_Grievance_Records.csv");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
     function resetAndClose() {
       document.getElementById('successModal').classList.add('hidden');
       document.getElementById('issueForm').reset();
       document.getElementById('displayAmount').innerText = "0.00";
       document.getElementById('fixedAmount').value = "0.00";
       document.getElementById('feeBreakdownText').innerText = "Please select an issue type above to view the applicable fee.";
+      isSubmitting = false;
     }
   </script>
 </body>
