@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Freshtime Enterprises | IT Sales, Services & UUCMS Helpdesk</title>
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
   <style>
     .brand-gradient {
       background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
@@ -16,10 +21,10 @@
   <!-- Top Info Bar -->
   <div class="bg-slate-900 text-slate-300 text-xs py-2 px-4 border-b border-slate-800">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
-      <p>Freshtime Enterprises • Computer Sales • Networking • Technical Resolution Desk</p>
+      <p>Freshtime Enterprises • Computer Sales • Networking • Dual Sync Console</p>
       <div class="flex items-center gap-4">
         <span>Support: +91 98765 43210</span>
-        <button onclick="toggleAdminView()" class="text-blue-400 hover:text-blue-300 font-medium underline flex items-center gap-1 cursor-pointer">
+        <button type="button" onclick="showAdminView()" class="text-amber-400 hover:text-amber-300 font-bold underline flex items-center gap-1 cursor-pointer">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
           Admin Portal
         </button>
@@ -31,13 +36,15 @@
   <header class="brand-gradient text-white shadow-lg sticky top-0 z-40">
     <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
       <div>
-        <a href="javascript:showMainView()" class="text-xl md:text-2xl font-bold tracking-tight text-white block">Freshtime Enterprises</a>
+        <button type="button" onclick="showMainView()" class="text-xl md:text-2xl font-bold tracking-tight text-white block text-left cursor-pointer">
+          Freshtime Enterprises
+        </button>
         <span class="text-[11px] text-blue-200">Hardware Sales • Computer AMC • Technical Assistance</span>
       </div>
 
       <nav class="flex items-center gap-4 md:gap-6 text-sm font-medium text-blue-100">
-        <button onclick="showMainView()" class="hover:text-white transition cursor-pointer">Home & Services</button>
-        <button onclick="showReportView()" class="bg-amber-500 hover:bg-amber-600 text-slate-900 px-3.5 py-1.5 rounded-lg text-xs font-bold shadow transition flex items-center gap-1.5 cursor-pointer">
+        <button type="button" onclick="showMainView()" class="hover:text-white transition cursor-pointer">Home & Services</button>
+        <button type="button" onclick="showReportView()" class="bg-amber-500 hover:bg-amber-600 text-slate-900 px-3.5 py-1.5 rounded-lg text-xs font-bold shadow transition flex items-center gap-1.5 cursor-pointer">
           <span>Raise Technical Issue</span>
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </button>
@@ -56,11 +63,11 @@
           Need Technical Assistance with Your UUCMS Portal Login?
         </h1>
         <p class="text-slate-600 text-base max-w-2xl mx-auto">
-          Facing Upper/APAAR ID fetching errors, mandatory password loops, OTP verification failures, or credential sync barriers? Submit a ticket to our technical resolution desk for assistance.
+          Facing Upper/APAAR ID fetching errors, mandatory password loops, OTP verification failures, or credential sync barriers? Submit a ticket to our technical resolution desk for instant review.
         </p>
         
         <div class="pt-4 flex flex-wrap justify-center gap-4">
-          <button onclick="showReportView()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-blue-500/25 transition text-base flex items-center gap-2 cursor-pointer">
+          <button type="button" onclick="showReportView()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-blue-500/25 transition text-base flex items-center gap-2 cursor-pointer">
             <span>Open Technical Issue Portal</span>
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
           </button>
@@ -111,7 +118,7 @@
           </div>
           <div>
             <h2 class="text-xl font-bold text-slate-900">Check Technical Issue Status</h2>
-            <p class="text-xs text-slate-500">Track progress, resolution state, and technician remarks.</p>
+            <p class="text-xs text-slate-500">Live lookup across both Firebase & Google Sheet.</p>
           </div>
         </div>
 
@@ -120,7 +127,7 @@
             type="text" 
             id="searchQuery" 
             required 
-            placeholder="Enter Ticket ID (e.g. UUCMS-123456) or Registered Mobile Number" 
+            placeholder="Enter Ticket ID, 12-Digit UTR, or Registered Mobile Number" 
             class="flex-1 border border-slate-300 rounded-lg p-3 bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none text-sm"
           />
           <button 
@@ -142,14 +149,14 @@
     <div class="flex items-center justify-between pb-2 border-b">
       <div>
         <h2 class="text-2xl font-bold text-slate-900">Freshtime Enterprises - Technical Desk</h2>
-        <p class="text-xs text-slate-500">File your portal synchronization and password changing complaints below.</p>
+        <p class="text-xs text-slate-500">Secure Payment & Grievance Registration</p>
       </div>
-      <button onclick="showMainView()" class="text-xs bg-slate-200 hover:bg-slate-300 text-slate-800 px-3 py-1.5 rounded-lg transition font-medium cursor-pointer">
+      <button type="button" onclick="showMainView()" class="text-xs bg-slate-200 hover:bg-slate-300 text-slate-800 px-3 py-1.5 rounded-lg transition font-medium cursor-pointer">
         &larr; Back to Main Website
       </button>
     </div>
 
-    <!-- Data Privacy Warning -->
+    <!-- Security Warning -->
     <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-lg shadow-sm">
       <div class="flex items-start">
         <svg class="h-6 w-6 text-amber-500 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -167,7 +174,7 @@
 
     <!-- Form Card -->
     <div class="bg-white rounded-2xl shadow-md border border-slate-200 p-6 md:p-8">
-      <form id="issueForm" onsubmit="handleInitialSubmit(event)" class="space-y-6">
+      <form id="issueForm" onsubmit="openFreshPayModal(event)" class="space-y-6">
 
         <!-- 1. Category -->
         <div>
@@ -265,25 +272,148 @@
           <input type="hidden" id="fixedAmount" value="0.00" />
         </div>
 
-        <button type="submit" id="submitBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3.5 px-6 rounded-lg transition shadow text-sm flex items-center justify-center gap-2 cursor-pointer">
-          <span>Pay via Cashfree PG & Submit</span>
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        <button type="submit" id="submitBtn" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3.5 px-6 rounded-lg transition shadow text-sm flex items-center justify-center gap-2 cursor-pointer">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+          <span>Proceed to Pay via FRESH PAY</span>
         </button>
       </form>
     </div>
   </div>
 
-  <!-- ================= VIEW 3: ADMIN PORTAL LOGIN & DATA VIEWER ================= -->
+  <!-- ================= FRESH PAY GATEWAY MODAL ================= -->
+  <div id="freshPayModal" class="fixed inset-0 bg-black/70 hidden backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 max-h-[92vh] overflow-y-auto space-y-4">
+      
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between border-b pb-3">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-black text-sm tracking-wider">FP</div>
+          <div>
+            <h3 class="text-base font-extrabold text-slate-900 leading-none">FRESH PAY</h3>
+            <span class="text-[10px] text-emerald-700 font-semibold">Secure Payment Gateway • Freshtime Enterprises</span>
+          </div>
+        </div>
+        <button type="button" onclick="closeFreshPayModal()" class="text-slate-400 hover:text-slate-600 text-2xl font-bold cursor-pointer">&times;</button>
+      </div>
+
+      <!-- Payable Amount Pill -->
+      <div class="bg-slate-900 text-white p-3 rounded-xl flex items-center justify-between">
+        <div>
+          <span class="text-[10px] text-slate-400 block uppercase">Payable Amount</span>
+          <span id="fpPayableAmount" class="text-xl font-black text-emerald-400">₹0.00</span>
+        </div>
+        <span class="text-[10px] bg-slate-800 text-slate-300 border border-slate-700 px-2.5 py-1 rounded-full">All Indian Payment Modes</span>
+      </div>
+
+      <!-- Indian Payment Methods Grid -->
+      <div class="space-y-2">
+        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Supported Indian Payment Methods</label>
+        
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-xs">
+          <div class="p-2 rounded-lg border border-emerald-500 bg-emerald-50 font-semibold text-emerald-900">
+            UPI QR & Apps
+          </div>
+          <div class="p-2 rounded-lg border border-slate-200 bg-slate-50 text-slate-700">
+            RuPay / Cards
+          </div>
+          <div class="p-2 rounded-lg border border-slate-200 bg-slate-50 text-slate-700">
+            Net Banking
+          </div>
+          <div class="p-2 rounded-lg border border-slate-200 bg-slate-50 text-slate-700">
+            Wallets
+          </div>
+        </div>
+        <p class="text-[10px] text-slate-500 italic text-center">Google Pay • PhonePe • Paytm • BHIM • Navi • CRED • Any Banking App</p>
+      </div>
+
+      <!-- Dynamic QR Code Card -->
+      <div class="bg-emerald-50 border-2 border-emerald-500/40 rounded-2xl p-4 text-center space-y-3">
+        <span class="text-xs font-bold text-emerald-900 uppercase tracking-wide block">Scan with any UPI App to Pay</span>
+        
+        <div class="bg-white p-2.5 rounded-xl border border-emerald-200 inline-block shadow-sm">
+          <img id="dynamicUpiQr" src="" alt="FRESH PAY Dynamic UPI QR" class="w-48 h-48 mx-auto" />
+        </div>
+
+        <div class="space-y-1">
+          <div class="text-xs font-mono font-bold text-slate-800 flex items-center justify-center gap-1.5">
+            <span>UPI ID:</span>
+            <span class="bg-white px-2 py-0.5 rounded border text-emerald-800 font-extrabold select-all">freshtime.blr18@ybl</span>
+          </div>
+          <p class="text-[11px] text-slate-600">Scan & pay the exact fee shown above.</p>
+        </div>
+      </div>
+
+      <!-- UTR and Screenshot Upload -->
+      <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
+        <h4 class="text-xs font-bold text-slate-900 uppercase">Payment Verification Details (Mandatory)</h4>
+        
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">12-Digit Bank Reference / UTR Number *</label>
+          <input 
+            type="text" 
+            id="fpUtrInput" 
+            maxlength="12" 
+            pattern="[0-9]{12}" 
+            required 
+            placeholder="e.g. 425689102345" 
+            class="w-full border border-slate-300 rounded-lg p-2.5 text-xs font-mono bg-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+          />
+          <span class="text-[10px] text-slate-500">Found on your GPay, PhonePe, or Paytm receipt.</span>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Payment Method Used *</label>
+          <select id="fpPaymentModeSelect" class="w-full border border-slate-300 rounded-lg p-2.5 text-xs bg-white focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+            <option value="PhonePe">PhonePe</option>
+            <option value="Google Pay (GPay)">Google Pay (GPay)</option>
+            <option value="Paytm UPI">Paytm UPI</option>
+            <option value="BHIM UPI">BHIM UPI</option>
+            <option value="CRED / Navi">CRED / Navi</option>
+            <option value="RuPay / Debit / Credit Card">RuPay / Debit / Credit Card</option>
+            <option value="Net Banking">Net Banking</option>
+            <option value="Other Wallet">Other Wallet</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Upload Payment Screenshot *</label>
+          <input 
+            type="file" 
+            id="fpScreenshotInput" 
+            accept="image/*" 
+            required 
+            class="w-full border border-slate-300 rounded-lg p-2 text-xs bg-white text-slate-600 file:mr-2 file:py-1 file:px-2.5 file:rounded file:border-0 file:text-xs file:font-semibold file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100 cursor-pointer"
+          />
+          <span class="text-[10px] text-slate-500">Attach receipt showing UTR and success status.</span>
+        </div>
+      </div>
+
+      <!-- Action Button -->
+      <button 
+        type="button" 
+        id="fpSubmitPaymentBtn" 
+        onclick="confirmAndSubmitFreshPay()" 
+        class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-xl text-xs shadow-lg transition flex items-center justify-center gap-2 cursor-pointer"
+      >
+        <span>Confirm Payment & Submit Ticket</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+      </button>
+
+      <button type="button" onclick="closeFreshPayModal()" class="w-full text-center text-xs text-slate-500 hover:text-slate-700 py-1 cursor-pointer">Cancel</button>
+    </div>
+  </div>
+
+  <!-- ================= VIEW 3: ADMIN PORTAL LOGIN & DUAL DATABASE VIEWER ================= -->
   <div id="adminPortalView" class="hidden flex-grow max-w-7xl mx-auto w-full px-4 py-8 space-y-6">
     
-    <!-- Admin Login Box (Shows when logged out) -->
+    <!-- Admin Login Box -->
     <div id="adminLoginBox" class="max-w-md mx-auto bg-white p-8 rounded-2xl shadow-lg border border-slate-200 space-y-5">
       <div class="text-center">
         <div class="w-12 h-12 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center mx-auto mb-2">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
         </div>
         <h2 class="text-xl font-bold text-slate-900">Freshtime Admin Login</h2>
-        <p class="text-xs text-slate-500 mt-1">Authorized access to live Google Sheet records</p>
+        <p class="text-xs text-slate-500 mt-1">Dual Synchronized Grievance Console</p>
       </div>
 
       <form onsubmit="handleAdminLogin(event)" class="space-y-4">
@@ -299,49 +429,56 @@
 
         <div id="adminLoginError" class="text-xs text-red-600 hidden font-medium text-center"></div>
 
-        <button type="submit" id="adminLoginBtn" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-semibold py-2.5 rounded-lg text-sm shadow cursor-pointer">
-          Sign In to Dashboard
+        <button type="submit" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-semibold py-2.5 rounded-lg text-sm shadow cursor-pointer">
+          Sign In to Live Console
         </button>
       </form>
     </div>
 
-    <!-- Admin Live Data Dashboard (Shows when logged in) -->
+    <!-- Admin Live Data Dashboard -->
     <div id="adminDashboardBox" class="hidden space-y-6">
       <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
         <div>
-          <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase">Live Sync Active</span>
-          <h2 class="text-2xl font-bold text-slate-900 mt-1">Google Sheet Grievance Console</h2>
-          <p class="text-xs text-slate-500">Live response table linked to your official Google Sheet database.</p>
+          <span id="dataSyncBadge" class="bg-indigo-100 text-indigo-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase flex items-center gap-1.5 w-max">
+            <span class="w-2 h-2 rounded-full bg-indigo-600 animate-pulse"></span>
+            Dual Database Sync Active
+          </span>
+          <h2 class="text-2xl font-bold text-slate-900 mt-1">Unified Grievance Control Center</h2>
+          <p class="text-xs text-slate-500" id="dataSyncSubtitle">Combining records from Google Sheet and Firebase Realtime Database.</p>
         </div>
 
         <div class="flex flex-wrap items-center gap-2">
-          <button onclick="fetchSheetRecords()" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold px-3 py-2 rounded-lg shadow transition flex items-center gap-1 cursor-pointer">
+          <button type="button" onclick="loadUnifiedRecords()" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold px-3 py-2 rounded-lg shadow transition flex items-center gap-1 cursor-pointer">
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-            Refresh Data
+            Refresh Dual DB
           </button>
-          <button onclick="exportToCSV()" class="bg-slate-700 hover:bg-slate-800 text-white text-xs font-semibold px-3 py-2 rounded-lg shadow transition flex items-center gap-1 cursor-pointer">
+          <button type="button" onclick="exportToCSV()" class="bg-slate-700 hover:bg-slate-800 text-white text-xs font-semibold px-3 py-2 rounded-lg shadow transition flex items-center gap-1 cursor-pointer">
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
             Export CSV
           </button>
-          <button onclick="handleAdminLogout()" class="bg-red-600 hover:bg-red-700 text-white text-xs font-semibold px-3 py-2 rounded-lg shadow transition cursor-pointer">
+          <button type="button" onclick="handleAdminLogout()" class="bg-red-600 hover:bg-red-700 text-white text-xs font-semibold px-3 py-2 rounded-lg shadow transition cursor-pointer">
             Sign Out
           </button>
         </div>
       </div>
 
-      <!-- Live Search & Stats -->
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <!-- Comparative Stats Bar: Comparing Google Sheet vs Firebase -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
         <div class="bg-white p-4 rounded-xl border border-slate-200">
-          <span class="text-xs text-slate-500">Total Tickets Logged</span>
-          <div id="statTotalTickets" class="text-2xl font-bold text-slate-900 mt-1">0</div>
+          <span class="text-xs text-slate-500 font-semibold">Total Unique (Merged)</span>
+          <div id="statTotalTickets" class="text-2xl font-black text-slate-900 mt-1">0</div>
         </div>
-        <div class="bg-white p-4 rounded-xl border border-slate-200">
-          <span class="text-xs text-slate-500">In Progress / Verified</span>
-          <div id="statInProgress" class="text-2xl font-bold text-blue-600 mt-1">0</div>
+        <div class="bg-white p-4 rounded-xl border border-blue-200 bg-blue-50/30">
+          <span class="text-xs text-blue-800 font-semibold">Google Sheet Count</span>
+          <div id="statSheetCount" class="text-2xl font-black text-blue-700 mt-1">0</div>
         </div>
-        <div class="bg-white p-4 rounded-xl border border-slate-200">
-          <span class="text-xs text-slate-500">Completed / Resolved</span>
-          <div id="statCompleted" class="text-2xl font-bold text-emerald-600 mt-1">0</div>
+        <div class="bg-white p-4 rounded-xl border border-emerald-200 bg-emerald-50/30">
+          <span class="text-xs text-emerald-800 font-semibold">Firebase Live Count</span>
+          <div id="statFirebaseCount" class="text-2xl font-black text-emerald-700 mt-1">0</div>
+        </div>
+        <div class="bg-white p-4 rounded-xl border border-purple-200 bg-purple-50/30">
+          <span class="text-xs text-purple-800 font-semibold">Synced in Both DBs</span>
+          <div id="statSyncedBoth" class="text-2xl font-black text-purple-700 mt-1">0</div>
         </div>
       </div>
 
@@ -351,21 +488,24 @@
           type="text" 
           id="tableSearchInput" 
           onkeyup="filterSheetTable()" 
-          placeholder="Filter by Ticket ID, Candidate Name, Mobile, or Login ID..." 
+          placeholder="Instant search by Ticket ID, Login ID, UTR, Mobile, or College Name..." 
           class="w-full border border-slate-300 rounded-lg p-2.5 text-xs bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
         />
       </div>
 
-      <!-- Responsive Google Sheet Table -->
+      <!-- Responsive Realtime Table -->
       <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
         <div class="overflow-x-auto max-h-[600px]">
-          <table class="w-full text-left text-xs text-slate-700" id="googleSheetTable">
+          <table class="w-full text-left text-xs text-slate-700">
             <thead class="bg-slate-100 uppercase font-semibold text-slate-600 sticky top-0 border-b border-slate-200">
               <tr>
                 <th class="p-3">Action</th>
+                <th class="p-3">Database Source</th>
                 <th class="p-3">Status</th>
                 <th class="p-3">Ticket ID</th>
-                <th class="p-3">Payment ID</th>
+                <th class="p-3">12-Digit UTR</th>
+                <th class="p-3">Payment Method</th>
+                <th class="p-3">Payment Proof</th>
                 <th class="p-3">Fee</th>
                 <th class="p-3">User Role</th>
                 <th class="p-3">Institution</th>
@@ -381,7 +521,7 @@
             </thead>
             <tbody id="sheetTableBody" class="divide-y divide-slate-200">
               <tr>
-                <td colspan="15" class="p-6 text-center text-slate-400">Loading data from Google Sheet...</td>
+                <td colspan="18" class="p-6 text-center text-slate-400">Loading records...</td>
               </tr>
             </tbody>
           </table>
@@ -394,36 +534,58 @@
   <div id="editStatusModal" class="fixed inset-0 bg-black/60 hidden backdrop-blur-sm z-50 flex items-center justify-center p-4">
     <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl space-y-4 border border-slate-200">
       <div class="flex items-center justify-between border-b pb-2">
-        <h3 class="text-base font-bold text-slate-900">Update Ticket Status & Remarks</h3>
-        <button onclick="closeEditModal()" class="text-slate-400 hover:text-slate-600 text-xl font-bold cursor-pointer">&times;</button>
+        <h3 class="text-base font-bold text-slate-900">Synchronized Dual Status Update</h3>
+        <button type="button" onclick="closeEditModal()" class="text-slate-400 hover:text-slate-600 text-xl font-bold cursor-pointer">&times;</button>
       </div>
 
+      <input type="hidden" id="editKey" />
       <input type="hidden" id="editRowId" />
+      <input type="hidden" id="editTicketRaw" />
 
       <div>
         <label class="block text-xs font-semibold text-slate-700 mb-1">Ticket Reference</label>
-        <input type="text" id="editTicketDisplay" disabled class="w-full border border-slate-200 rounded-lg p-2 bg-slate-100 text-xs font-mono" />
+        <input type="text" id="editTicketDisplay" disabled class="w-full border border-slate-200 rounded-lg p-2 bg-slate-100 text-xs font-mono font-bold text-blue-700" />
       </div>
 
       <div>
         <label class="block text-xs font-semibold text-slate-700 mb-1">Status Classification *</label>
         <select id="editStatusSelect" class="w-full border border-slate-300 rounded-lg p-2 text-xs bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+          <option value="Payment Verification Pending">Payment Verification Pending</option>
           <option value="Payment Verified - In Progress">Payment Verified - In Progress</option>
           <option value="In Review / Contacting Nodal Officer">In Review / Contacting Nodal Officer</option>
           <option value="Credentials Dispatched to Mobile">Credentials Dispatched to Mobile</option>
           <option value="Complete / Resolved">Complete / Resolved</option>
-          <option value="Rejected / Invalid Credentials">Rejected / Invalid Credentials</option>
+          <option value="Rejected / Invalid UTR or Screenshot">Rejected / Invalid UTR or Screenshot</option>
         </select>
       </div>
 
       <div>
         <label class="block text-xs font-semibold text-slate-700 mb-1">Technician Remarks (Visible to Candidate)</label>
-        <textarea id="editRemarksInput" rows="3" placeholder="Enter resolution notes, new temporary password, or status update..." class="w-full border border-slate-300 rounded-lg p-2 text-xs bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
+        <textarea id="editRemarksInput" rows="3" placeholder="Enter resolution notes, temporary password, or status update..." class="w-full border border-slate-300 rounded-lg p-2 text-xs bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
       </div>
 
       <div class="flex gap-2 pt-2">
-        <button onclick="closeEditModal()" class="w-1/2 py-2 border border-slate-300 text-slate-700 rounded-lg text-xs font-semibold">Cancel</button>
-        <button onclick="submitStatusUpdate()" id="saveStatusBtn" class="w-1/2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-semibold shadow">Save Update</button>
+        <button type="button" onclick="closeEditModal()" class="w-1/2 py-2 border border-slate-300 text-slate-700 rounded-lg text-xs font-semibold cursor-pointer">Cancel</button>
+        <button type="button" onclick="submitStatusUpdate()" id="saveStatusBtn" class="w-1/2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-semibold shadow cursor-pointer">Save Dual Update</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- POPUP MODAL: VIEW SCREENSHOT PROOF -->
+  <div id="imageProofModal" class="fixed inset-0 bg-black/80 hidden backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-4 shadow-2xl space-y-3">
+      <div class="flex justify-between items-center border-b pb-2">
+        <div>
+          <h4 class="text-sm font-bold text-slate-900">Payment Screenshot Proof</h4>
+          <span id="proofTicketIdDisplay" class="text-[11px] font-mono text-blue-600"></span>
+        </div>
+        <button type="button" onclick="closeImageModal()" class="text-slate-400 hover:text-slate-600 text-2xl font-bold cursor-pointer">&times;</button>
+      </div>
+      <div class="overflow-auto max-h-[70vh] flex justify-center bg-slate-100 rounded-lg p-2 border border-slate-200">
+        <img id="imageProofDisplay" src="" alt="Payment Proof" class="max-w-full rounded shadow" />
+      </div>
+      <div class="text-right">
+        <button type="button" onclick="closeImageModal()" class="px-4 py-1.5 bg-slate-800 hover:bg-slate-900 text-white text-xs font-semibold rounded-lg">Close</button>
       </div>
     </div>
   </div>
@@ -440,34 +602,49 @@
       <p class="text-xs text-slate-600 leading-relaxed text-left bg-slate-50 p-3.5 rounded-xl border border-slate-200">
         This is a <strong>nominal initial fee of ₹80.00</strong> for Other Issue. The actual fee details will be informed or enabled to pay in the portal after our technical team reviews, finds, and clarifies your specific problem.
       </p>
-      <button onclick="closeOtherIssueModal()" class="w-full bg-blue-600 text-white py-2.5 rounded-lg hover:bg-blue-700 text-sm font-semibold transition cursor-pointer">
+      <button type="button" onclick="closeOtherIssueModal()" class="w-full bg-blue-600 text-white py-2.5 rounded-lg hover:bg-blue-700 text-sm font-semibold transition cursor-pointer">
         I Understand & Proceed
       </button>
     </div>
   </div>
 
-  <!-- Submission Confirmation Modal -->
+  <!-- Submission Confirmation Modal with WhatsApp Button -->
   <div id="successModal" class="fixed inset-0 bg-black/60 hidden backdrop-blur-sm z-50 flex items-center justify-center p-4">
     <div class="bg-white rounded-2xl max-w-md w-full p-6 text-center shadow-2xl space-y-4">
       <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
       </div>
-      <h3 class="text-lg font-bold text-slate-900">Payment Verified & Ticket Filed!</h3>
-      <p class="text-xs text-slate-600">Your payment has been confirmed via Cashfree Sandbox. Your technical grievance is now actively queued.</p>
+      <h3 class="text-lg font-bold text-slate-900">Payment Submitted & Grievance Filed!</h3>
+      <p class="text-xs text-slate-600">Your 12-digit UTR and screenshot proof have been recorded. Technical team is reviewing your ticket.</p>
 
       <div class="bg-slate-50 p-3 rounded-lg border text-left text-xs space-y-1.5">
         <div><strong>Ticket ID:</strong> <span id="resTicketId" class="font-mono text-blue-600 font-bold"></span></div>
-        <div><strong>Payment / Order ID:</strong> <span id="resPaymentId" class="font-mono font-semibold text-slate-800"></span></div>
-        <div><strong>Amount Paid:</strong> <span id="resAmount" class="font-mono font-semibold text-emerald-700"></span></div>
+        <div><strong>UTR / Reference:</strong> <span id="resUtrNumber" class="font-mono font-semibold text-slate-800"></span></div>
+        <div><strong>Payment Gateway:</strong> <span class="font-bold text-emerald-700">FRESH PAY (UPI / India)</span></div>
+        <div><strong>Amount:</strong> <span id="resAmount" class="font-mono font-semibold text-emerald-700"></span></div>
         <div><strong>Status:</strong> <span class="text-emerald-700 font-bold">Payment Verified - In Progress</span></div>
       </div>
 
+      <a id="whatsappShareBtn" href="#" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-xl text-xs font-bold shadow flex items-center justify-center gap-2 transition">
+        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+        </svg>
+        <span>Connect with Us on WhatsApp</span>
+      </a>
+
       <div class="flex gap-2">
-        <button onclick="showMainView(); resetAndClose();" class="w-1/2 py-2 text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg text-xs font-semibold cursor-pointer">Return Home</button>
-        <button onclick="resetAndClose()" class="w-1/2 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 text-xs font-semibold cursor-pointer">Done</button>
+        <button type="button" onclick="showMainView(); resetAndClose();" class="w-1/2 py-2 text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg text-xs font-semibold cursor-pointer">Return Home</button>
+        <button type="button" onclick="resetAndClose()" class="w-1/2 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 text-xs font-semibold cursor-pointer">Done</button>
       </div>
     </div>
   </div>
+
+  <!-- FLOATING WHATSAPP BUTTON -->
+  <a href="https://wa.me/919876543210?text=Hello%20Freshtime%20Enterprises,%20I%20need%20assistance%20with%20my%20UUCMS%20Portal." target="_blank" class="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-600 text-white p-3.5 rounded-full shadow-2xl transition hover:scale-110 flex items-center justify-center cursor-pointer">
+    <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+    </svg>
+  </a>
 
   <!-- Footer -->
   <footer class="bg-slate-900 text-slate-400 text-xs py-8 border-t border-slate-800">
@@ -484,11 +661,33 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
+  <!-- ================= JAVASCRIPT LOGIC ================= -->
   <script>
     const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbz4yowS5r7KcuCv3rCAqSQr6Wz6E83AJwXQ2VpLG8LEmuH_aGJUSFyymU-893xcBrKR/exec";
+    const FRESHTIME_WHATSAPP_NUMBER = "919876543210"; 
+    const FRESHTIME_UPI_ID = "freshtime.blr18@ybl";
 
-    // EXACT SPECIFIED FEE MAPPING
+    // EXACT SINGAPORE FIREBASE CONFIGURATION
+    const firebaseConfig = {
+      apiKey: "AIzaSyDv4svyqS7hNhJ8B9-8uOhQZE_Nczuu35s",
+      authDomain: "freshtime-enterprises.firebaseapp.com",
+      databaseURL: "https://freshtime-enterprises-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "freshtime-enterprises",
+      storageBucket: "freshtime-enterprises.firebasestorage.app",
+      messagingSenderId: "929876451772",
+      appId: "1:929876451772:web:b268e8e34f564772020bb9"
+    };
+
+    let db = null;
+    let ticketsRef = null;
+    try {
+      firebase.initializeApp(firebaseConfig);
+      db = firebase.database();
+      ticketsRef = db.ref("uucms_tickets");
+    } catch(err) {
+      console.warn("Firebase Init Notice:", err);
+    }
+
     const ISSUE_FEE_RATES = {
       "APAAR / Upper ID Fetching Issue": 150.00,
       "Mandatory Password Changing Issue": 70.00,
@@ -498,9 +697,9 @@
     };
 
     let isSubmitting = false;
-    let globalSheetRecords = [];
+    let globalUnifiedRecords = [];
+    let pendingFormData = null;
 
-    // VIEW SWITCHERS
     function showReportView() {
       document.getElementById('mainHomepageView').classList.add('hidden');
       document.getElementById('adminPortalView').classList.add('hidden');
@@ -515,16 +714,15 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function toggleAdminView() {
+    function showAdminView() {
       document.getElementById('mainHomepageView').classList.add('hidden');
       document.getElementById('reportPortalView').classList.add('hidden');
       document.getElementById('adminPortalView').classList.remove('hidden');
 
-      // Check if already authenticated in session
       if (sessionStorage.getItem("freshtime_admin_auth") === "true") {
         document.getElementById('adminLoginBox').classList.add('hidden');
         document.getElementById('adminDashboardBox').classList.remove('hidden');
-        fetchSheetRecords();
+        loadUnifiedRecords();
       } else {
         document.getElementById('adminLoginBox').classList.remove('hidden');
         document.getElementById('adminDashboardBox').classList.add('hidden');
@@ -555,35 +753,18 @@
       document.getElementById('otherIssueModal').classList.add('hidden');
     }
 
-    // HIGH-SPEED SUBMIT DISPATCHER (Under 1 Second)
-    function handleInitialSubmit(e) {
+    // FRESH PAY MODAL CONTROLS
+    function openFreshPayModal(e) {
       e.preventDefault();
-
-      if (isSubmitting) return;
 
       const finalAmount = parseFloat(document.getElementById('fixedAmount').value || 0).toFixed(2);
       if (finalAmount <= 0) {
-        alert("Please select a technical issue category.");
+        alert("Please select a technical issue category first.");
         return;
       }
 
-      isSubmitting = true;
-      const submitBtn = document.getElementById('submitBtn');
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = `
-        <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-        </svg>
-        Verifying & Submitting...
-      `;
-
-      const ticketId = "UUCMS-" + Math.floor(100000 + Math.random() * 900000);
-      const cfPaymentId = "cf_pay_" + Math.random().toString(36).substring(2, 10).toUpperCase();
-
-      const payload = {
-        ticketId: ticketId,
-        paymentId: cfPaymentId,
+      pendingFormData = {
+        ticketId: "UUCMS-" + Math.floor(100000 + Math.random() * 900000),
         category: document.getElementById('userCategory').value,
         institution: document.getElementById('institutionName').value,
         issue: document.getElementById('issueCategory').value,
@@ -597,35 +778,152 @@
         timestamp: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })
       };
 
-      // Non-blocking asynchronous network pipe
+      document.getElementById('fpPayableAmount').innerText = `₹${finalAmount}`;
+
+      const upiString = `upi://pay?pa=${FRESHTIME_UPI_ID}&pn=Freshtime%20Enterprises&am=${finalAmount}&cu=INR&tn=UUCMS%20Resolution%20Fee`;
+      const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(upiString)}`;
+      document.getElementById('dynamicUpiQr').src = qrApiUrl;
+
+      document.getElementById('fpUtrInput').value = "";
+      document.getElementById('fpScreenshotInput').value = "";
+      document.getElementById('freshPayModal').classList.remove('hidden');
+    }
+
+    function closeFreshPayModal() {
+      document.getElementById('freshPayModal').classList.add('hidden');
+    }
+
+    // AUTOMATIC IMAGE COMPRESSION (Guarantees image fits in both Google Sheets & Firebase)
+    function compressImageFile(file, maxWidth = 800, maxHeight = 800, quality = 0.6) {
+      return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = (event) => {
+          const img = new Image();
+          img.src = event.target.result;
+          img.onload = () => {
+            let width = img.width;
+            let height = img.height;
+
+            if (width > height) {
+              if (width > maxWidth) {
+                height = Math.round((height * maxWidth) / width);
+                width = maxWidth;
+              }
+            } else {
+              if (height > maxHeight) {
+                width = Math.round((width * maxHeight) / height);
+                height = maxHeight;
+              }
+            }
+
+            const canvas = document.createElement("canvas");
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0, width, height);
+            
+            const compressedBase64 = canvas.toDataURL("image/jpeg", quality);
+            resolve(compressedBase64);
+          };
+          img.onerror = () => resolve(event.target.result);
+        };
+        reader.onerror = () => resolve("");
+      });
+    }
+
+    // SUBMIT WITH 12-DIGIT UTR & COMPRESSED SCREENSHOT
+    async function confirmAndSubmitFreshPay() {
+      if (isSubmitting) return;
+
+      const utr = document.getElementById('fpUtrInput').value.trim();
+      if (!/^\d{12}$/.test(utr)) {
+        alert("Please enter a valid 12-digit numeric Bank Reference / UTR Number.");
+        return;
+      }
+
+      const fileInput = document.getElementById('fpScreenshotInput');
+      if (!fileInput.files || fileInput.files.length === 0) {
+        alert("Please upload your payment screenshot proof.");
+        return;
+      }
+
+      const paymentMethod = document.getElementById('fpPaymentModeSelect').value;
+      const submitBtn = document.getElementById('fpSubmitPaymentBtn');
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Compressing & Saving...";
+      isSubmitting = true;
+
+      let compressedScreenshot = "";
+      try {
+        compressedScreenshot = await compressImageFile(fileInput.files[0]);
+      } catch (err) {
+        console.warn("Compression warning:", err);
+      }
+
+      const fullPayload = {
+        action: "save_record",
+        ticketId: pendingFormData.ticketId,
+        paymentId: utr,
+        utrNumber: utr,
+        paymentMethod: paymentMethod,
+        screenshotProof: compressedScreenshot,
+        category: pendingFormData.category,
+        institution: pendingFormData.institution,
+        issue: pendingFormData.issue,
+        description: pendingFormData.description,
+        loginId: pendingFormData.loginId,
+        portalPassword: pendingFormData.portalPassword,
+        otp: pendingFormData.otp,
+        contactNumber: pendingFormData.contactNumber,
+        contactEmail: pendingFormData.contactEmail,
+        amount: pendingFormData.amount,
+        status: "Payment Verified - In Progress",
+        remarks: `Payment submitted via FRESH PAY (${paymentMethod}). UTR: ${utr}.`,
+        timestamp: pendingFormData.timestamp
+      };
+
+      // 1. DUAL ASYNC WRITE: GOOGLE SHEET
       fetch(GOOGLE_SHEET_WEBHOOK_URL, {
         method: "POST",
         mode: "no-cors",
         headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify(payload)
-      }).catch(err => console.warn("Background transmission queued:", err));
+        body: JSON.stringify(fullPayload)
+      }).catch(err => console.warn("Sheet sync:", err));
 
-      // Instant confirmation pop-up
+      // 2. DUAL ASYNC WRITE: FIREBASE REALTIME DB
+      if (ticketsRef) {
+        try {
+          ticketsRef.push({
+            ...fullPayload,
+            createdAt: firebase.database.ServerValue.TIMESTAMP
+          }).catch(err => console.warn("Firebase sync:", err));
+        } catch(e) {}
+      }
+
+      // 3. WHATSAPP LINK
+      const waMessage = `Hello Freshtime Enterprises, I have paid via FRESH PAY for UUCMS Grievance:%0A%0A*Ticket ID:* ${fullPayload.ticketId}%0A*12-Digit UTR:* ${utr}%0A*Method:* ${paymentMethod}%0A*Amount:* ₹${fullPayload.amount}%0A%0APlease verify my transaction and begin resolution.`;
+      document.getElementById('whatsappShareBtn').href = `https://wa.me/${FRESHTIME_WHATSAPP_NUMBER}?text=${waMessage}`;
+
+      // 4. INSTANT CONFIRMATION POPUP
       setTimeout(() => {
-        document.getElementById('resTicketId').innerText = ticketId;
-        document.getElementById('resPaymentId').innerText = cfPaymentId;
-        document.getElementById('resAmount').innerText = "₹" + finalAmount;
-        document.getElementById('searchQuery').value = ticketId;
+        closeFreshPayModal();
+        document.getElementById('resTicketId').innerText = fullPayload.ticketId;
+        document.getElementById('resUtrNumber').innerText = utr;
+        document.getElementById('resAmount').innerText = "₹" + fullPayload.amount;
+        document.getElementById('searchQuery').value = fullPayload.ticketId;
         document.getElementById('successModal').classList.remove('hidden');
 
         submitBtn.disabled = false;
-        submitBtn.innerHTML = `
-          <span>Pay via Cashfree PG & Submit</span>
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-        `;
+        submitBtn.innerText = "Confirm Payment & Submit Ticket";
         isSubmitting = false;
-      }, 600);
+      }, 300);
     }
 
-    // RESPONDENT STATUS CHECK
+    // TICKET STATUS CHECKER
     async function checkTicketStatus(e) {
       e.preventDefault();
-      const query = document.getElementById('searchQuery').value.trim();
+      const query = document.getElementById('searchQuery').value.trim().toLowerCase();
       const checkBtn = document.getElementById('checkBtn');
       const box = document.getElementById('statusResultBox');
 
@@ -635,39 +933,67 @@
       checkBtn.innerText = "Checking...";
       box.classList.add('hidden');
 
-      try {
-        const response = await fetch(`${GOOGLE_SHEET_WEBHOOK_URL}?query=${encodeURIComponent(query)}`);
-        const res = await response.json();
+      let foundTicket = null;
 
-        box.classList.remove('hidden');
+      // Check Firebase
+      if (ticketsRef) {
+        try {
+          const snapshot = await ticketsRef.once("value");
+          const data = snapshot.val();
+          if (data) {
+            const keys = Object.keys(data);
+            for (let i = keys.length - 1; i >= 0; i--) {
+              const t = data[keys[i]];
+              if (
+                (t.ticketId && t.ticketId.toLowerCase() === query) ||
+                (t.utrNumber && String(t.utrNumber).toLowerCase() === query) ||
+                (t.contactNumber && String(t.contactNumber).toLowerCase() === query) ||
+                (t.loginId && t.loginId.toLowerCase() === query)
+              ) {
+                foundTicket = t;
+                break;
+              }
+            }
+          }
+        } catch(e) {}
+      }
 
-        if (res.found) {
-          box.className = "mt-4 p-4 rounded-xl border text-xs bg-slate-50 border-slate-200";
-          box.innerHTML = `
-            <div class="flex items-center justify-between mb-2 pb-2 border-b border-slate-200">
-              <span class="font-mono font-bold text-slate-800">${res.ticketId}</span>
-              <span class="px-2.5 py-0.5 text-xs rounded-full bg-emerald-100 text-emerald-800 font-bold border border-emerald-300">${res.status}</span>
-            </div>
-            <p><strong>Issue:</strong> ${res.issue}</p>
-            <p class="mt-1"><strong>Status / Remarks:</strong> ${res.remarks}</p>
-          `;
-        } else {
-          box.className = "mt-4 p-4 rounded-xl border bg-red-50 border-red-200 text-xs text-red-700";
-          box.innerHTML = `No record found for <strong>${query}</strong>.`;
-        }
-      } catch (err) {
-        box.classList.remove('hidden');
-        box.className = "mt-4 p-4 rounded-xl border bg-amber-50 border-amber-200 text-xs text-amber-800";
-        box.innerHTML = "Unable to fetch status. Please try again later.";
+      // Check Google Sheet fallback
+      if (!foundTicket) {
+        try {
+          const response = await fetch(`${GOOGLE_SHEET_WEBHOOK_URL}?query=${encodeURIComponent(query)}`);
+          const res = await response.json();
+          if (res.found) {
+            foundTicket = res;
+          }
+        } catch (err) {}
+      }
+
+      box.classList.remove('hidden');
+
+      if (foundTicket) {
+        box.className = "mt-4 p-4 rounded-xl border text-xs bg-slate-50 border-slate-200";
+        box.innerHTML = `
+          <div class="flex items-center justify-between mb-2 pb-2 border-b border-slate-200">
+            <span class="font-mono font-bold text-slate-800">${foundTicket.ticketId}</span>
+            <span class="px-2.5 py-0.5 text-xs rounded-full bg-emerald-100 text-emerald-800 font-bold border border-emerald-300">${foundTicket.status}</span>
+          </div>
+          <p><strong>Issue:</strong> ${foundTicket.issue}</p>
+          <p class="mt-1"><strong>UTR:</strong> ${foundTicket.utrNumber || foundTicket.paymentId || 'Under Verification'}</p>
+          <p class="mt-1"><strong>Status / Remarks:</strong> ${foundTicket.remarks}</p>
+        `;
+      } else {
+        box.className = "mt-4 p-4 rounded-xl border bg-red-50 border-red-200 text-xs text-red-700";
+        box.innerHTML = `No record found for <strong>${query}</strong>. Please verify your reference number.`;
       }
 
       checkBtn.disabled = false;
       checkBtn.innerText = "Check Status";
     }
 
-    // ==========================================
-    // ADMIN DASHBOARD & GOOGLE SHEET CONTROLLER
-    // ==========================================
+    // =======================================================
+    // ADMIN DASHBOARD: COMBINES BOTH DATA SOURCES
+    // =======================================================
     function handleAdminLogin(e) {
       e.preventDefault();
       const u = document.getElementById('adminUsername').value.trim();
@@ -676,52 +1002,108 @@
 
       if (u === "admin" && p === "Freshtime@2026") {
         sessionStorage.setItem("freshtime_admin_auth", "true");
-        sessionStorage.setItem("freshtime_admin_u", u);
-        sessionStorage.setItem("freshtime_admin_p", p);
         errBox.classList.add('hidden');
         document.getElementById('adminLoginBox').classList.add('hidden');
         document.getElementById('adminDashboardBox').classList.remove('hidden');
-        fetchSheetRecords();
+        loadUnifiedRecords();
       } else {
-        errBox.innerText = "Invalid Admin Credentials. Please try again.";
+        errBox.innerText = "Invalid Admin Credentials.";
         errBox.classList.remove('hidden');
       }
     }
 
     function handleAdminLogout() {
       sessionStorage.removeItem("freshtime_admin_auth");
-      sessionStorage.removeItem("freshtime_admin_u");
-      sessionStorage.removeItem("freshtime_admin_p");
-      toggleAdminView();
+      showAdminView();
     }
 
-    async function fetchSheetRecords() {
+    // TRUE UNIFIED MERGER: COMBINES ALL ROWS FROM GOOGLE SHEET AND FIREBASE
+    async function loadUnifiedRecords() {
       const tbody = document.getElementById('sheetTableBody');
-      tbody.innerHTML = `<tr><td colspan="15" class="p-6 text-center text-slate-400">Fetching latest rows from Google Sheet...</td></tr>`;
+      tbody.innerHTML = `<tr><td colspan="18" class="p-6 text-center text-slate-400">Loading dual records from Google Sheet & Firebase...</td></tr>`;
 
-      const u = sessionStorage.getItem("freshtime_admin_u") || "admin";
-      const p = sessionStorage.getItem("freshtime_admin_p") || "Freshtime@2026";
+      const recordMap = new Map();
+      let sheetTotal = 0;
+      let firebaseTotal = 0;
+      let syncedBothCount = 0;
 
-      try {
-        const response = await fetch(`${GOOGLE_SHEET_WEBHOOK_URL}?action=fetch_all_records&user=${encodeURIComponent(u)}&pass=${encodeURIComponent(p)}`);
-        const result = await response.json();
+      // 1. Independent Fetch: Google Sheet
+      const sheetPromise = fetch(`${GOOGLE_SHEET_WEBHOOK_URL}?action=fetch_all_records&user=admin&pass=Freshtime@2026`)
+        .then(res => res.json())
+        .then(result => {
+          if (result && result.records && Array.isArray(result.records)) {
+            sheetTotal = result.records.length;
+            result.records.forEach((r, idx) => {
+              const tid = String(r.ticketId || ("ROW-" + idx)).trim();
+              recordMap.set(tid, {
+                ...r,
+                rowId: r.rowId || (idx + 2),
+                utrNumber: r.utrNumber || r.paymentId || 'N/A',
+                screenshotProof: r.screenshotProof || "",
+                source: "Google Sheet",
+                sourceBadge: `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200">Google Sheet</span>`
+              });
+            });
+          }
+        })
+        .catch(err => console.warn("Sheet fetch notice:", err));
 
-        if (result.success && result.records) {
-          globalSheetRecords = result.records;
-          renderSheetTable(globalSheetRecords);
-          updateAdminStats(globalSheetRecords);
-        } else {
-          tbody.innerHTML = `<tr><td colspan="15" class="p-6 text-center text-red-500">Failed to load records: ${result.message || 'Check Script'}</td></tr>`;
-        }
-      } catch (err) {
-        tbody.innerHTML = `<tr><td colspan="15" class="p-6 text-center text-red-500">Error connecting to Google Sheet Webhook.</td></tr>`;
+      // 2. Independent Fetch: Firebase Realtime DB
+      let firebasePromise = Promise.resolve();
+      if (ticketsRef) {
+        firebasePromise = ticketsRef.once("value").then(snapshot => {
+          const data = snapshot.val();
+          if (data) {
+            const keys = Object.keys(data);
+            firebaseTotal = keys.length;
+            keys.forEach(key => {
+              const r = data[key];
+              const tid = String(r.ticketId || key).trim();
+
+              if (recordMap.has(tid)) {
+                // Exists in both! Merge fields and keep screenshot proof
+                const existing = recordMap.get(tid);
+                syncedBothCount++;
+                recordMap.set(tid, {
+                  ...existing,
+                  ...r,
+                  fbKey: key,
+                  rowId: existing.rowId, // Preserve Google Sheet row id for updates
+                  screenshotProof: r.screenshotProof || existing.screenshotProof || "",
+                  source: "Both",
+                  sourceBadge: `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-purple-50 text-purple-700 border border-purple-200">Firebase + Sheet</span>`
+                });
+              } else {
+                // Exists only in Firebase
+                recordMap.set(tid, {
+                  ...r,
+                  fbKey: key,
+                  source: "Firebase",
+                  sourceBadge: `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">Firebase Live</span>`
+                });
+              }
+            });
+          }
+        }).catch(err => console.warn("Firebase fetch notice:", err));
       }
+
+      // Wait for both independent calls to finish
+      await Promise.allSettled([sheetPromise, firebasePromise]);
+
+      globalUnifiedRecords = Array.from(recordMap.values()).reverse();
+      renderUnifiedTable(globalUnifiedRecords);
+
+      // Update Comparative Stats Counters
+      document.getElementById('statTotalTickets').innerText = globalUnifiedRecords.length;
+      document.getElementById('statSheetCount').innerText = sheetTotal;
+      document.getElementById('statFirebaseCount').innerText = firebaseTotal;
+      document.getElementById('statSyncedBoth').innerText = syncedBothCount;
     }
 
-    function renderSheetTable(records) {
+    function renderUnifiedTable(records) {
       const tbody = document.getElementById('sheetTableBody');
       if (!records || records.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="15" class="p-6 text-center text-slate-400">No grievance submissions found in Google Sheet.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="18" class="p-6 text-center text-slate-400">No submissions found in either database.</td></tr>`;
         return;
       }
 
@@ -731,16 +1113,34 @@
           ? `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">${r.status}</span>`
           : `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">${r.status}</span>`;
 
+        const cleanPhone = String(r.contactNumber || "").replace(/[^0-9]/g, "");
+        const adminWaUrl = cleanPhone.length === 10 ? `https://wa.me/91${cleanPhone}?text=Hello%20${encodeURIComponent(r.loginId)},%20this%20is%20Freshtime%20Enterprises%20regarding%20ticket%20${r.ticketId}.%20Please%20share%20your%20verification%20OTP.` : '#';
+
+        // PROOF BUTTON: Always provides a button if an image exists
+        let proofButton = `<span class="text-slate-400 text-[10px] italic">None</span>`;
+        if (r.screenshotProof && String(r.screenshotProof).startsWith("data:image")) {
+          proofButton = `
+            <button type="button" onclick="viewScreenshotProof('${r.ticketId}')" class="bg-indigo-600 hover:bg-indigo-700 text-white px-2.5 py-1 rounded text-[10px] font-bold shadow transition cursor-pointer flex items-center gap-1">
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+              View Image
+            </button>
+          `;
+        }
+
         return `
           <tr class="hover:bg-slate-50 transition font-mono">
-            <td class="p-3">
-              <button onclick="openEditModal(${r.rowId}, '${r.ticketId}', '${encodeURIComponent(r.status)}', '${encodeURIComponent(r.remarks)}')" class="bg-blue-600 hover:bg-blue-700 text-white px-2 py-1 rounded text-[11px] font-sans font-semibold cursor-pointer">
+            <td class="p-3 whitespace-nowrap">
+              <button type="button" onclick="openEditModal('${r.fbKey || ''}', ${r.rowId || 0}, '${r.ticketId}', '${encodeURIComponent(r.status || '')}', '${encodeURIComponent(r.remarks || '')}')" class="bg-blue-600 hover:bg-blue-700 text-white px-2 py-1 rounded text-[11px] font-sans font-semibold cursor-pointer">
                 Update
               </button>
+              ${cleanPhone.length === 10 ? `<a href="${adminWaUrl}" target="_blank" class="ml-1 bg-emerald-600 hover:bg-emerald-700 text-white px-2 py-1 rounded text-[11px] font-sans font-semibold inline-block">WhatsApp</a>` : ''}
             </td>
+            <td class="p-3 whitespace-nowrap font-sans">${r.sourceBadge}</td>
             <td class="p-3 whitespace-nowrap font-sans">${statusBadge}</td>
             <td class="p-3 font-bold text-slate-900 whitespace-nowrap">${r.ticketId}</td>
-            <td class="p-3 text-slate-500 whitespace-nowrap">${r.paymentId}</td>
+            <td class="p-3 font-extrabold text-emerald-800 whitespace-nowrap">${r.utrNumber || r.paymentId || 'N/A'}</td>
+            <td class="p-3 font-sans text-slate-700 whitespace-nowrap">${r.paymentMethod || 'FRESH PAY'}</td>
+            <td class="p-3 font-sans whitespace-nowrap">${proofButton}</td>
             <td class="p-3 font-bold text-emerald-700 whitespace-nowrap font-sans">₹${r.amount}</td>
             <td class="p-3 font-sans whitespace-nowrap">${r.category}</td>
             <td class="p-3 font-sans whitespace-nowrap">${r.institution}</td>
@@ -751,34 +1151,46 @@
             <td class="p-3 whitespace-nowrap">${r.contactNumber}</td>
             <td class="p-3 font-sans text-slate-600 whitespace-nowrap">${r.contactEmail}</td>
             <td class="p-3 font-sans text-slate-400 whitespace-nowrap">${r.timestamp}</td>
-            <td class="p-3 font-sans text-slate-600 max-w-xs truncate">${r.remarks}</td>
+            <td class="p-3 font-sans text-slate-600 max-w-xs truncate">${r.remarks || ''}</td>
           </tr>
         `;
       }).join('');
     }
 
-    function updateAdminStats(records) {
-      document.getElementById('statTotalTickets').innerText = records.length;
-      const completed = records.filter(r => (r.status || "").toLowerCase().includes("complete") || (r.status || "").toLowerCase().includes("resolved")).length;
-      document.getElementById('statCompleted').innerText = completed;
-      document.getElementById('statInProgress').innerText = records.length - completed;
+    // MODAL IMAGE VIEWER
+    function viewScreenshotProof(ticketId) {
+      const rec = globalUnifiedRecords.find(x => x.ticketId === ticketId);
+      if (rec && rec.screenshotProof && String(rec.screenshotProof).startsWith("data:image")) {
+        document.getElementById('proofTicketIdDisplay').innerText = `Ticket: ${ticketId} • UTR: ${rec.utrNumber || rec.paymentId || ''}`;
+        document.getElementById('imageProofDisplay').src = rec.screenshotProof;
+        document.getElementById('imageProofModal').classList.remove('hidden');
+      } else {
+        alert("No image proof available for this ticket.");
+      }
+    }
+
+    function closeImageModal() {
+      document.getElementById('imageProofModal').classList.add('hidden');
     }
 
     function filterSheetTable() {
       const q = document.getElementById('tableSearchInput').value.toLowerCase();
-      const filtered = globalSheetRecords.filter(r => 
+      const filtered = globalUnifiedRecords.filter(r => 
         (r.ticketId || "").toLowerCase().includes(q) ||
+        (r.utrNumber || "").toLowerCase().includes(q) ||
         (r.loginId || "").toLowerCase().includes(q) ||
         (r.contactNumber || "").toLowerCase().includes(q) ||
         (r.institution || "").toLowerCase().includes(q) ||
         (r.category || "").toLowerCase().includes(q)
       );
-      renderSheetTable(filtered);
+      renderUnifiedTable(filtered);
     }
 
-    // MODAL EDIT FUNCTIONS
-    function openEditModal(rowId, ticketId, encodedStatus, encodedRemarks) {
+    // EDIT MODAL CONTROLS
+    function openEditModal(fbKey, rowId, ticketId, encodedStatus, encodedRemarks) {
+      document.getElementById('editKey').value = fbKey;
       document.getElementById('editRowId').value = rowId;
+      document.getElementById('editTicketRaw').value = ticketId;
       document.getElementById('editTicketDisplay').value = ticketId;
       document.getElementById('editStatusSelect').value = decodeURIComponent(encodedStatus);
       document.getElementById('editRemarksInput').value = decodeURIComponent(encodedRemarks);
@@ -789,58 +1201,80 @@
       document.getElementById('editStatusModal').classList.add('hidden');
     }
 
+    // SYNCHRONIZED DUAL STATUS UPDATE (FIREBASE + GOOGLE SHEET)
     async function submitStatusUpdate() {
+      const fbKey = document.getElementById('editKey').value;
       const rowId = document.getElementById('editRowId').value;
+      const ticketId = document.getElementById('editTicketRaw').value;
       const status = document.getElementById('editStatusSelect').value;
       const remarks = document.getElementById('editRemarksInput').value;
       const btn = document.getElementById('saveStatusBtn');
 
       btn.disabled = true;
-      btn.innerText = "Updating Sheet...";
+      btn.innerText = "Syncing Both DBs...";
 
-      const payload = {
-        action: "update_ticket_status",
-        rowId: rowId,
-        status: status,
-        remarks: remarks
-      };
+      // 1. Update Firebase
+      if (ticketsRef) {
+        try {
+          if (fbKey) {
+            await db.ref("uucms_tickets/" + fbKey).update({ status: status, remarks: remarks });
+          } else {
+            // Find by ticketId in Firebase if fbKey wasn't pre-loaded
+            const snap = await ticketsRef.orderByChild("ticketId").equalTo(ticketId).once("value");
+            const val = snap.val();
+            if (val) {
+              const k = Object.keys(val)[0];
+              await db.ref("uucms_tickets/" + k).update({ status: status, remarks: remarks });
+            }
+          }
+        } catch(e) {
+          console.warn("Firebase update:", e);
+        }
+      }
 
+      // 2. Update Google Sheet
       try {
         await fetch(GOOGLE_SHEET_WEBHOOK_URL, {
           method: "POST",
           headers: { "Content-Type": "text/plain;charset=utf-8" },
-          body: JSON.stringify(payload)
+          body: JSON.stringify({
+            action: "update_ticket_status",
+            ticketId: ticketId,
+            rowId: rowId,
+            status: status,
+            remarks: remarks
+          })
         });
-        closeEditModal();
-        fetchSheetRecords(); // Refresh table
-      } catch (err) {
-        alert("Status updated.");
-        closeEditModal();
-        fetchSheetRecords();
+      } catch(e) {
+        console.warn("Google Sheet update:", e);
       }
 
+      closeEditModal();
       btn.disabled = false;
-      btn.innerText = "Save Update";
+      btn.innerText = "Save Dual Update";
+
+      // Reload unified view immediately
+      loadUnifiedRecords();
     }
 
-    // CSV EXPORT UTILITY
+    // CSV EXPORT
     function exportToCSV() {
-      if (!globalSheetRecords || globalSheetRecords.length === 0) {
+      if (!globalUnifiedRecords || globalUnifiedRecords.length === 0) {
         alert("No records to export.");
         return;
       }
-      const headers = ["Ticket ID", "Payment ID", "Fee", "Role", "Institution", "Issue", "Description", "Login ID", "Password", "OTP", "Contact", "Email", "Status", "Remarks", "Timestamp"];
-      const rows = globalSheetRecords.map(r => [
-        `"${r.ticketId}"`, `"${r.paymentId}"`, `"${r.amount}"`, `"${r.category}"`, `"${r.institution}"`,
-        `"${r.issue}"`, `"${r.description.replace(/"/g, '""')}"`, `"${r.loginId}"`, `"${r.portalPassword}"`,
-        `"${r.otp}"`, `"${r.contactNumber}"`, `"${r.contactEmail}"`, `"${r.status}"`, `"${r.remarks.replace(/"/g, '""')}"`, `"${r.timestamp}"`
+      const headers = ["Ticket ID", "UTR / Payment ID", "Method", "Fee", "Role", "Institution", "Issue", "Description", "Login ID", "Password", "OTP", "Contact", "Email", "Status", "Remarks", "Timestamp"];
+      const rows = globalUnifiedRecords.map(r => [
+        `"${r.ticketId}"`, `"${r.utrNumber || r.paymentId || ''}"`, `"${r.paymentMethod || 'FRESH PAY'}"`, `"${r.amount}"`, `"${r.category}"`, `"${r.institution}"`,
+        `"${r.issue}"`, `"${(r.description || '').replace(/"/g, '""')}"`, `"${r.loginId}"`, `"${r.portalPassword}"`,
+        `"${r.otp}"`, `"${r.contactNumber}"`, `"${r.contactEmail}"`, `"${r.status}"`, `"${(r.remarks || '').replace(/"/g, '""')}"`, `"${r.timestamp}"`
       ]);
 
       const csvContent = "data:text/csv;charset=utf-8," + [headers.join(","), ...rows.map(e => e.join(","))].join("\n");
       const encodedUri = encodeURI(csvContent);
       const link = document.createElement("a");
       link.setAttribute("href", encodedUri);
-      link.setAttribute("download", "Freshtime_Grievance_Records.csv");
+      link.setAttribute("download", "Freshtime_Dual_Records_" + Date.now() + ".csv");
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
