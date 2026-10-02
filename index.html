@@ -278,6 +278,12 @@
           <span>Proceed to Pay via FRESH PAY</span>
         </button>
       </form>
+      <div class="pt-4 border-t border-slate-200 text-center">
+        <button type="button" onclick="showLoanManagerView()" class="w-full bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 font-semibold py-2.5 rounded-lg text-xs shadow-sm transition flex items-center justify-center gap-2 cursor-pointer">
+          <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>Personal Loan & EMI Tracker (Secure Login)</span>
+        </button>
+      </div>
     </div>
   </div>
 
@@ -453,6 +459,7 @@
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
             Refresh Dual DB
           </button>
+          <button type="button" onclick="showLoanManagerView()" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold px-3 py-2 rounded-lg shadow transition flex items-center gap-1 cursor-pointer"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Loan & EMI Tracker</button>
           <button type="button" onclick="exportToCSV()" class="bg-slate-700 hover:bg-slate-800 text-white text-xs font-semibold px-3 py-2 rounded-lg shadow transition flex items-center gap-1 cursor-pointer">
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
             Export CSV
@@ -641,11 +648,301 @@
   </div>
 
   <!-- FLOATING WHATSAPP BUTTON -->
-  <a href="https://wa.me/919876543210?text=Hello%20Freshtime%20Enterprises,%20I%20need%20assistance%20with%20my%20UUCMS%20Portal." target="_blank" class="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-600 text-white p-3.5 rounded-full shadow-2xl transition hover:scale-110 flex items-center justify-center cursor-pointer">
+  <a href="https://wa.me/919380255828?text=Hello%20Freshtime%20Enterprises,%20I%20need%20assistance%20with%20my%20UUCMS%20Portal." target="_blank" class="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-600 text-white p-3.5 rounded-full shadow-2xl transition hover:scale-110 flex items-center justify-center cursor-pointer">
     <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24">
       <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
     </svg>
   </a>
+
+  
+  <!-- ================= VIEW 4: PERSONAL LOAN & EMI MANAGER ================= -->
+  <div id="loanManagerPortalView" class="hidden flex-grow max-w-7xl mx-auto w-full px-4 py-8 space-y-6">
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-lg shadow-md">
+          ₹
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" id="loanFbSyncDot"></span>
+            <h2 class="text-xl font-bold text-slate-900">Personal Loan & EMI Dashboard</h2>
+          </div>
+          <p class="text-xs text-slate-500">Live Firebase Database: <span class="font-mono text-blue-600">kemparaju-p-default-rtdb</span></p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <span id="loanAuthStatusBadge" class="text-xs px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 font-bold">Status: Locked</span>
+        <button type="button" id="loanAuthToggleBtn" onclick="handleLoanAuthToggle()" class="bg-blue-600 hover:bg-blue-700 text-white px-3.5 py-1.5 rounded-lg text-xs font-semibold shadow cursor-pointer transition">
+          Login
+        </button>
+        <button type="button" onclick="showAdminView()" class="bg-slate-200 hover:bg-slate-300 text-slate-800 px-3.5 py-1.5 rounded-lg text-xs font-semibold cursor-pointer transition">
+          &larr; Back to Admin Portal
+        </button>
+      </div>
+    </div>
+
+    <!-- Loan Entry Confirmation Banner -->
+    <div id="loanAlertBanner" class="hidden bg-emerald-50 border border-emerald-300 text-emerald-800 px-4 py-3 rounded-xl text-xs font-semibold"></div>
+
+    <!-- 1. LOAN DATA ENTRY FORM (Always Accessible) -->
+    <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+      <div>
+        <h3 class="text-base font-bold text-slate-900">Add New Loan / EMI Obligation</h3>
+        <p class="text-xs text-slate-500">Enter your loan details below. Entries are instantly stored in Firebase Realtime Database.</p>
+      </div>
+
+      <form id="loanEntryForm" onsubmit="handleLoanFormSubmit(event)" class="space-y-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Lender / Loan Name *</label>
+            <input type="text" id="loanNameInput" required placeholder="e.g. HDFC Personal Loan / Friend" class="w-full border border-slate-300 rounded-lg p-2.5 text-xs bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Category</label>
+            <select id="loanCategoryInput" class="w-full border border-slate-300 rounded-lg p-2.5 text-xs bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+              <option value="Personal Loan">Personal Loan</option>
+              <option value="Friend / Family">Friend / Family</option>
+              <option value="Credit Card">Credit Card Bill</option>
+              <option value="Vehicle Loan">Vehicle Loan</option>
+              <option value="Home Loan">Home Loan</option>
+              <option value="Education Loan">Education Loan</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Payment Schedule Type *</label>
+            <select id="loanTypeInput" onchange="handleLoanTypeChange()" class="w-full border border-slate-300 rounded-lg p-2.5 text-xs bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+              <option value="EMI">Monthly EMI</option>
+              <option value="ONETIME">One-Time Bullet Payment</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Installment Amount (₹) *</label>
+            <input type="number" id="loanAmountInput" required min="1" placeholder="e.g. 5000" class="w-full border border-slate-300 rounded-lg p-2.5 text-xs bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+          </div>
+
+          <!-- EMI fields -->
+          <div id="loanEmiDayWrap">
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Due Day of Month (1-31) *</label>
+            <input type="number" id="loanDueDayInput" min="1" max="31" placeholder="e.g. 5 for 5th of each month" class="w-full border border-slate-300 rounded-lg p-2.5 text-xs bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+          </div>
+
+          <div id="loanEmiStartWrap">
+            <label class="block text-xs font-semibold text-slate-700 mb-1">EMI Starting Month *</label>
+            <input type="month" id="loanStartMonthInput" onchange="autoCalculateLoanEndDate()" class="w-full border border-slate-300 rounded-lg p-2.5 text-xs bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+          </div>
+
+          <div id="loanEmiTenureWrap">
+            <label class="block text-xs font-semibold text-slate-700 mb-1">No. of Months (Tenure) *</label>
+            <input type="number" id="loanTenureInput" min="1" oninput="autoCalculateLoanEndDate()" placeholder="e.g. 12, 24, 36" class="w-full border border-slate-300 rounded-lg p-2.5 text-xs bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+          </div>
+
+          <div id="loanEmiEndWrap">
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Auto Calculated End Month</label>
+            <input type="month" id="loanEndMonthInput" readonly class="w-full border border-slate-300 rounded-lg p-2.5 text-xs bg-slate-100 font-bold text-slate-600" />
+          </div>
+
+          <!-- One-Time field -->
+          <div id="loanOneTimeWrap" class="hidden">
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Full Payment Due Date *</label>
+            <input type="date" id="loanOneTimeDueDateInput" class="w-full border border-slate-300 rounded-lg p-2.5 text-xs bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+          </div>
+
+          <div class="sm:col-span-2 md:col-span-4">
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Notes / Account Details (Optional)</label>
+            <input type="text" id="loanNotesInput" placeholder="e.g. Auto-debit from salary account, reference contact" class="w-full border border-slate-300 rounded-lg p-2.5 text-xs bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+          </div>
+        </div>
+
+        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl text-xs shadow-md transition cursor-pointer">
+          + Save Loan to Dashboard & Firebase
+        </button>
+      </form>
+    </div>
+
+    <!-- 2. LOCKED DASHBOARD VIEW -->
+    <div id="loanLockedView" class="bg-white rounded-2xl border border-slate-200 p-12 text-center shadow-sm space-y-3">
+      <div class="w-14 h-14 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center mx-auto text-2xl font-bold">
+        🔒
+      </div>
+      <h3 class="text-lg font-bold text-slate-900">Loan Analytics & Monthly Dues are Protected</h3>
+      <p class="text-xs text-slate-500 max-w-md mx-auto">
+        Please sign in with your authorized credentials to view monthly dues, balance amounts, and mark payments.
+      </p>
+      <button type="button" onclick="openLoanLoginModal()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-2.5 rounded-xl text-xs shadow transition cursor-pointer">
+        Enter User ID & Password
+      </button>
+    </div>
+
+    <!-- 3. UNLOCKED DASHBOARD VIEW -->
+    <div id="loanUnlockedView" class="hidden space-y-6">
+      
+      <!-- Top Month Filter & Backup -->
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-4 rounded-xl border border-slate-200">
+        <div>
+          <h3 class="text-sm font-bold text-slate-900">Dashboard Month: <span id="loanMonthLabel" class="text-blue-700 font-extrabold"></span></h3>
+          <p class="text-[11px] text-slate-500">Filter specific month to view dues, paid status, and remaining balances</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <label class="text-xs font-semibold text-slate-700">Filter Month:</label>
+          <input type="month" id="loanFilterMonthInput" onchange="renderLoanDashboard()" class="border border-slate-300 rounded-lg p-1.5 text-xs bg-slate-50 font-semibold" />
+          <button type="button" onclick="exportLoanDataJSON()" class="border border-slate-300 hover:bg-slate-50 text-slate-700 px-3 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer">
+            Backup JSON
+          </button>
+        </div>
+      </div>
+
+      <!-- KPI Cards -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+          <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">Due in Month</span>
+          <div id="loanKpiMonthDue" class="text-xl sm:text-2xl font-black text-blue-700 mt-1">₹0</div>
+          <span class="text-[10px] text-slate-400">Total active dues</span>
+        </div>
+
+        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+          <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">Paid This Month</span>
+          <div id="loanKpiMonthPaid" class="text-xl sm:text-2xl font-black text-emerald-600 mt-1">₹0</div>
+          <span class="text-[10px] text-slate-400">Payments cleared</span>
+        </div>
+
+        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+          <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">Balance Remaining</span>
+          <div id="loanKpiMonthRemaining" class="text-xl sm:text-2xl font-black text-rose-600 mt-1">₹0</div>
+          <span class="text-[10px] text-slate-400">Pending obligations</span>
+        </div>
+
+        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+          <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">Active Dues Count</span>
+          <div id="loanKpiActiveCount" class="text-xl sm:text-2xl font-black text-slate-800 mt-1">0</div>
+          <span class="text-[10px] text-slate-400">Loans in view</span>
+        </div>
+      </div>
+
+      <!-- Lump Sum Box -->
+      <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+        <div>
+          <h4 class="text-xs font-bold text-blue-950 uppercase">Direct / Random Monthly Payment for <span id="loanLumpMonthDisplay" class="underline"></span></h4>
+          <p class="text-[11px] text-blue-800">Paid an amount without updating individual loans? Enter it here to adjust total paid and remaining balance.</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <input type="number" id="loanLumpSumInput" placeholder="Amount (₹)" min="1" class="w-32 border border-blue-300 rounded-lg p-2 text-xs bg-white focus:outline-none" />
+          <button type="button" onclick="applyLoanLumpSum()" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-lg text-xs font-semibold shadow cursor-pointer">
+            + Add Payment
+          </button>
+          <button type="button" onclick="resetLoanLumpSum()" class="border border-slate-300 bg-white hover:bg-slate-100 text-slate-700 px-2.5 py-2 rounded-lg text-xs font-semibold cursor-pointer">
+            Reset
+          </button>
+        </div>
+      </div>
+
+      <!-- View Tabs -->
+      <div class="flex items-center gap-2">
+        <button type="button" id="loanTabMonthBtn" onclick="setLoanViewMode('month')" class="px-4 py-2 rounded-lg text-xs font-bold bg-white text-slate-600 border border-slate-200 cursor-pointer">
+          Selected Month Dues
+        </button>
+        <button type="button" id="loanTabAllBtn" onclick="setLoanViewMode('all')" class="px-4 py-2 rounded-lg text-xs font-bold bg-blue-600 text-white shadow cursor-pointer">
+          All Registered Loans (Master List)
+        </button>
+      </div>
+
+      <!-- Loans Schedule Table -->
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="overflow-x-auto max-h-[600px]">
+          <table class="w-full text-left text-xs text-slate-700">
+            <thead class="bg-slate-100 uppercase font-semibold text-slate-600 sticky top-0 border-b border-slate-200">
+              <tr>
+                <th class="p-3">Lender / Loan Name</th>
+                <th class="p-3">Category</th>
+                <th class="p-3">Type</th>
+                <th class="p-3">Payment Due</th>
+                <th class="p-3">EMI Timeline</th>
+                <th class="p-3">Due Amount</th>
+                <th class="p-3">Paid Amount</th>
+                <th class="p-3">Balance Amount</th>
+                <th class="p-3">Status</th>
+                <th class="p-3">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="loanTableBody" class="divide-y divide-slate-200">
+              <tr>
+                <td colspan="10" class="p-6 text-center text-slate-400">Loading loan records...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOAN TRACKER LOGIN MODAL -->
+  <div id="loanLoginModal" class="fixed inset-0 bg-black/60 hidden backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-sm w-full p-6 shadow-2xl space-y-4 border border-slate-200">
+      <div class="flex items-center justify-between border-b pb-2">
+        <div>
+          <h3 class="text-base font-bold text-slate-900">Loan Portal Login</h3>
+          <p class="text-[11px] text-slate-500">Enter User ID & Password</p>
+        </div>
+        <button type="button" onclick="closeLoanLoginModal()" class="text-slate-400 hover:text-slate-600 text-2xl font-bold cursor-pointer">&times;</button>
+      </div>
+
+      <form onsubmit="handleLoanLoginSubmit(event)" class="space-y-3">
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">User ID</label>
+          <input type="text" id="loanAuthUserId" required placeholder="Enter User ID" class="w-full border border-slate-300 rounded-lg p-2.5 text-xs bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Password</label>
+          <input type="password" id="loanAuthPassword" required placeholder="Enter Password" class="w-full border border-slate-300 rounded-lg p-2.5 text-xs bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+        </div>
+
+        <div id="loanAuthErrorMsg" class="hidden text-xs text-rose-600 font-semibold text-center"></div>
+
+        <div class="flex gap-2 pt-2">
+          <button type="button" onclick="closeLoanLoginModal()" class="w-1/2 py-2 border border-slate-300 text-slate-700 rounded-lg text-xs font-semibold cursor-pointer">Cancel</button>
+          <button type="submit" class="w-1/2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-semibold shadow cursor-pointer">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- LOAN INDIVIDUAL PAYMENT MODAL WITH TARGET MONTH SELECTION -->
+  <div id="loanPaymentModal" class="fixed inset-0 bg-black/60 hidden backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl space-y-4 border border-slate-200">
+      <div class="flex items-center justify-between border-b pb-2">
+        <div>
+          <h3 class="text-base font-bold text-slate-900">Update Loan Payment</h3>
+          <p id="loanPaymentModalSubtext" class="text-[11px] text-slate-500"></p>
+        </div>
+        <button type="button" onclick="closeLoanPaymentModal()" class="text-slate-400 hover:text-slate-600 text-2xl font-bold cursor-pointer">&times;</button>
+      </div>
+
+      <form onsubmit="handleLoanPaymentSubmit(event)" class="space-y-3">
+        <input type="hidden" id="modalTargetLoanId" />
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Which Month EMI Are You Paying? *</label>
+          <select id="modalLoanMonthSelect" onchange="onModalLoanMonthChange()" class="w-full border border-slate-300 rounded-lg p-2.5 text-xs bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none"></select>
+          <span class="text-[10px] text-slate-400">Choose the exact EMI installment month to credit</span>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Enter Paid Amount (₹) *</label>
+          <input type="number" id="modalLoanPaidAmountInput" required min="0" step="any" class="w-full border border-slate-300 rounded-lg p-2.5 text-xs bg-slate-50 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+          <span id="modalLoanBalanceNote" class="text-[10px] text-blue-700 font-semibold block mt-1"></span>
+        </div>
+
+        <div class="flex gap-2 pt-2">
+          <button type="button" onclick="closeLoanPaymentModal()" class="w-1/2 py-2 border border-slate-300 text-slate-700 rounded-lg text-xs font-semibold cursor-pointer">Cancel</button>
+          <button type="submit" class="w-1/2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-semibold shadow cursor-pointer">Save & Update</button>
+        </div>
+      </form>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer class="bg-slate-900 text-slate-400 text-xs py-8 border-t border-slate-800">
@@ -665,7 +962,7 @@
   <!-- ================= JAVASCRIPT LOGIC ================= -->
   <script>
     const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbz4yowS5r7KcuCv3rCAqSQr6Wz6E83AJwXQ2VpLG8LEmuH_aGJUSFyymU-893xcBrKR/exec";
-    const FRESHTIME_WHATSAPP_NUMBER = "919876543210"; 
+    const FRESHTIME_WHATSAPP_NUMBER = "919380255828"; 
     const FRESHTIME_UPI_ID = "Q68094857@ybl";
 
     // EXACT SINGAPORE FIREBASE CONFIGURATION
@@ -704,13 +1001,16 @@
     function showReportView() {
       document.getElementById('mainHomepageView').classList.add('hidden');
       document.getElementById('adminPortalView').classList.add('hidden');
+      if(document.getElementById('loanManagerPortalView')) document.getElementById('loanManagerPortalView').classList.add('hidden');
       document.getElementById('reportPortalView').classList.remove('hidden');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function showMainView() {
       document.getElementById('reportPortalView').classList.add('hidden');
+      if(document.getElementById('loanManagerPortalView')) document.getElementById('loanManagerPortalView').classList.add('hidden');
       document.getElementById('adminPortalView').classList.add('hidden');
+      if(document.getElementById('loanManagerPortalView')) document.getElementById('loanManagerPortalView').classList.add('hidden');
       document.getElementById('mainHomepageView').classList.remove('hidden');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -718,6 +1018,7 @@
     function showAdminView() {
       document.getElementById('mainHomepageView').classList.add('hidden');
       document.getElementById('reportPortalView').classList.add('hidden');
+      if(document.getElementById('loanManagerPortalView')) document.getElementById('loanManagerPortalView').classList.add('hidden');
       document.getElementById('adminPortalView').classList.remove('hidden');
 
       if (sessionStorage.getItem("freshtime_admin_auth") === "true") {
@@ -1289,6 +1590,589 @@
       document.getElementById('feeBreakdownText').innerText = "Please select an issue type above to view the applicable fee.";
       isSubmitting = false;
     }
+  
+    // =========================================================================
+    // LOAN & EMI MANAGER WITH FIREBASE REALTIME DB INTEGRATION
+    // Database: https://kemparaju-p-default-rtdb.firebaseio.com/
+    // =========================================================================
+
+    const LOAN_STORAGE_KEY = "freshtime_loan_records_v10";
+    const LOAN_PAYMENT_KEY = "freshtime_loan_payments_v10";
+    const LOAN_LUMPSUM_KEY = "freshtime_loan_lumpsum_v10";
+    const LOAN_PRESET_KEY = "freshtime_loan_preset_aug2026_done";
+
+    // Cryptographic hashes for authorized credentials (Kempa5250 / Shiv5250@)
+    // Never exposed in plaintext
+    const LOAN_AUTH_USER_HASH = "a35f076588107f661316aef8d7a3e960141a5a04d1db837562d36478c7f1c522";
+    const LOAN_AUTH_PASS_HASH = "8aeb4f403c7eb6bab11d3bbfa200ee358a943c89c00ed0d1c37a606b6ddd0153";
+
+    let isLoanAuthenticated = false;
+    let loanViewMode = "all"; // 'all' or 'month'
+    let loanDbRef = null;
+
+    let loanList = JSON.parse(localStorage.getItem(LOAN_STORAGE_KEY)) || [];
+    let loanPaidRecords = JSON.parse(localStorage.getItem(LOAN_PAYMENT_KEY)) || {};
+    let loanLumpSumRecords = JSON.parse(localStorage.getItem(LOAN_LUMPSUM_KEY)) || {};
+
+    // Auto-clear past EMIs up to August 2026 on initial load
+    if (!localStorage.getItem(LOAN_PRESET_KEY)) {
+      loanList.forEach(l => {
+        if (l.type === "EMI" && l.emiStartMonth) {
+          let curr = l.emiStartMonth;
+          while (curr <= "2026-08" && (!l.emiEndDate || curr <= l.emiEndDate)) {
+            loanPaidRecords[`${l.id}_${curr}`] = l.amount;
+            curr = advanceMonth(curr);
+          }
+        }
+      });
+      localStorage.setItem(LOAN_PAYMENT_KEY, JSON.stringify(loanPaidRecords));
+      localStorage.setItem(LOAN_PRESET_KEY, "true");
+    }
+
+    function advanceMonth(monthStr) {
+      if (!monthStr || !monthStr.includes("-")) return "";
+      let [y, m] = monthStr.split("-").map(Number);
+      m++;
+      if (m > 12) {
+        m = 1;
+        y++;
+      }
+      return `${y}-${String(m).padStart(2, '0')}`;
+    }
+
+    async function computeSha256(str) {
+      const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
+      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    // Connect to Firebase Database kemparaju-p-default-rtdb
+    function initLoanFirebase() {
+      try {
+        let loanApp;
+        try {
+          loanApp = firebase.app("loanTrackerApp");
+        } catch(e) {
+          loanApp = firebase.initializeApp({
+            databaseURL: "https://kemparaju-p-default-rtdb.firebaseio.com/"
+          }, "loanTrackerApp");
+        }
+
+        loanDbRef = loanApp.database().ref("loan_tracker");
+        const dot = document.getElementById("loanFbSyncDot");
+        if (dot) dot.classList.add("bg-emerald-500");
+
+        loanDbRef.on("value", (snapshot) => {
+          const val = snapshot.val();
+          if (val) {
+            if (val.loans) {
+              loanList = val.loans;
+              localStorage.setItem(LOAN_STORAGE_KEY, JSON.stringify(loanList));
+            }
+            if (val.paidRecords) {
+              loanPaidRecords = val.paidRecords;
+              localStorage.setItem(LOAN_PAYMENT_KEY, JSON.stringify(loanPaidRecords));
+            }
+            if (val.lumpSumRecords) {
+              loanLumpSumRecords = val.lumpSumRecords;
+              localStorage.setItem(LOAN_LUMPSUM_KEY, JSON.stringify(loanLumpSumRecords));
+            }
+            renderLoanDashboard();
+          }
+        });
+      } catch (err) {
+        console.warn("Loan Firebase notice:", err);
+      }
+    }
+
+    function syncLoanToFirebase() {
+      if (loanDbRef) {
+        loanDbRef.set({
+          loans: loanList,
+          paidRecords: loanPaidRecords,
+          lumpSumRecords: loanLumpSumRecords,
+          lastUpdated: new Date().toISOString()
+        }).catch(e => console.warn("Firebase Loan sync error:", e));
+      }
+    }
+
+    function showLoanManagerView() {
+      document.getElementById('mainHomepageView').classList.add('hidden');
+      document.getElementById('reportPortalView').classList.add('hidden');
+      document.getElementById('adminPortalView').classList.add('hidden');
+      document.getElementById('loanManagerPortalView').classList.remove('hidden');
+
+      // Initialize default months
+      const now = new Date();
+      const currentYM = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
+      if (!document.getElementById('loanFilterMonthInput').value) {
+        document.getElementById('loanFilterMonthInput').value = currentYM;
+      }
+      if (!document.getElementById('loanStartMonthInput').value) {
+        document.getElementById('loanStartMonthInput').value = currentYM;
+      }
+
+      initLoanFirebase();
+
+      if (sessionStorage.getItem("freshtime_loan_auth") === "true") {
+        isLoanAuthenticated = true;
+        document.getElementById('loanAuthStatusBadge').innerText = "Status: Unlocked";
+        document.getElementById('loanAuthStatusBadge').className = "text-xs px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 font-bold";
+        document.getElementById('loanAuthToggleBtn').innerText = "Logout";
+        document.getElementById('loanLockedView').classList.add('hidden');
+        document.getElementById('loanUnlockedView').classList.remove('hidden');
+      } else {
+        isLoanAuthenticated = false;
+        document.getElementById('loanAuthStatusBadge').innerText = "Status: Locked";
+        document.getElementById('loanAuthStatusBadge').className = "text-xs px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 font-bold";
+        document.getElementById('loanAuthToggleBtn').innerText = "Login";
+        document.getElementById('loanLockedView').classList.remove('hidden');
+        document.getElementById('loanUnlockedView').classList.add('hidden');
+      }
+
+      renderLoanDashboard();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function handleLoanAuthToggle() {
+      if (isLoanAuthenticated) {
+        sessionStorage.removeItem("freshtime_loan_auth");
+        isLoanAuthenticated = false;
+        showLoanManagerView();
+      } else {
+        openLoanLoginModal();
+      }
+    }
+
+    function openLoanLoginModal() {
+      document.getElementById('loanAuthUserId').value = "";
+      document.getElementById('loanAuthPassword').value = "";
+      document.getElementById('loanAuthErrorMsg').classList.add('hidden');
+      document.getElementById('loanLoginModal').classList.remove('hidden');
+      document.getElementById('loanAuthUserId').focus();
+    }
+
+    function closeLoanLoginModal() {
+      document.getElementById('loanLoginModal').classList.add('hidden');
+    }
+
+    async function handleLoanLoginSubmit(e) {
+      e.preventDefault();
+      const uid = document.getElementById('loanAuthUserId').value.trim();
+      const pwd = document.getElementById('loanAuthPassword').value;
+
+      const userHash = await computeSha256(uid);
+      const passHash = await computeSha256(pwd);
+
+      if (userHash === LOAN_AUTH_USER_HASH && passHash === LOAN_AUTH_PASS_HASH) {
+        sessionStorage.setItem("freshtime_loan_auth", "true");
+        closeLoanLoginModal();
+        showLoanManagerView();
+      } else {
+        const err = document.getElementById('loanAuthErrorMsg');
+        err.innerText = "Invalid User ID or Password. Please try again.";
+        err.classList.remove('hidden');
+      }
+    }
+
+    function handleLoanTypeChange() {
+      const type = document.getElementById('loanTypeInput').value;
+      const emiDay = document.getElementById('loanEmiDayWrap');
+      const emiStart = document.getElementById('loanEmiStartWrap');
+      const emiTenure = document.getElementById('loanEmiTenureWrap');
+      const emiEnd = document.getElementById('loanEmiEndWrap');
+      const oneTime = document.getElementById('loanOneTimeWrap');
+
+      if (type === "EMI") {
+        emiDay.classList.remove('hidden');
+        emiStart.classList.remove('hidden');
+        emiTenure.classList.remove('hidden');
+        emiEnd.classList.remove('hidden');
+        oneTime.classList.add('hidden');
+        document.getElementById('loanDueDayInput').required = true;
+        document.getElementById('loanStartMonthInput').required = true;
+        document.getElementById('loanTenureInput').required = true;
+        document.getElementById('loanOneTimeDueDateInput').required = false;
+        autoCalculateLoanEndDate();
+      } else {
+        emiDay.classList.add('hidden');
+        emiStart.classList.add('hidden');
+        emiTenure.classList.add('hidden');
+        emiEnd.classList.add('hidden');
+        oneTime.classList.remove('hidden');
+        document.getElementById('loanDueDayInput').required = false;
+        document.getElementById('loanStartMonthInput').required = false;
+        document.getElementById('loanTenureInput').required = false;
+        document.getElementById('loanOneTimeDueDateInput').required = true;
+      }
+    }
+
+    function autoCalculateLoanEndDate() {
+      const startVal = document.getElementById('loanStartMonthInput').value;
+      const tenureVal = parseInt(document.getElementById('loanTenureInput').value);
+
+      if (!startVal || !tenureVal || tenureVal < 1) {
+        document.getElementById('loanEndMonthInput').value = "";
+        return;
+      }
+
+      const [sY, sM] = startVal.split("-").map(Number);
+      const totalMonths = (sY * 12 + (sM - 1)) + (tenureVal - 1);
+      const endYear = Math.floor(totalMonths / 12);
+      const endMonth = (totalMonths % 12) + 1;
+
+      document.getElementById('loanEndMonthInput').value = `${endYear}-${String(endMonth).padStart(2, '0')}`;
+    }
+
+    function setLoanViewMode(mode) {
+      loanViewMode = mode;
+      document.getElementById('loanTabMonthBtn').className = mode === 'month' ? 'px-4 py-2 rounded-lg text-xs font-bold bg-blue-600 text-white shadow cursor-pointer' : 'px-4 py-2 rounded-lg text-xs font-bold bg-white text-slate-600 border border-slate-200 cursor-pointer';
+      document.getElementById('loanTabAllBtn').className = mode === 'all' ? 'px-4 py-2 rounded-lg text-xs font-bold bg-blue-600 text-white shadow cursor-pointer' : 'px-4 py-2 rounded-lg text-xs font-bold bg-white text-slate-600 border border-slate-200 cursor-pointer';
+      renderLoanDashboard();
+    }
+
+    function handleLoanFormSubmit(e) {
+      e.preventDefault();
+
+      const type = document.getElementById('loanTypeInput').value;
+      let startMonth = null;
+      let tenure = null;
+      let endMonth = null;
+
+      if (type === "EMI") {
+        startMonth = document.getElementById('loanStartMonthInput').value;
+        tenure = parseInt(document.getElementById('loanTenureInput').value);
+        endMonth = document.getElementById('loanEndMonthInput').value;
+      }
+
+      const newLoan = {
+        id: "loan_" + Date.now() + "_" + Math.floor(Math.random() * 1000),
+        name: document.getElementById('loanNameInput').value.trim(),
+        category: document.getElementById('loanCategoryInput').value,
+        type: type,
+        amount: parseFloat(document.getElementById('loanAmountInput').value),
+        dueDay: type === "EMI" ? parseInt(document.getElementById('loanDueDayInput').value) : null,
+        emiStartMonth: startMonth,
+        emiTenureMonths: tenure,
+        emiEndDate: endMonth,
+        dueDate: type === "ONETIME" ? document.getElementById('loanOneTimeDueDateInput').value : null,
+        notes: document.getElementById('loanNotesInput').value.trim()
+      };
+
+      if (type === "EMI" && startMonth && startMonth <= "2026-08") {
+        let m = startMonth;
+        while (m <= "2026-08" && (!endMonth || m <= endMonth)) {
+          loanPaidRecords[`${newLoan.id}_${m}`] = newLoan.amount;
+          m = advanceMonth(m);
+        }
+      }
+
+      loanList.push(newLoan);
+      localStorage.setItem(LOAN_STORAGE_KEY, JSON.stringify(loanList));
+      localStorage.setItem(LOAN_PAYMENT_KEY, JSON.stringify(loanPaidRecords));
+      syncLoanToFirebase();
+
+      // Automatically unlock view and show master list
+      sessionStorage.setItem("freshtime_loan_auth", "true");
+      isLoanAuthenticated = true;
+      document.getElementById('loanAuthStatusBadge').innerText = "Status: Unlocked";
+      document.getElementById('loanAuthStatusBadge').className = "text-xs px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 font-bold";
+      document.getElementById('loanAuthToggleBtn').innerText = "Logout";
+      document.getElementById('loanLockedView').classList.add('hidden');
+      document.getElementById('loanUnlockedView').classList.remove('hidden');
+
+      setLoanViewMode('all');
+
+      // Reset form
+      document.getElementById('loanEntryForm').reset();
+      document.getElementById('loanTypeInput').value = "EMI";
+      const now = new Date();
+      document.getElementById('loanStartMonthInput').value = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
+      handleLoanTypeChange();
+
+      // Alert Banner
+      const b = document.getElementById('loanAlertBanner');
+      b.innerText = `Loan "${newLoan.name}" saved successfully to Firebase! Total entries: ${loanList.length}`;
+      b.classList.remove('hidden');
+      setTimeout(() => b.classList.add('hidden'), 5000);
+
+      renderLoanDashboard();
+    }
+
+    function openLoanPaymentModal(loanId, dueAmount, defaultMonth) {
+      const loan = loanList.find(l => l.id === loanId);
+      document.getElementById('modalTargetLoanId').value = loanId;
+      document.getElementById('loanPaymentModalSubtext').innerText = `${loan ? loan.name : 'Loan'} • Installment: ₹${dueAmount.toLocaleString('en-IN')}`;
+
+      const sel = document.getElementById('modalLoanMonthSelect');
+      sel.innerHTML = "";
+      const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+      if (loan && loan.type === "EMI" && loan.emiStartMonth && loan.emiEndDate) {
+        let curr = loan.emiStartMonth;
+        while (curr <= loan.emiEndDate) {
+          const [y, m] = curr.split("-").map(Number);
+          const opt = document.createElement("option");
+          opt.value = curr;
+
+          const recKey = `${loan.id}_${curr}`;
+          const paid = loanPaidRecords[recKey] || 0;
+          let label = `${monthNames[m - 1]} ${y}`;
+
+          if (paid >= loan.amount) {
+            label += ` (Paid ₹${paid.toLocaleString('en-IN')})`;
+          } else if (paid > 0) {
+            label += ` (Partially Paid: ₹${paid.toLocaleString('en-IN')})`;
+          } else {
+            label += ` (Pending Due: ₹${loan.amount.toLocaleString('en-IN')})`;
+          }
+
+          opt.textContent = label;
+          if (curr === defaultMonth) opt.selected = true;
+          sel.appendChild(opt);
+
+          curr = advanceMonth(curr);
+        }
+      } else {
+        const targetM = loan && loan.dueDate ? loan.dueDate.slice(0, 7) : defaultMonth;
+        const [y, m] = targetM.split("-").map(Number);
+        const opt = document.createElement("option");
+        opt.value = targetM;
+        opt.textContent = `${monthNames[m - 1]} ${y} (Due Date: ${loan ? loan.dueDate : ''})`;
+        opt.selected = true;
+        sel.appendChild(opt);
+      }
+
+      onModalLoanMonthChange();
+      document.getElementById('loanPaymentModal').classList.remove('hidden');
+      document.getElementById('modalLoanPaidAmountInput').focus();
+    }
+
+    function onModalLoanMonthChange() {
+      const loanId = document.getElementById('modalTargetLoanId').value;
+      const loan = loanList.find(l => l.id === loanId);
+      const chosenMonth = document.getElementById('modalLoanMonthSelect').value;
+      const recKey = `${loanId}_${chosenMonth}`;
+      const existingPaid = loanPaidRecords[recKey] !== undefined ? loanPaidRecords[recKey] : 0;
+
+      document.getElementById('modalLoanPaidAmountInput').value = existingPaid > 0 ? existingPaid : (loan ? loan.amount : 0);
+      const balance = Math.max(0, (loan ? loan.amount : 0) - existingPaid);
+      document.getElementById('modalLoanBalanceNote').innerText = `Current Status: ₹${existingPaid.toLocaleString('en-IN')} paid, ₹${balance.toLocaleString('en-IN')} remaining balance.`;
+    }
+
+    function closeLoanPaymentModal() {
+      document.getElementById('loanPaymentModal').classList.add('hidden');
+    }
+
+    function handleLoanPaymentSubmit(e) {
+      e.preventDefault();
+      const loanId = document.getElementById('modalTargetLoanId').value;
+      const targetMonth = document.getElementById('modalLoanMonthSelect').value;
+      const paidAmt = parseFloat(document.getElementById('modalLoanPaidAmountInput').value) || 0;
+
+      const key = `${loanId}_${targetMonth}`;
+      loanPaidRecords[key] = paidAmt;
+      localStorage.setItem(LOAN_PAYMENT_KEY, JSON.stringify(loanPaidRecords));
+      syncLoanToFirebase();
+
+      closeLoanPaymentModal();
+      renderLoanDashboard();
+    }
+
+    function markLoanFullPaid(loanId, fullAmount, targetMonth) {
+      const [selYear, selMonth] = targetMonth.split("-").map(Number);
+      const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      const formattedMonth = `${monthNames[selMonth - 1]} ${selYear}`;
+
+      if (confirm(`Mark ₹${fullAmount.toLocaleString('en-IN')} as Full Paid for ${formattedMonth}?`)) {
+        const key = `${loanId}_${targetMonth}`;
+        loanPaidRecords[key] = fullAmount;
+        localStorage.setItem(LOAN_PAYMENT_KEY, JSON.stringify(loanPaidRecords));
+        syncLoanToFirebase();
+        renderLoanDashboard();
+      }
+    }
+
+    function resetLoanPayment(loanId, targetMonth) {
+      const key = `${loanId}_${targetMonth}`;
+      delete loanPaidRecords[key];
+      localStorage.setItem(LOAN_PAYMENT_KEY, JSON.stringify(loanPaidRecords));
+      syncLoanToFirebase();
+      renderLoanDashboard();
+    }
+
+    function applyLoanLumpSum() {
+      const input = document.getElementById('loanLumpSumInput');
+      const val = parseFloat(input.value);
+      if (!val || val <= 0) {
+        alert("Please enter a valid amount.");
+        return;
+      }
+      const selMonth = document.getElementById('loanFilterMonthInput').value;
+      const curr = loanLumpSumRecords[selMonth] || 0;
+      loanLumpSumRecords[selMonth] = curr + val;
+      localStorage.setItem(LOAN_LUMPSUM_KEY, JSON.stringify(loanLumpSumRecords));
+      input.value = "";
+      syncLoanToFirebase();
+      renderLoanDashboard();
+    }
+
+    function resetLoanLumpSum() {
+      const selMonth = document.getElementById('loanFilterMonthInput').value;
+      if (confirm(`Reset direct payments for ${selMonth}?`)) {
+        delete loanLumpSumRecords[selMonth];
+        localStorage.setItem(LOAN_LUMPSUM_KEY, JSON.stringify(loanLumpSumRecords));
+        syncLoanToFirebase();
+        renderLoanDashboard();
+      }
+    }
+
+    function deleteLoanEntry(id) {
+      if (confirm("Are you sure you want to delete this loan entry?")) {
+        loanList = loanList.filter(l => l.id !== id);
+        localStorage.setItem(LOAN_STORAGE_KEY, JSON.stringify(loanList));
+        syncLoanToFirebase();
+        renderLoanDashboard();
+      }
+    }
+
+    function exportLoanDataJSON() {
+      const blob = new Blob([JSON.stringify({ loans: loanList, paidRecords: loanPaidRecords, lumpSumRecords: loanLumpSumRecords }, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `freshtime_loans_${document.getElementById('loanFilterMonthInput').value}.json`;
+      a.click();
+    }
+
+    function getOrdinalSuffix(n) {
+      if (!n) return "";
+      const s = ["th", "st", "nd", "rd"];
+      const v = n % 100;
+      return s[(v - 20) % 10] || s[v] || s[0];
+    }
+
+    function renderLoanDashboard() {
+      const selMonth = document.getElementById('loanFilterMonthInput').value;
+      if (!selMonth) return;
+      const [selYear, selMonthNum] = selMonth.split("-").map(Number);
+      const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      const formattedMonth = `${monthNames[selMonthNum - 1]} ${selYear}`;
+
+      document.getElementById('loanMonthLabel').innerText = formattedMonth;
+      document.getElementById('loanLumpMonthDisplay').innerText = formattedMonth;
+
+      const tbody = document.getElementById('loanTableBody');
+      tbody.innerHTML = "";
+
+      let totalDue = 0;
+      let totalPaid = 0;
+
+      let displayList = [];
+      if (loanViewMode === 'month') {
+        displayList = loanList.filter(l => {
+          if (l.type === "EMI") {
+            if (l.emiStartMonth && selMonth < l.emiStartMonth) return false;
+            if (l.emiEndDate && selMonth > l.emiEndDate) return false;
+            return true;
+          } else if (l.type === "ONETIME") {
+            return l.dueDate && l.dueDate.startsWith(selMonth);
+          }
+          return false;
+        });
+      } else {
+        displayList = [...loanList];
+      }
+
+      displayList.sort((a, b) => {
+        const dayA = a.type === "EMI" ? (a.dueDay || 0) : (a.dueDate ? parseInt(a.dueDate.split("-")[2]) : 0);
+        const dayB = b.type === "EMI" ? (b.dueDay || 0) : (b.dueDate ? parseInt(b.dueDate.split("-")[2]) : 0);
+        return dayA - dayB;
+      });
+
+      if (displayList.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="10" class="p-6 text-center text-slate-400 font-sans">No loan dues found for this view. Switch to "All Registered Loans" above or change the month!</td></tr>`;
+      } else {
+        displayList.forEach(l => {
+          const recKey = `${l.id}_${selMonth}`;
+          const currentPaid = loanPaidRecords[recKey] !== undefined ? loanPaidRecords[recKey] : 0;
+          const balance = Math.max(0, l.amount - currentPaid);
+
+          totalDue += l.amount;
+          totalPaid += currentPaid;
+
+          let dueDisplay = l.type === "EMI" ? `Day ${l.dueDay}${getOrdinalSuffix(l.dueDay)}` : (l.dueDate || "N/A");
+          let timelineDisplay = "N/A";
+
+          if (l.type === "EMI") {
+            let startTxt = "";
+            let endTxt = "";
+            if (l.emiStartMonth) {
+              const [sY, sM] = l.emiStartMonth.split("-").map(Number);
+              startTxt = `${monthNames[sM - 1]} ${sY}`;
+            }
+            if (l.emiEndDate) {
+              const [eY, eM] = l.emiEndDate.split("-").map(Number);
+              endTxt = `${monthNames[eM - 1]} ${eY}`;
+            }
+            timelineDisplay = `${startTxt} → ${endTxt} (${l.emiTenureMonths || '?'} mos)`;
+            if (selMonth === l.emiEndDate) {
+              timelineDisplay += ` <span class="bg-amber-100 text-amber-800 text-[10px] font-bold px-1.5 py-0.5 rounded">Final Month</span>`;
+            }
+          }
+
+          let statusBadge = "";
+          if (currentPaid >= l.amount) {
+            statusBadge = `<span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full">Fully Paid</span>`;
+          } else if (currentPaid > 0) {
+            statusBadge = `<span class="bg-amber-100 text-amber-800 text-[10px] font-bold px-2 py-0.5 rounded-full">Partial (₹${currentPaid.toLocaleString("en-IN")})</span>`;
+          } else {
+            statusBadge = `<span class="bg-rose-100 text-rose-800 text-[10px] font-bold px-2 py-0.5 rounded-full">Pending</span>`;
+          }
+
+          const tr = document.createElement("tr");
+          tr.className = "hover:bg-slate-50 transition font-sans";
+          tr.innerHTML = `
+            <td class="p-3">
+              <strong class="text-slate-800">${l.name}</strong>
+              ${l.notes ? `<div class="text-[10px] text-slate-400">${l.notes}</div>` : ''}
+            </td>
+            <td class="p-3 text-slate-600">${l.category}</td>
+            <td class="p-3">
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold ${l.type === 'EMI' ? 'bg-indigo-50 text-indigo-700 border border-indigo-200' : 'bg-amber-50 text-amber-700 border border-amber-200'}">${l.type === 'EMI' ? 'EMI' : 'One-Time'}</span>
+            </td>
+            <td class="p-3 font-mono">${dueDisplay}</td>
+            <td class="p-3 text-[11px] text-slate-600">${timelineDisplay}</td>
+            <td class="p-3 font-bold text-slate-900 font-mono">₹${l.amount.toLocaleString("en-IN")}</td>
+            <td class="p-3 font-bold text-emerald-600 font-mono">₹${currentPaid.toLocaleString("en-IN")}</td>
+            <td class="p-3 font-bold ${balance > 0 ? 'text-rose-600' : 'text-emerald-600'} font-mono">₹${balance.toLocaleString("en-IN")}</td>
+            <td class="p-3">${statusBadge}</td>
+            <td class="p-3 whitespace-nowrap space-x-1">
+              <button type="button" onclick="openLoanPaymentModal('${l.id}', ${l.amount}, '${selMonth}')" class="bg-blue-600 hover:bg-blue-700 text-white px-2 py-1 rounded text-[11px] font-semibold cursor-pointer">
+                Enter Paid
+              </button>
+              ${currentPaid < l.amount
+                ? `<button type="button" onclick="markLoanFullPaid('${l.id}', ${l.amount}, '${selMonth}')" class="bg-emerald-600 hover:bg-emerald-700 text-white px-2 py-1 rounded text-[11px] font-semibold cursor-pointer">Mark Paid</button>`
+                : `<button type="button" onclick="resetLoanPayment('${l.id}', '${selMonth}')" class="bg-slate-500 hover:bg-slate-600 text-white px-2 py-1 rounded text-[11px] font-semibold cursor-pointer">Reset</button>`
+              }
+              <button type="button" onclick="deleteLoanEntry('${l.id}')" class="text-rose-600 hover:text-rose-800 p-1 text-[11px] font-bold cursor-pointer">
+                Delete
+              </button>
+            </td>
+          `;
+          tbody.appendChild(tr);
+        });
+      }
+
+      const lumpSumPaid = loanLumpSumRecords[selMonth] || 0;
+      const totalMonthPaid = totalPaid + lumpSumPaid;
+      const remainingBalance = Math.max(0, totalDue - totalMonthPaid);
+
+      document.getElementById('loanKpiMonthDue').innerText = `₹${totalDue.toLocaleString("en-IN")}`;
+      document.getElementById('loanKpiMonthPaid').innerHTML = `₹${totalMonthPaid.toLocaleString("en-IN")}${lumpSumPaid > 0 ? `<span class="text-[10px] font-normal text-blue-600 ml-1">(+₹${lumpSumPaid} direct)</span>` : ''}`;
+      document.getElementById('loanKpiMonthRemaining').innerText = `₹${remainingBalance.toLocaleString("en-IN")}`;
+      document.getElementById('loanKpiActiveCount').innerText = displayList.length;
+    }
+
   </script>
 </body>
 </html>
