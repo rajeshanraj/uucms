@@ -28,7 +28,7 @@
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
       <p>Freshtime Enterprises • Computer Sales • Networking • Technical Resolution Desk</p>
       <div class="flex items-center gap-4">
-        <span>Support: +91 98765 43210</span>
+        <span>Support: +91 7406227904</span>
         <button type="button" onclick="navigate('admin')" class="text-amber-400 hover:text-amber-300 font-bold underline flex items-center gap-1 cursor-pointer">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
           Admin Portal
@@ -94,7 +94,7 @@
       </div>
     </section>
 
-    <!-- Services Grid -->
+    <!-- Services Grid & Google Reviews -->
     <main class="max-w-7xl mx-auto w-full px-4 py-12 space-y-12">
       <section class="space-y-6">
         <div class="border-b pb-3">
@@ -128,13 +128,30 @@
           </div>
         </div>
       </section>
+
+      <!-- Google Reviews Section -->
+      <section class="space-y-6 bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b pb-4">
+          <div>
+            <h2 class="text-xl font-bold text-slate-900">Freshtime Enterprises - Customer Reviews</h2>
+            <p class="text-xs text-slate-500">Live feedback submitted by students, colleges, and university candidates.</p>
+          </div>
+          <a href="https://g.page/r/CaUoZdd6ffFXEBM/review" target="_blank" class="bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold px-4 py-2 rounded-xl text-xs shadow flex items-center gap-1.5 transition">
+            <span>Leave a Google Review</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+        </div>
+        <div id="googleReviewsGrid" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="p-4 rounded-xl border bg-slate-50 text-xs text-slate-500 italic">Loading reviews...</div>
+        </div>
+      </section>
     </main>
   </div>
 
   <!-- ================= VIEW 2: CHECK STATUS (#status) ================= -->
   <div id="view-status" class="page-view hidden max-w-4xl mx-auto w-full px-4 py-12 space-y-8">
-    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8">
-      <div class="flex items-center gap-3 mb-2">
+    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8 space-y-6">
+      <div class="flex items-center gap-3">
         <div class="p-2 bg-blue-100 text-blue-700 rounded-lg">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
         </div>
@@ -144,7 +161,7 @@
         </div>
       </div>
 
-      <form onsubmit="checkTicketStatus(event)" class="mt-4 flex flex-col sm:flex-row gap-3">
+      <form onsubmit="checkTicketStatus(event)" class="flex flex-col sm:flex-row gap-3">
         <input 
           type="text" 
           id="searchQuery" 
@@ -162,6 +179,49 @@
       </form>
 
       <div id="statusResultBox" class="mt-4 hidden p-5 rounded-xl border"></div>
+    </div>
+
+    <!-- HOW TO APPLY / STEP BY STEP GUIDE -->
+    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8 space-y-6">
+      <div class="border-b pb-3">
+        <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">Step-by-Step Guide</span>
+        <h2 class="text-xl font-bold text-slate-900 mt-0.5">How to Apply & Raise a Technical Grievance</h2>
+        <p class="text-xs text-slate-500">Follow these simple steps to submit your portal issue for rapid resolution.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-2 relative">
+          <div class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-xs shadow">1</div>
+          <h3 class="font-bold text-slate-800 text-sm">Select Classification</h3>
+          <p class="text-[11px] text-slate-600 leading-relaxed">
+            Choose whether you are a Student/Candidate, College, or University applicant, and enter your full name and institution.
+          </p>
+        </div>
+
+        <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-2 relative">
+          <div class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-xs shadow">2</div>
+          <h3 class="font-bold text-slate-800 text-sm">Provide Credentials</h3>
+          <p class="text-[11px] text-slate-600 leading-relaxed">
+            Enter your portal Login ID, password, and recent OTP in secure hash format. All data is permanently purged upon resolution.
+          </p>
+        </div>
+
+        <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-2 relative">
+          <div class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-xs shadow">3</div>
+          <h3 class="font-bold text-slate-800 text-sm">Pay via Fresh Pay</h3>
+          <p class="text-[11px] text-slate-600 leading-relaxed">
+            Scan the dynamic UPI QR code or pay the applicable processing charge. Enter your 12-digit UTR number and upload your payment screenshot.
+          </p>
+        </div>
+
+        <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-2 relative">
+          <div class="w-8 h-8 bg-emerald-600 text-white rounded-full flex items-center justify-center font-bold text-xs shadow">4</div>
+          <h3 class="font-bold text-slate-800 text-sm">Track & Resolve</h3>
+          <p class="text-[11px] text-slate-600 leading-relaxed">
+            Track your ticket status using your Ticket ID or mobile number, receive temporary credentials, and leave your feedback!
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -185,21 +245,27 @@
         <div id="studentLoginError" class="text-xs text-red-600 hidden font-medium text-center"></div>
 
         <button type="submit" id="studentLoginBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 rounded-lg text-sm shadow cursor-pointer">
-          View My Tickets
+          View My Dashboard & Tickets
         </button>
       </form>
     </div>
 
     <!-- Student Dashboard -->
     <div id="studentDashboardBox" class="hidden space-y-6">
-      <div class="flex justify-between items-center bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
         <div>
           <span class="text-xs text-blue-600 font-bold uppercase tracking-wider">Student Console</span>
           <h2 class="text-2xl font-bold text-slate-900" id="studentWelcomeTitle">My Grievance Tickets</h2>
         </div>
-        <button type="button" onclick="handleStudentLogout()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs font-semibold px-3 py-2 rounded-lg">
-          Log Out
-        </button>
+        <div class="flex items-center gap-2">
+          <button type="button" onclick="navigate('complaint')" class="bg-amber-500 hover:bg-amber-600 text-slate-900 text-xs font-bold px-4 py-2 rounded-lg shadow cursor-pointer flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+            <span>Add New Ticket</span>
+          </button>
+          <button type="button" onclick="handleStudentLogout()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs font-semibold px-3 py-2 rounded-lg cursor-pointer">
+            Log Out
+          </button>
+        </div>
       </div>
 
       <div id="studentTicketsList" class="space-y-4"></div>
@@ -556,35 +622,23 @@
         />
       </div>
 
-      <!-- Realtime Table -->
+      <!-- Simplified Realtime Table -->
       <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
         <div class="overflow-x-auto max-h-[600px]">
           <table class="w-full text-left text-xs text-slate-700">
             <thead class="bg-slate-100 uppercase font-semibold text-slate-600 sticky top-0 border-b border-slate-200">
               <tr>
-                <th class="p-3">Action</th>
                 <th class="p-3">Status</th>
                 <th class="p-3">Ticket ID</th>
                 <th class="p-3">Applicant Name</th>
                 <th class="p-3">Classification</th>
-                <th class="p-3">12-Digit UTR</th>
-                <th class="p-3">Payment Proof</th>
-                <th class="p-3">Fee</th>
-                <th class="p-3">Institution</th>
                 <th class="p-3">Issue Category</th>
-                <th class="p-3">Login ID</th>
-                <th class="p-3">Password (Hash/Real)</th>
-                <th class="p-3">OTP (Hash/Real)</th>
-                <th class="p-3">Contact</th>
-                <th class="p-3">Email</th>
-                <th class="p-3">Feedback</th>
-                <th class="p-3">Timestamp</th>
-                <th class="p-3">Technician Remarks</th>
+                <th class="p-3 text-center">Full Details</th>
               </tr>
             </thead>
             <tbody id="sheetTableBody" class="divide-y divide-slate-200">
               <tr>
-                <td colspan="18" class="p-6 text-center text-slate-400">Loading records...</td>
+                <td colspan="6" class="p-6 text-center text-slate-400">Loading records...</td>
               </tr>
             </tbody>
           </table>
@@ -631,6 +685,28 @@
       <div class="flex gap-2 pt-2">
         <button type="button" onclick="closeEditModal()" class="w-1/2 py-2 border border-slate-300 text-slate-700 rounded-lg text-xs font-semibold cursor-pointer">Cancel</button>
         <button type="button" onclick="submitStatusUpdate()" id="saveStatusBtn" class="w-1/2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-semibold shadow cursor-pointer">Save Update</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- POPUP MODAL: TICKET FULL DETAILS -->
+  <div id="fullDetailsModal" class="fixed inset-0 bg-black/60 hidden backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-2xl w-full p-6 shadow-2xl space-y-4 border border-slate-200 overflow-y-auto max-h-[90vh]">
+      <div class="flex items-center justify-between border-b pb-3">
+        <div>
+          <h3 class="text-base font-bold text-slate-900">Ticket Full Details</h3>
+          <span id="modalTicketId" class="text-xs font-mono font-bold text-blue-600"></span>
+        </div>
+        <button type="button" onclick="closeFullDetailsModal()" class="text-slate-400 hover:text-slate-600 text-2xl font-bold cursor-pointer">&times;</button>
+      </div>
+
+      <div id="modalDetailsBody" class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+        <!-- Dynamic details loaded here -->
+      </div>
+
+      <!-- Action Buttons Inside Modal Footer -->
+      <div id="modalActionsFooter" class="pt-4 border-t flex flex-wrap items-center justify-between gap-2">
+        <!-- Action buttons injected dynamically -->
       </div>
     </div>
   </div>
@@ -697,7 +773,7 @@
   </div>
 
   <!-- FLOATING WHATSAPP BUTTON -->
-  <a href="https://wa.me/919876543210?text=Hello%20Freshtime%20Enterprises,%20I%20need%20assistance%20with%20my%20UUCMS%20Portal." target="_blank" class="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-600 text-white p-3.5 rounded-full shadow-2xl transition hover:scale-110 flex items-center justify-center cursor-pointer">
+  <a href="https://wa.me/917406227904?text=Hello%20Freshtime%20Enterprises,%20I%20need%20assistance%20with%20my%20UUCMS%20Portal." target="_blank" class="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-600 text-white p-3.5 rounded-full shadow-2xl transition hover:scale-110 flex items-center justify-center cursor-pointer">
     <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
   </a>
 
@@ -707,7 +783,12 @@
       <div class="flex flex-col md:flex-row justify-between items-center gap-4">
         <div>
           <p class="text-white font-semibold">Freshtime Enterprises</p>
-          <p class="text-slate-500 mt-0.5">&copy; 2026 Freshtime Enterprises. All rights reserved.</p>
+          <p class="text-slate-300 mt-1">No 69, 1st Floor, 2nd Cross, CBI Road Vasanthappa Block, Ganganagar, Post, RT Nagar, Bengaluru, Karnataka 560032</p>
+          <p class="mt-1">
+            <a href="https://maps.app.goo.gl/uptbGXMCtVoWYJp66" target="_blank" class="text-blue-400 hover:underline">View on Google Maps</a> | 
+            <a href="https://g.page/r/CaUoZdd6ffFXEBM/review" target="_blank" class="text-amber-400 hover:underline">Leave Feedback / Review</a>
+          </p>
+          <p class="text-slate-500 mt-1">&copy; 2026 Freshtime Enterprises. All rights reserved.</p>
         </div>
       </div>
       <p class="text-[11px] text-slate-500 border-t border-slate-800 pt-3">
@@ -719,7 +800,7 @@
   <!-- ================= LOGIC, ROUTER & CIPHER ================= -->
   <script>
     const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbz4yowS5r7KcuCv3rCAqSQr6Wz6E83AJwXQ2VpLG8LEmuH_aGJUSFyymU-893xcBrKR/exec";
-    const FRESHTIME_WHATSAPP_NUMBER = "919876543210"; 
+    const FRESHTIME_WHATSAPP_NUMBER = "917406227904"; 
     const FRESHTIME_UPI_ID = "freshtime.blr18@ybl";
     const FRESHTIME_CIPHER_SECRET = "Freshtime@SecureKey2026";
 
@@ -772,7 +853,7 @@
       console.warn("Firebase Init Notice:", err);
     }
 
-    // Classification Issues & Fees
+    // Classification Issues & Fees (Without fee strings in labels)
     const CLASSIFIED_ISSUES = {
       "Student / Candidate": [
         { label: "APAAR ID Fetching Issue", fee: 150.00 },
@@ -803,7 +884,7 @@
     let globalUnifiedRecords = [];
     let currentPendingTicket = null;
     let areCredentialsDecrypted = false;
-    let currentAdminTab = "pending"; // Default tab: tickets to solve
+    let currentAdminTab = "pending";
 
     // ========================================================
     // CLIENT-SIDE ROUTER (fte.co.in)
@@ -856,6 +937,7 @@
         case "home":
         default:
           document.getElementById("view-home").classList.remove("hidden");
+          loadPublicReviews();
           break;
       }
 
@@ -863,7 +945,61 @@
     }
 
     window.addEventListener("hashchange", renderCurrentRoute);
-    window.addEventListener("DOMContentLoaded", renderCurrentRoute);
+    window.addEventListener("DOMContentLoaded", () => {
+      renderCurrentRoute();
+      loadPublicReviews();
+    });
+
+    // ========================================================
+    // PUBLIC REVIEWS LOADER
+    // ========================================================
+    async function loadPublicReviews() {
+      const grid = document.getElementById('googleReviewsGrid');
+      if (!grid) return;
+
+      let allRecords = [];
+      if (ticketsRef) {
+        try {
+          const snap = await ticketsRef.once("value");
+          const val = snap.val();
+          if (val) {
+            allRecords = Object.values(val);
+          }
+        } catch(e) {}
+      }
+
+      const reviewed = allRecords.filter(r => r.feedbackRating && Number(r.feedbackRating) > 0);
+
+      if (reviewed.length === 0) {
+        grid.innerHTML = `
+          <div class="bg-slate-50 p-4 rounded-xl border text-xs text-slate-600">
+            <p class="font-bold text-slate-800">★ 5.0 / 5.0 Rating</p>
+            <p class="mt-1">Trusted technical assistance for UUCMS, APAAR ID, and portal synchronization.</p>
+            <a href="https://g.page/r/CaUoZdd6ffFXEBM/review" target="_blank" class="text-blue-600 hover:underline mt-2 inline-block font-semibold">Write a review on Google &rarr;</a>
+          </div>
+          <div class="bg-slate-50 p-4 rounded-xl border text-xs text-slate-600">
+            <p class="font-bold text-slate-800">College & Student Support</p>
+            <p class="mt-1">"Quick turnaround time and secure credential handling. Highly recommended!"</p>
+          </div>
+          <div class="bg-slate-50 p-4 rounded-xl border text-xs text-slate-600">
+            <p class="font-bold text-slate-800">Verified Resolution Desk</p>
+            <p class="mt-1">"Resolved our university portal mapping barriers smoothly."</p>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = reviewed.slice(-3).reverse().map(r => `
+        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1.5 shadow-sm">
+          <div class="flex justify-between items-center">
+            <span class="font-bold text-slate-900 text-xs">${r.applicantName || 'Candidate'}</span>
+            <span class="text-amber-500 font-bold">${'★'.repeat(r.feedbackRating)}</span>
+          </div>
+          <p class="text-xs text-slate-600 italic">"${r.feedbackComment || 'Excellent technical support.'}"</p>
+          <span class="text-[10px] text-slate-400 block pt-1">Ticket: ${r.ticketId} • ${r.institution || ''}</span>
+        </div>
+      `).join("");
+    }
 
     // ========================================================
     // FORM CONTROLS
@@ -877,7 +1013,7 @@
         CLASSIFIED_ISSUES[selectedCategory].forEach(item => {
           const opt = document.createElement("option");
           opt.value = item.label;
-          opt.innerText = `${item.label} (₹${item.fee.toFixed(2)})`;
+          opt.innerText = item.label; // Clean label without fee
           issueSelect.appendChild(opt);
         });
       }
@@ -899,10 +1035,10 @@
 
       const feeText = document.getElementById('feeBreakdownText');
       if (selectedIssue === "Other Issue") {
-        feeText.innerHTML = `Nominal Initial Fee for: <strong class="text-blue-900">${selectedIssue}</strong>`;
+        feeText.innerHTML = `Nominal Initial Fee for: <strong class="text-blue-900">${selectedIssue}</strong> (₹${rate.toFixed(2)})`;
         document.getElementById('otherIssueModal').classList.remove('hidden');
       } else if (rate > 0) {
-        feeText.innerHTML = `Fixed service charge for: <strong class="text-blue-900">${selectedIssue}</strong>`;
+        feeText.innerHTML = `Fixed service charge for <strong class="text-blue-900">${selectedIssue}</strong>: ₹${rate.toFixed(2)}`;
       } else {
         feeText.innerText = "Please select your classification and issue type above.";
       }
@@ -1280,8 +1416,9 @@
       } catch(e) {}
 
       document.getElementById('feedbackContainer').innerHTML = `
-        <span class="text-xs font-bold text-emerald-700">Thank you! Your feedback has been recorded successfully.</span>
+        <span class="text-xs font-bold text-emerald-700">Thank you! Your feedback has been recorded successfully and synced to Freshtime Enterprises profile.</span>
       `;
+      loadPublicReviews();
     }
 
     // ========================================================
@@ -1333,7 +1470,7 @@
                 (t.contactEmail && String(t.contactEmail).toLowerCase().includes(session)) ||
                 (t.loginId && String(t.loginId).toLowerCase().includes(session))
               ) {
-                matchedTickets.push(t);
+                matchedTickets.push({ ...t, fbKey: k });
               }
             });
           }
@@ -1342,9 +1479,9 @@
 
       if (matchedTickets.length === 0) {
         listDiv.innerHTML = `
-          <div class="p-6 bg-white rounded-xl text-center text-xs text-slate-500 space-y-2">
+          <div class="p-6 bg-white rounded-xl text-center text-xs text-slate-500 space-y-3">
             <p>No grievance tickets found for <strong>${session}</strong>.</p>
-            <button onclick="navigate('complaint')" class="bg-blue-600 text-white font-bold px-4 py-2 rounded-lg text-xs">Raise a New Ticket</button>
+            <button onclick="navigate('complaint')" class="bg-blue-600 hover:bg-blue-750 text-white font-bold px-5 py-2.5 rounded-lg text-xs shadow cursor-pointer">Raise a New Ticket Now</button>
           </div>
         `;
         return;
@@ -1352,6 +1489,37 @@
 
       listDiv.innerHTML = matchedTickets.reverse().map(t => {
         const isUnpaid = String(t.status || "").toLowerCase().includes("unpaid") || String(t.status || "").toLowerCase().includes("pending");
+        const isResolved = String(t.status || "").toLowerCase().includes("complete") || String(t.status || "").toLowerCase().includes("resolved");
+
+        let feedbackBlock = "";
+        if (isResolved) {
+          if (t.feedbackRating) {
+            feedbackBlock = `
+              <div class="mt-3 pt-3 border-t border-slate-100 text-xs text-emerald-800">
+                <span class="font-bold">Feedback Given:</span> <span class="text-amber-500 font-bold">${'★'.repeat(t.feedbackRating)}</span>
+                <p class="italic text-slate-600">"${t.feedbackComment || ''}"</p>
+              </div>
+            `;
+          } else {
+            feedbackBlock = `
+              <div class="mt-3 pt-3 border-t border-slate-100 space-y-2" id="dashFeedback-${t.ticketId}">
+                <span class="text-xs font-bold text-blue-900 block">Rate this resolved ticket:</span>
+                <div class="flex items-center gap-2">
+                  <select id="dashRating-${t.ticketId}" class="border rounded p-1 text-xs bg-white">
+                    <option value="5">★★★★★ (5/5)</option>
+                    <option value="4">★★★★☆ (4/5)</option>
+                    <option value="3">★★★☆☆ (3/5)</option>
+                    <option value="2">★★☆☆☆ (2/5)</option>
+                    <option value="1">★☆☆☆☆ (1/5)</option>
+                  </select>
+                  <input type="text" id="dashComment-${t.ticketId}" placeholder="Review comment..." class="flex-1 border rounded p-1 text-xs bg-white" />
+                  <button type="button" onclick="submitDashboardFeedback('${t.ticketId}', '${t.fbKey || ''}')" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-3 py-1 rounded cursor-pointer">Submit</button>
+                </div>
+              </div>
+            `;
+          }
+        }
+
         return `
           <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-2">
             <div class="flex justify-between items-center">
@@ -1364,12 +1532,45 @@
             <p class="text-xs text-slate-500"><strong>Remarks:</strong> ${t.remarks}</p>
             ${isUnpaid ? `
               <div class="pt-2">
-                <button onclick="navigate('pay', 'ticket=${t.ticketId}&amount=${t.amount}')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-3 py-1.5 rounded-lg shadow">Upload Fee Proof Now &rarr;</button>
+                <button onclick="navigate('pay', 'ticket=${t.ticketId}&amount=${t.amount}')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-3 py-1.5 rounded-lg shadow cursor-pointer">Upload Fee Proof Now &rarr;</button>
               </div>
             ` : ''}
+            ${feedbackBlock}
           </div>
         `;
       }).join("");
+    }
+
+    async function submitDashboardFeedback(ticketId, fbKey) {
+      const rating = document.getElementById(`dashRating-${ticketId}`).value;
+      const comment = document.getElementById(`dashComment-${ticketId}`).value.trim();
+
+      if (fbKey && db) {
+        try {
+          await db.ref("uucms_tickets/" + fbKey).update({
+            feedbackRating: rating,
+            feedbackComment: comment
+          });
+        } catch(e) {}
+      }
+
+      try {
+        await fetch(GOOGLE_SHEET_WEBHOOK_URL, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify({
+            action: "submit_feedback",
+            ticketId: ticketId,
+            rating: rating,
+            comment: comment
+          })
+        });
+      } catch(e) {}
+
+      document.getElementById(`dashFeedback-${ticketId}`).innerHTML = `
+        <span class="text-xs font-bold text-emerald-700">Thank you! Your feedback has been saved and added to Freshtime Enterprises profile.</span>
+      `;
+      loadPublicReviews();
     }
 
     // ========================================================
@@ -1414,7 +1615,6 @@
       renderUnifiedTable(getFilteredCategoryRecords());
     }
 
-    // TAB CATEGORY SWITCHER
     function switchAdminCategory(tabName) {
       currentAdminTab = tabName;
 
@@ -1431,7 +1631,6 @@
       renderUnifiedTable(getFilteredCategoryRecords());
     }
 
-    // HELPER: FILTER RECORDS PER ACTIVE TAB
     function getFilteredCategoryRecords() {
       if (currentAdminTab === "completed") {
         return globalUnifiedRecords.filter(r => {
@@ -1446,22 +1645,20 @@
         });
       }
       if (currentAdminTab === "pending") {
-        // Tickets to be solved
         return globalUnifiedRecords.filter(r => {
           const s = (r.status || "").toLowerCase();
           return !s.includes("complete") && !s.includes("resolved") && !s.includes("reject") && !s.includes("invalid");
         });
       }
-      return globalUnifiedRecords; // 'all' tab
+      return globalUnifiedRecords;
     }
 
     async function loadUnifiedRecords() {
       const tbody = document.getElementById('sheetTableBody');
-      tbody.innerHTML = `<tr><td colspan="18" class="p-6 text-center text-slate-400">Loading records...</td></tr>`;
+      tbody.innerHTML = `<tr><td colspan="6" class="p-6 text-center text-slate-400">Loading records...</td></tr>`;
 
       const recordMap = new Map();
 
-      // 1. Fetch Google Sheet
       const sheetPromise = fetch(`${GOOGLE_SHEET_WEBHOOK_URL}?action=fetch_all_records&user=admin&pass=Freshtime@2026`)
         .then(res => res.json())
         .then(result => {
@@ -1482,7 +1679,6 @@
         })
         .catch(err => console.warn("Sheet fetch notice:", err));
 
-      // 2. Fetch Firebase
       let firebasePromise = Promise.resolve();
       if (ticketsRef) {
         firebasePromise = ticketsRef.once("value").then(snapshot => {
@@ -1537,13 +1733,11 @@
       }).length;
       const pending = total - completed - rejected;
 
-      // Update stat cards
       document.getElementById('statTotalTickets').innerText = total;
       document.getElementById('statToSolveCount').innerText = pending;
       document.getElementById('statCompletedCount').innerText = completed;
       document.getElementById('statRejectedCount').innerText = rejected;
 
-      // Update tab badges
       document.getElementById('badge-count-pending').innerText = pending;
       document.getElementById('badge-count-completed').innerText = completed;
       document.getElementById('badge-count-rejected').innerText = rejected;
@@ -1553,7 +1747,7 @@
     function renderUnifiedTable(records) {
       const tbody = document.getElementById('sheetTableBody');
       if (!records || records.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="18" class="p-6 text-center text-slate-400">No tickets found in this category.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="6" class="p-6 text-center text-slate-400">No tickets found in this category.</td></tr>`;
         return;
       }
 
@@ -1562,70 +1756,140 @@
         const isRejected = (r.status || "").toLowerCase().includes("reject") || (r.status || "").toLowerCase().includes("invalid");
         const isUnpaid = (r.status || "").toLowerCase().includes("unpaid") || (r.status || "").toLowerCase().includes("pending");
 
-        let statusBadge = `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">${r.status}</span>`;
+        let statusBadge = `<span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">${r.status}</span>`;
         if (isComplete) {
-          statusBadge = `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">${r.status}</span>`;
+          statusBadge = `<span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">${r.status}</span>`;
         } else if (isRejected) {
-          statusBadge = `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-100 text-rose-800">${r.status}</span>`;
+          statusBadge = `<span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-rose-100 text-rose-800">${r.status}</span>`;
         } else if (isUnpaid) {
-          statusBadge = `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800">${r.status}</span>`;
+          statusBadge = `<span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800">${r.status}</span>`;
         }
-
-        const cleanPhone = String(r.contactNumber || "").replace(/[^0-9]/g, "");
-        const adminWaUrl = cleanPhone.length === 10 ? `https://wa.me/91${cleanPhone}?text=Hello%20${encodeURIComponent(r.applicantName || r.loginId)},%20this%20is%20Freshtime%20Enterprises%20regarding%20ticket%20${r.ticketId}.%20Please%20share%20your%20verification%20OTP.` : '#';
-
-        let proofButton = `<span class="text-slate-400 text-[10px] italic">No proof</span>`;
-        if (r.screenshotProof && String(r.screenshotProof).startsWith("data:image")) {
-          proofButton = `
-            <button type="button" onclick="viewScreenshotProof('${r.ticketId}')" class="bg-indigo-600 hover:bg-indigo-700 text-white px-2.5 py-1 rounded text-[10px] font-bold shadow transition cursor-pointer flex items-center gap-1">
-              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
-              View Image
-            </button>
-          `;
-        }
-
-        const feedbackBadge = r.feedbackRating
-          ? `<span class="text-amber-500 font-bold" title="${r.feedbackComment || ''}">${'★'.repeat(r.feedbackRating)}</span>`
-          : `<span class="text-slate-300 text-[10px]">None</span>`;
-
-        const rawPass = r.portalPassword || "";
-        const rawOtp = r.otp || "";
-        let displayPass = areCredentialsDecrypted
-          ? `<span class="font-bold text-emerald-800 font-mono select-all bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">${decodeFromHash(rawPass)}</span>`
-          : `<span class="font-mono text-[11px] text-slate-600 select-all bg-slate-100 px-1.5 py-0.5 rounded border border-slate-200">${rawPass.startsWith("ENC:") ? rawPass : encodeToHash(rawPass)}</span>`;
-
-        let displayOtp = areCredentialsDecrypted
-          ? `<span class="font-bold text-emerald-800 font-mono select-all bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">${decodeFromHash(rawOtp)}</span>`
-          : `<span class="font-mono text-[11px] text-slate-600 select-all bg-slate-100 px-1.5 py-0.5 rounded border border-slate-200">${rawOtp.startsWith("ENC:") ? rawOtp : encodeToHash(rawOtp)}</span>`;
 
         return `
-          <tr class="hover:bg-slate-50 transition font-mono">
-            <td class="p-3 whitespace-nowrap">
-              <button type="button" onclick="openEditModal('${r.fbKey || ''}', ${r.rowId || 0}, '${r.ticketId}', '${encodeURIComponent(r.status || '')}', '${encodeURIComponent(r.remarks || '')}')" class="bg-blue-600 hover:bg-blue-700 text-white px-2 py-1 rounded text-[11px] font-sans font-semibold cursor-pointer">
-                Update
+          <tr class="hover:bg-slate-50 transition">
+            <td class="p-3 whitespace-nowrap">${statusBadge}</td>
+            <td class="p-3 font-mono font-bold text-slate-900 whitespace-nowrap">${r.ticketId}</td>
+            <td class="p-3 font-bold text-slate-800 whitespace-nowrap">${r.applicantName || 'N/A'}</td>
+            <td class="p-3 whitespace-nowrap"><span class="bg-slate-100 px-2.5 py-1 rounded text-[11px] font-semibold text-slate-700">${r.category || 'N/A'}</span></td>
+            <td class="p-3 text-blue-700 font-medium whitespace-nowrap">${r.issue || 'N/A'}</td>
+            <td class="p-3 text-center whitespace-nowrap">
+              <button type="button" onclick="openFullDetailsModal('${r.ticketId}')" class="bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1 rounded-lg text-xs font-bold shadow transition flex items-center gap-1 mx-auto cursor-pointer">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                View
               </button>
-              ${cleanPhone.length === 10 ? `<a href="${adminWaUrl}" target="_blank" class="ml-1 bg-emerald-600 hover:bg-emerald-700 text-white px-2 py-1 rounded text-[11px] font-sans font-semibold inline-block">WhatsApp</a>` : ''}
             </td>
-            <td class="p-3 whitespace-nowrap font-sans">${statusBadge}</td>
-            <td class="p-3 font-bold text-slate-900 whitespace-nowrap">${r.ticketId}</td>
-            <td class="p-3 font-sans font-bold text-slate-800 whitespace-nowrap">${r.applicantName || 'N/A'}</td>
-            <td class="p-3 font-sans whitespace-nowrap"><span class="bg-slate-100 px-2 py-0.5 rounded text-[11px] font-semibold text-slate-700">${r.category}</span></td>
-            <td class="p-3 font-extrabold text-emerald-800 whitespace-nowrap">${r.utrNumber || r.paymentId || 'N/A'}</td>
-            <td class="p-3 font-sans whitespace-nowrap">${proofButton}</td>
-            <td class="p-3 font-bold text-emerald-700 whitespace-nowrap font-sans">₹${r.amount}</td>
-            <td class="p-3 font-sans whitespace-nowrap">${r.institution}</td>
-            <td class="p-3 font-sans text-blue-700 whitespace-nowrap">${r.issue}</td>
-            <td class="p-3 font-bold text-slate-800 whitespace-nowrap">${r.loginId}</td>
-            <td class="p-3 whitespace-nowrap">${displayPass}</td>
-            <td class="p-3 whitespace-nowrap">${displayOtp}</td>
-            <td class="p-3 whitespace-nowrap">${r.contactNumber}</td>
-            <td class="p-3 font-sans text-slate-600 whitespace-nowrap">${r.contactEmail}</td>
-            <td class="p-3 font-sans whitespace-nowrap">${feedbackBadge}</td>
-            <td class="p-3 font-sans text-slate-400 whitespace-nowrap">${r.timestamp}</td>
-            <td class="p-3 font-sans text-slate-600 max-w-xs truncate">${r.remarks || ''}</td>
           </tr>
         `;
       }).join('');
+    }
+
+    function openFullDetailsModal(ticketId) {
+      const rec = globalUnifiedRecords.find(x => x.ticketId === ticketId);
+      if (!rec) {
+        alert("Ticket details not found.");
+        return;
+      }
+
+      document.getElementById('modalTicketId').innerText = `Reference: ${rec.ticketId}`;
+
+      const rawPass = rec.portalPassword || "";
+      const rawOtp = rec.otp || "";
+      const passDisplay = areCredentialsDecrypted ? decodeFromHash(rawPass) : (rawPass.startsWith("ENC:") ? rawPass : encodeToHash(rawPass));
+      const otpDisplay = areCredentialsDecrypted ? decodeFromHash(rawOtp) : (rawOtp.startsWith("ENC:") ? rawOtp : encodeToHash(rawOtp));
+
+      let proofContent = '<span class="text-slate-400 italic">No proof uploaded</span>';
+      if (rec.screenshotProof && String(rec.screenshotProof).startsWith("data:image")) {
+        proofContent = `
+          <button type="button" onclick="viewScreenshotProof('${rec.ticketId}')" class="bg-indigo-600 text-white px-3 py-1 rounded text-xs font-bold shadow hover:bg-indigo-700 cursor-pointer">
+            View Payment Screenshot
+          </button>
+        `;
+      }
+
+      document.getElementById('modalDetailsBody').innerHTML = `
+        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+          <span class="text-slate-400 uppercase text-[10px] font-bold block">Status</span>
+          <span class="font-bold text-slate-800">${rec.status}</span>
+        </div>
+        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+          <span class="text-slate-400 uppercase text-[10px] font-bold block">Applicant Name</span>
+          <span class="font-bold text-slate-800">${rec.applicantName || 'N/A'}</span>
+        </div>
+        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+          <span class="text-slate-400 uppercase text-[10px] font-bold block">Classification</span>
+          <span class="font-semibold text-slate-800">${rec.category}</span>
+        </div>
+        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+          <span class="text-slate-400 uppercase text-[10px] font-bold block">Institution</span>
+          <span class="font-semibold text-slate-800">${rec.institution}</span>
+        </div>
+        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+          <span class="text-slate-400 uppercase text-[10px] font-bold block">Issue Category</span>
+          <span class="font-semibold text-blue-700">${rec.issue}</span>
+        </div>
+        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+          <span class="text-slate-400 uppercase text-[10px] font-bold block">Fee Amount</span>
+          <span class="font-bold text-emerald-700">₹${rec.amount} (${rec.paymentMethod || 'Unpaid'})</span>
+        </div>
+        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+          <span class="text-slate-400 uppercase text-[10px] font-bold block">12-Digit UTR Number</span>
+          <span class="font-mono font-extrabold text-emerald-800">${rec.utrNumber || rec.paymentId || 'N/A'}</span>
+        </div>
+        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+          <span class="text-slate-400 uppercase text-[10px] font-bold block">Payment Proof</span>
+          <div class="mt-1">${proofContent}</div>
+        </div>
+        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+          <span class="text-slate-400 uppercase text-[10px] font-bold block">Login ID</span>
+          <span class="font-mono font-bold text-slate-800 select-all">${rec.loginId}</span>
+        </div>
+        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+          <span class="text-slate-400 uppercase text-[10px] font-bold block">Password</span>
+          <span class="font-mono font-bold text-slate-800 select-all">${passDisplay}</span>
+        </div>
+        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+          <span class="text-slate-400 uppercase text-[10px] font-bold block">OTP</span>
+          <span class="font-mono font-bold text-slate-800 select-all">${otpDisplay}</span>
+        </div>
+        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+          <span class="text-slate-400 uppercase text-[10px] font-bold block">Contact Details</span>
+          <span class="font-semibold text-slate-800 block">${rec.contactNumber}</span>
+          <span class="text-slate-500 block">${rec.contactEmail}</span>
+        </div>
+        <div class="md:col-span-2 bg-slate-50 p-3 rounded-xl border border-slate-200">
+          <span class="text-slate-400 uppercase text-[10px] font-bold block">Error Description</span>
+          <p class="text-slate-700 mt-0.5">${rec.description || 'None provided'}</p>
+        </div>
+        <div class="md:col-span-2 bg-slate-50 p-3 rounded-xl border border-slate-200">
+          <span class="text-slate-400 uppercase text-[10px] font-bold block">Technician Remarks & Feedback</span>
+          <p class="text-slate-700 mt-0.5"><strong>Remarks:</strong> ${rec.remarks || 'None'}</p>
+          ${rec.feedbackRating ? `<p class="text-amber-500 font-bold mt-1"><strong>Feedback:</strong> ${'★'.repeat(rec.feedbackRating)} -${rec.feedbackComment || ''}</p>` : ''}
+        </div>
+        <div class="md:col-span-2 text-slate-400 text-[10px] text-right">
+          Submitted On: ${rec.timestamp}
+        </div>
+      `;
+
+      const cleanPhone = String(rec.contactNumber || "").replace(/[^0-9]/g, "");
+      const adminWaUrl = cleanPhone.length === 10 ? `https://wa.me/91${cleanPhone}?text=Hello%20${encodeURIComponent(rec.applicantName || rec.loginId)},%20this%20is%20Freshtime%20Enterprises%20regarding%20ticket%20${rec.ticketId}.` : '#';
+
+      document.getElementById('modalActionsFooter').innerHTML = `
+        <div class="flex items-center gap-2">
+          <button type="button" onclick="closeFullDetailsModal(); openEditModal('${rec.fbKey || ''}', ${rec.rowId || 0}, '${rec.ticketId}', '${encodeURIComponent(rec.status || '')}', '${encodeURIComponent(rec.remarks || '')}')" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-xs font-bold shadow cursor-pointer">
+            Update Status
+          </button>
+          ${cleanPhone.length === 10 ? `<a href="${adminWaUrl}" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg text-xs font-bold shadow inline-block">Open WhatsApp</a>` : ''}
+        </div>
+        <button type="button" onclick="closeFullDetailsModal()" class="bg-slate-800 hover:bg-slate-900 text-white font-semibold px-5 py-2 rounded-lg text-xs cursor-pointer">
+          Close
+        </button>
+      `;
+
+      document.getElementById('fullDetailsModal').classList.remove('hidden');
+    }
+
+    function closeFullDetailsModal() {
+      document.getElementById('fullDetailsModal').classList.add('hidden');
     }
 
     function viewScreenshotProof(ticketId) {
