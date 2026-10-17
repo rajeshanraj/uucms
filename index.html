@@ -853,7 +853,7 @@
       console.warn("Firebase Init Notice:", err);
     }
 
-    // Classification Issues & Fees (Without fee strings in labels)
+    // Classification Issues & Fees
     const CLASSIFIED_ISSUES = {
       "Student / Candidate": [
         { label: "APAAR ID Fetching Issue", fee: 150.00 },
@@ -887,7 +887,7 @@
     let currentAdminTab = "pending";
 
     // ========================================================
-    // CLIENT-SIDE ROUTER (fte.co.in)
+    // CLIENT-SIDE ROUTER
     // ========================================================
     function navigate(route, params = "") {
       const targetHash = params ? `#${route}?${params}` : `#${route}`;
@@ -1013,7 +1013,7 @@
         CLASSIFIED_ISSUES[selectedCategory].forEach(item => {
           const opt = document.createElement("option");
           opt.value = item.label;
-          opt.innerText = item.label; // Clean label without fee
+          opt.innerText = item.label;
           issueSelect.appendChild(opt);
         });
       }
@@ -1088,6 +1088,7 @@
         utrNumber: "Payment Pending",
         paymentId: "UNPAID",
         paymentMethod: "Pending",
+        screenshotProof: "",
         status: "Payment Pending / Unpaid",
         remarks: "Ticket registered. Awaiting student fee payment and screenshot proof.",
         timestamp: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })
@@ -1138,7 +1139,7 @@
       document.getElementById('dynamicUpiQr').src = qrApiUrl;
     }
 
-    function compressImageFile(file, maxWidth = 800, maxHeight = 800, quality = 0.6) {
+    function compressImageFile(file, maxWidth = 600, maxHeight = 600, quality = 0.5) {
       return new Promise((resolve) => {
         const reader = new FileReader();
         reader.readAsDataURL(file);
@@ -1210,52 +1211,81 @@
         } catch(e) {}
       }
 
-      submitBtn.innerText = "Compressing & Updating Ticket...";
+      submitBtn.innerText = "Uploading & Saving Proof...";
 
       let compressedScreenshot = "";
       try {
-        compressedScreenshot = await compressImageFile(fileInput.files[0]);
-      } catch (err) {}
+        compressedScreenshot = await compressImageFile(fileInput.files[0], 600, 600, 0.5);
+      } catch (err) {
+        console.warn("Compression error:", err);
+      }
 
-      const ticketId = document.getElementById("fpPayTicketId").innerText;
+      const ticketId = document.getElementById("fpPayTicketId").innerText.trim();
       const paymentMethod = document.getElementById('fpPaymentModeSelect').value;
 
-      const updatePayload = {
-        action: "update_payment_proof",
-        ticketId: ticketId,
-        utrNumber: utr,
-        paymentId: utr,
-        paymentMethod: paymentMethod,
-        screenshotProof: compressedScreenshot,
-        status: "Payment Verified - In Progress",
-        remarks: `Payment proof submitted via FRESH PAY (${paymentMethod}). UTR: ${utr}.`
-      };
+      // Temporary local backup in case of latency
+      if (compressedScreenshot) {
+        try {
+          localStorage.setItem("proof_" + ticketId, compressedScreenshot);
+        } catch(e) {}
+      }
+
+      let drivePhotoUrl = "";
+      try {
+        const res = await fetch(GOOGLE_SHEET_WEBHOOK_URL, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify({
+            action: "update_payment_proof",
+            ticketId: ticketId,
+            utrNumber: utr,
+            paymentId: utr,
+            paymentMethod: paymentMethod,
+            screenshotProof: compressedScreenshot,
+            status: "Payment Verified - In Progress",
+            remarks: `Payment proof submitted via FRESH PAY (${paymentMethod}). UTR: ${utr}.`
+          })
+        });
+        const json = await res.json();
+        if (json && json.photoUrl) {
+          drivePhotoUrl = json.photoUrl;
+        }
+      } catch(e) {
+        console.warn("Apps script upload sync:", e);
+      }
+
+      const finalSavedProof = drivePhotoUrl || compressedScreenshot;
 
       if (ticketsRef) {
         try {
           const snap = await ticketsRef.orderByChild("ticketId").equalTo(ticketId).once("value");
-          const val = snap.val();
-          if (val) {
-            const key = Object.keys(val)[0];
-            await db.ref("uucms_tickets/" + key).update({
+          if (snap.exists()) {
+            const updates = {};
+            snap.forEach(child => {
+              updates[`uucms_tickets/${child.key}/utrNumber`] = utr;
+              updates[`uucms_tickets/${child.key}/paymentId`] = utr;
+              updates[`uucms_tickets/${child.key}/paymentMethod`] = paymentMethod;
+              updates[`uucms_tickets/${child.key}/screenshotProof`] = finalSavedProof;
+              updates[`uucms_tickets/${child.key}/status`] = "Payment Verified - In Progress";
+              updates[`uucms_tickets/${child.key}/remarks`] = `Payment proof submitted via FRESH PAY (${paymentMethod}). UTR: ${utr}.`;
+            });
+            await db.ref().update(updates);
+          } else {
+            await ticketsRef.push({
+              ticketId: ticketId,
               utrNumber: utr,
               paymentId: utr,
               paymentMethod: paymentMethod,
-              screenshotProof: compressedScreenshot,
+              screenshotProof: finalSavedProof,
               status: "Payment Verified - In Progress",
-              remarks: `Payment proof submitted via FRESH PAY (${paymentMethod}). UTR: ${utr}.`
+              remarks: `Payment proof submitted via FRESH PAY (${paymentMethod}). UTR: ${utr}.`,
+              createdAt: firebase.database.ServerValue.TIMESTAMP
             });
           }
-        } catch(e) {}
+        } catch(e) {
+          console.error("Firebase update notice:", e);
+        }
       }
-
-      try {
-        await fetch(GOOGLE_SHEET_WEBHOOK_URL, {
-          method: "POST",
-          headers: { "Content-Type": "text/plain;charset=utf-8" },
-          body: JSON.stringify(updatePayload)
-        });
-      } catch(e) {}
 
       document.getElementById('resTicketId').innerText = ticketId;
       document.getElementById('resApplicantName').innerText = (currentPendingTicket ? currentPendingTicket.applicantName : "Applicant");
@@ -1659,18 +1689,20 @@
 
       const recordMap = new Map();
 
+      // Fetch from Google Sheet
       const sheetPromise = fetch(`${GOOGLE_SHEET_WEBHOOK_URL}?action=fetch_all_records&user=admin&pass=Freshtime@2026`)
         .then(res => res.json())
         .then(result => {
           if (result && result.records && Array.isArray(result.records)) {
             result.records.forEach((r, idx) => {
               const tid = String(r.ticketId || ("ROW-" + idx)).trim();
+              const sheetProof = String(r.screenshotProof || "").trim();
               recordMap.set(tid, {
                 ...r,
                 rowId: r.rowId || (idx + 2),
                 applicantName: r.applicantName || "N/A",
                 utrNumber: r.utrNumber || r.paymentId || 'N/A',
-                screenshotProof: r.screenshotProof || "",
+                screenshotProof: sheetProof,
                 feedbackRating: r.feedbackRating || "",
                 feedbackComment: r.feedbackComment || ""
               });
@@ -1679,6 +1711,7 @@
         })
         .catch(err => console.warn("Sheet fetch notice:", err));
 
+      // Fetch from Firebase
       let firebasePromise = Promise.resolve();
       if (ticketsRef) {
         firebasePromise = ticketsRef.once("value").then(snapshot => {
@@ -1687,15 +1720,21 @@
             Object.keys(data).forEach(key => {
               const r = data[key];
               const tid = String(r.ticketId || key).trim();
+              const fbProof = String(r.screenshotProof || "").trim();
 
               if (recordMap.has(tid)) {
                 const existing = recordMap.get(tid);
+                // Keep the Google Drive link or Base64 proof from whichever source has it
+                const validProof = (fbProof && fbProof.length > 10) 
+                  ? fbProof 
+                  : (existing.screenshotProof || "");
+
                 recordMap.set(tid, {
                   ...existing,
                   ...r,
                   fbKey: key,
                   rowId: existing.rowId,
-                  screenshotProof: r.screenshotProof || existing.screenshotProof || "",
+                  screenshotProof: validProof,
                   feedbackRating: r.feedbackRating || existing.feedbackRating || "",
                   feedbackComment: r.feedbackComment || existing.feedbackComment || ""
                 });
@@ -1704,7 +1743,7 @@
                   ...r,
                   fbKey: key,
                   applicantName: r.applicantName || "N/A",
-                  screenshotProof: r.screenshotProof || "",
+                  screenshotProof: fbProof,
                   feedbackRating: r.feedbackRating || "",
                   feedbackComment: r.feedbackComment || ""
                 });
@@ -1797,8 +1836,13 @@
       const passDisplay = areCredentialsDecrypted ? decodeFromHash(rawPass) : (rawPass.startsWith("ENC:") ? rawPass : encodeToHash(rawPass));
       const otpDisplay = areCredentialsDecrypted ? decodeFromHash(rawOtp) : (rawOtp.startsWith("ENC:") ? rawOtp : encodeToHash(rawOtp));
 
+      let proofUrl = String(rec.screenshotProof || "").trim();
+      if (!proofUrl) {
+        proofUrl = localStorage.getItem("proof_" + rec.ticketId) || "";
+      }
+
       let proofContent = '<span class="text-slate-400 italic">No proof uploaded</span>';
-      if (rec.screenshotProof && String(rec.screenshotProof).startsWith("data:image")) {
+      if (proofUrl && (proofUrl.startsWith("http") || proofUrl.startsWith("data:image"))) {
         proofContent = `
           <button type="button" onclick="viewScreenshotProof('${rec.ticketId}')" class="bg-indigo-600 text-white px-3 py-1 rounded text-xs font-bold shadow hover:bg-indigo-700 cursor-pointer">
             View Payment Screenshot
@@ -1894,9 +1938,14 @@
 
     function viewScreenshotProof(ticketId) {
       const rec = globalUnifiedRecords.find(x => x.ticketId === ticketId);
-      if (rec && rec.screenshotProof && String(rec.screenshotProof).startsWith("data:image")) {
-        document.getElementById('proofTicketIdDisplay').innerText = `Ticket: ${ticketId} • UTR: ${rec.utrNumber || rec.paymentId || ''}`;
-        document.getElementById('imageProofDisplay').src = rec.screenshotProof;
+      let proofUrl = String((rec && rec.screenshotProof) || "").trim();
+      if (!proofUrl) {
+        proofUrl = localStorage.getItem("proof_" + ticketId) || "";
+      }
+
+      if (proofUrl && (proofUrl.startsWith("http") || proofUrl.startsWith("data:image"))) {
+        document.getElementById('proofTicketIdDisplay').innerText = `Ticket: ${ticketId} • UTR: ${(rec && rec.utrNumber) || ''}`;
+        document.getElementById('imageProofDisplay').src = proofUrl;
         document.getElementById('imageProofModal').classList.remove('hidden');
       } else {
         alert("No image proof available for this ticket.");
